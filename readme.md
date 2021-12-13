@@ -1,6 +1,14 @@
 # Java SpringBoot Data Access
 Helper project used to access a MySQL database.
 
+# Getting Started
+- Create new local directory
+- Clone this repo in that directory: `git clone git@github.com:mburolla/siu-java-spring-boot-da-1.git`
+- Create `src/main/resources/application.properties` file 
+- Copy and pastes contents from `application.properties.template` file to `application.properties` file
+- Update DB credentials fields in `application.properties` file
+- Use ReST client to test an endpoint
+
 # Endpoints
 
 |Action|Message|
