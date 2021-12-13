@@ -1,9 +1,9 @@
 package com.xpanxion.java.springboot.da1.demo.service;
 
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.xpanxion.java.springboot.da1.demo.model.Product;
 import com.xpanxion.java.springboot.da1.demo.repository.InstructorProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -18,8 +18,7 @@ public class InstructorDataService {
     private InstructorProductRepository instructorProductRepository;
 
     //
-    // Methods
-    //
+    // Product Methods
     //
 
     public List<Product> getProducts() {
@@ -30,6 +29,4 @@ public class InstructorDataService {
         var p = new Product(1, "test", 1, 11);
         instructorProductRepository.save(p);
     }
-
-
 }

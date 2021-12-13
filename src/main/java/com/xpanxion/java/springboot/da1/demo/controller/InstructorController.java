@@ -1,5 +1,7 @@
 package com.xpanxion.java.springboot.da1.demo.controller;
 
+import java.util.List;
+import com.xpanxion.java.springboot.da1.demo.model.Product;
 import com.xpanxion.java.springboot.da1.demo.service.InstructorDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +19,6 @@ public class InstructorController {
 
     @GetMapping("instructor/api/v1/message")
     public String getMessage() {
-        // instructorDataService.addProduct();
-        // var pList = instructorDataService.getProducts();
         return "My name is Marty.";
     }
 
@@ -26,6 +26,9 @@ public class InstructorController {
     // Product
     //
 
-
-
+    @GetMapping("instructor/api/v1/products")
+    public List<Product> getProducts() {
+        var productList = instructorDataService.getProducts();
+        return productList;
+    }
 }
