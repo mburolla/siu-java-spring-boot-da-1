@@ -20,8 +20,16 @@ public class InstructorDataService {
     //
     // Methods
     //
+    //
 
     public List<Product> getProducts() {
         return instructorProductRepository.findAll();
     }
+
+    public void addProduct() {
+        var p = new Product(1, "test", 1, 11);
+        instructorProductRepository.save(p);
+    }
+
+
 }
