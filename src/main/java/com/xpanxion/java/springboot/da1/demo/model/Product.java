@@ -14,7 +14,7 @@ public class Product {
     //
 
     @Id
-    // @GeneratedValue // Commented for the one-to-many example.
+    // @GeneratedValue
     private int id;
     private String name;
     private int quantity;
