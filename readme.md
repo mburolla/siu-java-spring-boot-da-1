@@ -7,6 +7,7 @@ Helper project used to access a MySQL database.
 - Create `src/main/resources/application.properties` file 
 - Copy and pastes contents from `application.properties.template` file to `application.properties` file
 - Update DB credentials fields in `application.properties` file
+- Run the project
 - Use ReST client to test an endpoint
 
 # Endpoints
