@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class InstructorController {
+public class Student7Controller {
 
-    @GetMapping("instructor/api/v1/message")
+    @GetMapping("student7/api/v1/message")
     public String getMessage() {
-        return "My name is Marty.";
+        return "My name is ...";
     }
 }
