@@ -10,6 +10,16 @@ Helper project used to access a MySQL database.
 - Run the project
 - Use ReST client to test an endpoint
 
+# Workflow
+- Branch from `dev` branch using the following naming schema:
+  - dev-{your two letter initials}-{excerise number}
+  - Example: `git checkout -b dev-mb-ex1`
+  - Do work on this branch
+  - Before you commit, check the status of files that have been changed: `git status`
+  - Stage your files: `git add --all`
+  - Add a commit message: `git commit -m "Finish ex1"`
+  - Push your branch: `git push origin dev-mb-ex1`
+
 # Endpoints
 
 |Action|Message|
