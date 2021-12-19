@@ -2,10 +2,9 @@ package com.xpanxion.java.springboot.da1.demo.controller.instructor;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import com.xpanxion.java.springboot.da1.demo.model.instructor.Book;
-import com.xpanxion.java.springboot.da1.demo.model.instructor.Product;
-import com.xpanxion.java.springboot.da1.demo.service.InstructorDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -22,9 +21,6 @@ import javax.transaction.Transactional;
 public class BookController {
 
     @Autowired
-    private InstructorDataService instructorDataService;
-
-    @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
@@ -34,34 +30,12 @@ public class BookController {
     private final String INSERT_BOOK = "insert into book (title, isbn) values (:title, :isbn);";
     private final String INSERT_BOOKSTORE_BOOK = "insert into bookstore_book (bookstore_id, book_id) values (:bookstoreId, :bookId);";
 
-    //
-    // Message
-    //
-
-    @GetMapping("instructor/api/v1/message")
-    public String getMessage() {
-        return "My name is Marty.";
-    }
-
-    //
-    // Product
-    //
-
-    @GetMapping("instructor/api/v1/products")
-    public List<Product> getProducts() {
-        return instructorDataService.getProducts();
-    }
-
-    //
-    // Book
-    //
-
     @Transactional
     @GetMapping("instructor/api/v1/books")
     public List<Book> getBooks() {
         //return getBook(1);
 
-        addBook(1, new Book("Gypsy", "5150-5150-5150-5150-5150", 1.11F));
+        var newBookId = addBook(1, new Book("Gypsy", "5150-5150-5150-5150-5150", 1.11F));
 
         var bookList = new ArrayList<Book>();
         bookList.add(new Book(1, "title 1", "111-11-11111"));
@@ -85,8 +59,8 @@ public class BookController {
         return bookList;
     }
 
-    private Integer addBook(Integer bookstoreId, Book book) {
-        Integer retval = 0;
+    private int addBook(Integer bookstoreId, Book book) {
+        int retval = 0;
 
         // Insert into book.
         KeyHolder holder = new GeneratedKeyHolder();
@@ -94,7 +68,7 @@ public class BookController {
                 .addValue("title", book.getTitle())
                 .addValue("isbn", book.getIsbn());
         namedParameterJdbcTemplate.update(INSERT_BOOK, parameters, holder);
-        retval = holder.getKey().intValue();
+        retval = Objects.requireNonNull(holder.getKey()).intValue();
 
         // Insert into bookstore_book.
         parameters = new MapSqlParameterSource()

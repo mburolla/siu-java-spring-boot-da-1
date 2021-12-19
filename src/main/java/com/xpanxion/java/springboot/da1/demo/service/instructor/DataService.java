@@ -1,21 +1,21 @@
-package com.xpanxion.java.springboot.da1.demo.service;
+package com.xpanxion.java.springboot.da1.demo.service.instructor;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.Product;
-import com.xpanxion.java.springboot.da1.demo.repository.InstructorProductRepository;
+import com.xpanxion.java.springboot.da1.demo.repository.instructor.ProductRepository;
 
 import java.util.List;
 
 @Service
-public class InstructorDataService {
+public class DataService {
 
     //
     // Data members
     //
 
     @Autowired
-    private InstructorProductRepository instructorProductRepository;
+    private ProductRepository instructorProductRepository;
 
     //
     // Product Methods
