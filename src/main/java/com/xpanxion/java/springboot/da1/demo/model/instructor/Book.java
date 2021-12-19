@@ -1,16 +1,22 @@
-package com.xpanxion.java.springboot.da1.demo.model;
+package com.xpanxion.java.springboot.da1.demo.model.instructor;
 
 public class Book {
 
+    private Integer id;
     private String title;
     private String isbn;
 
     public Book() {
     }
 
-    public Book(String title, String isbn) {
+    public Book(Integer id, String title, String isbn) {
+        this.id = id;
         this.title = title;
         this.isbn = isbn;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {

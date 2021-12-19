@@ -2,7 +2,7 @@ package com.xpanxion.java.springboot.da1.demo.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.xpanxion.java.springboot.da1.demo.model.Product;
+import com.xpanxion.java.springboot.da1.demo.model.instructor.Product;
 import com.xpanxion.java.springboot.da1.demo.repository.InstructorProductRepository;
 
 import java.util.List;
