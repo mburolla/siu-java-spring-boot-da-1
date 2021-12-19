@@ -34,10 +34,10 @@ CREATE TABLE `bookstore_book` (
  */
 
 Insert into bookstore(name) values ('Barnes and Noble');
-Insert into `instructor`.`book` (`title`,`isbn`) values ('title 1', '1111-111-111-1111');
-Insert into `instructor`.`book` (`title`,`isbn`) values ('title 2', '2222-222-222-2222');
-Insert into `instructor`.`book` (`title`,`isbn`) values ('title 3', '3333-333-333-3333');
-Insert into `instructor`.`book` (`title`,`isbn`) values ('title 4', '4444-444-444-4444');
+Insert into book (title,isbn) values ('title 1', '1111-111-111-1111');
+Insert into book (title,isbn) values ('title 2', '2222-222-222-2222');
+Insert into book (title,isbn) values ('title 3', '3333-333-333-3333');
+Insert into book (title,isbn) values ('title 4', '4444-444-444-4444');
 insert into bookstore_book (bookstore_id, book_id) values (1,1);
 insert into bookstore_book (bookstore_id, book_id) values (1,2);
 insert into bookstore_book (bookstore_id, book_id) values (1,3);
