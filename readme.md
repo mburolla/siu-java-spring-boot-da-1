@@ -69,3 +69,6 @@ git reset --hard
 git clean --f
 git stash
 ```
+
+# Database Schema
+![](./docs/db_0_0_1.PNG)

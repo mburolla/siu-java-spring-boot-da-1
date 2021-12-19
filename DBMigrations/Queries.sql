@@ -1,10 +1,13 @@
-/**
- * Queries
+/*
+ * File: Queries.sql
+ * Auth: Martin Burolla
+ * Date: 12/18/20201
  */
 
 select * from bookstore;
 select * from bookstore_book;
 select * from book;
+select * from manager;
 
 select *
 from bookstore_book bsb

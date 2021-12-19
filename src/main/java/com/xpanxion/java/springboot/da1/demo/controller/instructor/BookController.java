@@ -1,4 +1,4 @@
-package com.xpanxion.java.springboot.da1.demo.controller;
+package com.xpanxion.java.springboot.da1.demo.controller.instructor;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.transaction.Transactional;
 
 @RestController
-public class InstructorController {
+public class BookController {
 
     @Autowired
     private InstructorDataService instructorDataService;
@@ -32,6 +32,7 @@ public class InstructorController {
 
     private final String SELECT_BOOK = "select * from book where book_id = ?";
     private final String INSERT_BOOK = "insert into book (title, isbn) values (:title, :isbn);";
+    private final String INSERT_BOOKSTORE_BOOK = "insert into bookstore_book (bookstore_id, book_id) values (:bookstoreId, :bookId);";
 
     //
     // Message
@@ -58,43 +59,49 @@ public class InstructorController {
     @Transactional
     @GetMapping("instructor/api/v1/books")
     public List<Book> getBooks() {
+        //return getBook(1);
+
+        addBook(1, new Book("Gypsy", "5150-5150-5150-5150-5150", 1.11F));
 
         var bookList = new ArrayList<Book>();
         bookList.add(new Book(1, "title 1", "111-11-11111"));
         bookList.add(new Book(2, "title 2", "222-222-22222"));
         bookList.add(new Book(3, "title 3", "3333-333-3333"));
         return bookList;
+    }
 
-        //jdbcTemplate.update(INSERT_BOOK, "title5", "5555-555-555-55555" );
+    //
+    // Private helpers
+    //
 
-        // Get the ID of the newly inserted row.
-//        KeyHolder holder = new GeneratedKeyHolder();
-//        SqlParameterSource parameters = new MapSqlParameterSource()
-//                .addValue("title", "title55")
-//                .addValue("isbn", "111-11-111-11111");
-//        namedParameterJdbcTemplate.update(INSERT_BOOK, parameters, holder);
-//        int bookId = holder.getKey().intValue();
+    private List<Book> getBook(int bookId) {
+        List<Book> bookList;
+        bookList = jdbcTemplate.query(SELECT_BOOK, (row, rowNum) -> {
+            var id = Integer.parseInt(row.getString("book_id"));
+            var title =  row.getString("title");
+            var isbn =  row.getString("isbn");
+            return new Book(id, title, isbn);
+        }, bookId);
+        return bookList;
+    }
 
+    private Integer addBook(Integer bookstoreId, Book book) {
+        Integer retval = 0;
 
-//        KeyHolder holder = new GeneratedKeyHolder();
-//        SqlParameterSource parameters = new MapSqlParameterSource()
-//                .addValue("name", user.getName())
-//                .addValue("address", user.getAddress())
-//                .addValue("email", user.getEmail());
-//        namedParameterJdbcTemplate.update(INSERT_SQL, parameters, holder);
-//        user.setId(holder.getKey().intValue());
-//        return user;
+        // Insert into book.
+        KeyHolder holder = new GeneratedKeyHolder();
+        SqlParameterSource parameters = new MapSqlParameterSource()
+                .addValue("title", book.getTitle())
+                .addValue("isbn", book.getIsbn());
+        namedParameterJdbcTemplate.update(INSERT_BOOK, parameters, holder);
+        retval = holder.getKey().intValue();
 
+        // Insert into bookstore_book.
+        parameters = new MapSqlParameterSource()
+                .addValue("bookstoreId", bookstoreId)
+                .addValue("bookId", retval);
+        namedParameterJdbcTemplate.update(INSERT_BOOKSTORE_BOOK, parameters);
 
-//        int bookId = 2;
-//        List<Book> bookList;
-//        bookList = jdbcTemplate.query(SELECT_BOOK, (row, rowNum) -> {
-//            var id = Integer.parseInt(row.getString("book_id"));
-//            var title =  row.getString("title");
-//            var isbn =  row.getString("isbn");
-//            return new Book(id, title, isbn);
-//        }, bookId);
-//        return bookList;
-
+        return retval;
     }
 }
