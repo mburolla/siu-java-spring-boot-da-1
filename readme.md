@@ -7,6 +7,7 @@ Helper project used to access a MySQL database.  Latest assignments are on the d
 - Create `src/main/resources/application.properties` file 
 - Copy and pastes contents from `application.properties.template` file to `application.properties` file
 - Update DB credentials fields in `application.properties` file
+- Run the "up" db script(s) located in the DBMigrations folder on your `student{id}_da` DB schema
 - Run the project
 - Use ReST client (e.g. Postman) to test an endpoint
 
