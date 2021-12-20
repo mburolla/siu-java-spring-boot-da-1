@@ -33,10 +33,11 @@ Create a BookController in your student package that has supports the following 
 `GET student{id}/api/v1/book`
 
 Create a `Book` model and place it in your student model package.  The `Book` model must align with the `Book` table in 
-the database.
+the database.  Delete the test class in your model directory, it was just a placeholder because Git does not
+like empty directories.
 
 The endpoint returns an arbitrary hardcoded book of your choice.
 
 Create a request in Postman that hits this new endpoint:
 
-`localhost:8080/student1/api/v1/book`
+`localhost:8080/student{your id}/api/v1/book`
