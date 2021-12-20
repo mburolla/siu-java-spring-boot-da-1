@@ -8,6 +8,6 @@ public class MessageController1 {
 
     @GetMapping("student1/api/v1/message")
     public String getMessage() {
-        return "My name is Kris Norful";
+        return "My name is Kris D Norful";
     }
 }
