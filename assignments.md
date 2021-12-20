@@ -19,4 +19,4 @@ and delete your working branch for this exercise.
 Update the `MessageController` in your student package with your first AND last name AND middle initial AND your
 favor color.  Submit a PR wait
 for the instructor to approve it.  Once it has been approved, get the latest changes for the `dev` branch
-and delete your working branch for this exercise. 
+and delete your working branch for this exercise._ 
