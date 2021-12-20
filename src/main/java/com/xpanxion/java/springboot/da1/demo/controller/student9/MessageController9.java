@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessageController9 {
 
     @GetMapping("student9/api/v1/message")
-    public String getMessage() {
+    public String getBook() {
         return "My name is Emanuel C Garcia. My favorite color is Red. My favorite band is All Time Low ";
     }
 }
