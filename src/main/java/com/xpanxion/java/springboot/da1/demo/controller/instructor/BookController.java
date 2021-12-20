@@ -27,16 +27,12 @@ public class BookController {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     private final String SELECT_BOOK = "select * from book where book_id = ?";
-    private final String INSERT_BOOK = "insert into book (title, isbn) values (:title, :isbn);";
-    private final String INSERT_BOOKSTORE_BOOK = "insert into bookstore_book (bookstore_id, book_id) values (:bookstoreId, :bookId);";
+    private final String INSERT_BOOK = "insert into book (title, isbn, price) values (:title, :isbn, :price);";
+    private final String INSERT_BOOKSTORE_BOOK = "insert into bookstore_book (bookstore_id, book_id, quantity) values (:bookstoreId, :bookId, :quantity);";
 
     @Transactional
     @GetMapping("instructor/api/v1/books")
     public List<Book> getBooks() {
-        //return getBook(1);
-
-        var newBookId = addBook(1, new Book("Gypsy", "5150-5150-5150-5150-5150", 1.11F));
-
         var bookList = new ArrayList<Book>();
         bookList.add(new Book(1, "title 1", "111-11-11111"));
         bookList.add(new Book(2, "title 2", "222-222-22222"));
@@ -52,20 +48,21 @@ public class BookController {
         List<Book> bookList;
         bookList = jdbcTemplate.query(SELECT_BOOK, (row, rowNum) -> {
             var id = Integer.parseInt(row.getString("book_id"));
-            var title =  row.getString("title");
-            var isbn =  row.getString("isbn");
+            var title = row.getString("title");
+            var isbn = row.getString("isbn");
             return new Book(id, title, isbn);
         }, bookId);
         return bookList;
     }
 
-    private int addBook(Integer bookstoreId, Book book) {
+    private int addBook(Integer bookstoreId, Book book, int quantity) {
         int retval = 0;
 
         // Insert into book.
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource parameters = new MapSqlParameterSource()
                 .addValue("title", book.getTitle())
+                .addValue("price", book.getPrice())
                 .addValue("isbn", book.getIsbn());
         namedParameterJdbcTemplate.update(INSERT_BOOK, parameters, holder);
         retval = Objects.requireNonNull(holder.getKey()).intValue();
@@ -73,7 +70,8 @@ public class BookController {
         // Insert into bookstore_book.
         parameters = new MapSqlParameterSource()
                 .addValue("bookstoreId", bookstoreId)
-                .addValue("bookId", retval);
+                .addValue("bookId", retval)
+                .addValue("quantity", quantity);
         namedParameterJdbcTemplate.update(INSERT_BOOKSTORE_BOOK, parameters);
 
         return retval;
