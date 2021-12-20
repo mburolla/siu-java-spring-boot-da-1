@@ -1,5 +1,6 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student7;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,6 +9,6 @@ public class MessageController7 {
 
     @GetMapping("student7/api/v1/message")
     public String getMessage() {
-        return "My name is Austin King";
+        return "My name is Austin H. King";
     }
 }
