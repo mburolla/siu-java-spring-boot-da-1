@@ -1,0 +1,15 @@
+package com.xpanxion.java.springboot.da1.demo.controller.student2;
+
+import com.xpanxion.java.springboot.da1.demo.model.student2.Book;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class BookController2 {
+    Book book = new Book();
+
+    @GetMapping("student2/api/v1/book")
+    public String getMessage() {
+        return book.getBook();
+    }
+}
