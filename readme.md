@@ -60,5 +60,7 @@ git clean --f
 git stash
 ```
 
-# Database Schema
+# Database Schema 
+#### Version: 0.0.1
+
 ![](./docs/db_0_0_1.PNG)
