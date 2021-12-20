@@ -1,4 +1,4 @@
-# Java SpringBoot Data Access
+# Java Spring Boot Data Access
 Helper project used to access a MySQL database.
 
 # Getting Started
@@ -8,7 +8,7 @@ Helper project used to access a MySQL database.
 - Copy and pastes contents from `application.properties.template` file to `application.properties` file
 - Update DB credentials fields in `application.properties` file
 - Run the project
-- Use ReST client to test an endpoint
+- Use ReST client (e.g. Postman) to test an endpoint
 
 # Workflow
 - One time only: Add yourself as a Watcher to the repo (top right dropdown)
