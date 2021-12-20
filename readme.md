@@ -1,5 +1,5 @@
 # Java Spring Boot Data Access
-Helper project used to access a MySQL database.  Assignments are [here](assignments.md).
+Helper project used to access a MySQL database.  Latest assignments are on the dev branch [here](assignments.md).
 
 # Getting Started
 - Create new local directory
