@@ -11,12 +11,5 @@ import java.util.List;
 @RestController
 public class ProductController {
 
-    @Autowired
-    private DataService instructorDataService;
-
-    @GetMapping("instructor/api/v1/products")
-    public List<Product> getProducts() {
-        return instructorDataService.getProducts();
-    }
 
 }
