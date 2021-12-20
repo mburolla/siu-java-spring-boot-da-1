@@ -1,12 +1,12 @@
-package com.xpanxion.java.springboot.da1.demo.controller;
+package com.xpanxion.java.springboot.da1.demo.controller.student6;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Student8Controller {
+public class MessageController6 {
 
-    @GetMapping("student8/api/v1/message")
+    @GetMapping("student6/api/v1/message")
     public String getMessage() {
         return "My name is ...";
     }
