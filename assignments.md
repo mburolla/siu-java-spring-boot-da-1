@@ -28,7 +28,7 @@ for the instructor to approve it.  Once it has been approved, get the latest cha
 and delete your working branch for this exercise.
 
 # Ex. 6
-Create a BookController in your student package that has supports the following endpoint:
+Create a `BookController{studentid}` in your student package that has supports the following endpoint:
 
 `GET student{id}/api/v1/book`
 
