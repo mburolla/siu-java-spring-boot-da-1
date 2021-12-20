@@ -8,6 +8,7 @@ public class MessageController1 {
 
     @GetMapping("student1/api/v1/message")
     public String getMessage() {
+        int a = 1;
         return "My name is Kris D Norful. My favorite color is RED. My favorite band is Outkast.";
     }
 }
