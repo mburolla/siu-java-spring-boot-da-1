@@ -46,3 +46,10 @@ Create a request in Postman that hits this new endpoint:
 Follow the example from the reference repo and use a `JDBCTemplate` to return book id 1 from the database in your `BookController`.
 
 `https://gitlab.com/mburolla/java-spring-boot-web-api-2/-/blob/step-4/src/main/java/com/example/demo/service/DataAccess.java#L40`
+
+# Ex. 8 Create Managers Endpoint
+Create a `ManagerController` that contains the following endpoint:
+
+`GET student{id}/api/v1/managers`
+
+This endpoint returns a List of Managers (add a Manager model to your student directory).
