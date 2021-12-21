@@ -17,19 +17,6 @@ public class BookController10 {
     private JdbcTemplate jdbcTemplate;
     private final String SELECT_BOOK = "select * from book where book_id = ?";
 
-    /*
-    @GetMapping("student10/api/v1/book")
-    public List<Person> getPerson(Integer personId) {
-        List<Person> personList;
-        personList = jdbcTemplate.query(SELECT_PERSON, (row, rowNum) -> {
-            var id = Integer.parseInt(row.getString("id"));
-            var name =  row.getString("firstname");
-            return new Person(id, name);
-        }, personId);
-        return personList;
-    }
-    */
-
     @GetMapping("student10/api/v1/book")
     public List<Book> getBook(){
         List<Book> bookList;
