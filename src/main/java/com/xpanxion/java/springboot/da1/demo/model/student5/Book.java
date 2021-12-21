@@ -4,8 +4,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Entity;
 
-@Entity
-@Table(name="BOOK")
 public class Book {
     @Id
     private int book_id;
