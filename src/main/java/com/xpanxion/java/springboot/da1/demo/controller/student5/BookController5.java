@@ -1,5 +1,5 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student5;
-import com.xpanxion.java.springboot.da1.demo.model.student5.Book;
+import com.xpanxion.java.springboot.da1.demo.model.student4.student5.Book;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

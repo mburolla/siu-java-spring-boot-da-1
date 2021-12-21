@@ -3,12 +3,12 @@ package com.xpanxion.java.springboot.da1.demo.model.student9;
 public class Book {
     private int book_id;
     private String title;
-    private int isbn;
+    private String isbn;
     private double price;
 
     public Book(){}
 
-    public Book(int book_id,String title, int isbn, double price){
+    public Book(int book_id,String title, String isbn, double price){
         this.book_id = book_id;
         this.title = title;
         this.isbn = isbn;
@@ -31,11 +31,11 @@ public class Book {
         this.title = title;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
