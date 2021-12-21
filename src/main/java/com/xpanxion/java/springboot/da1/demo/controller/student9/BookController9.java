@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BookController9 {
     @Autowired
-    private DataAccess2 dataAccess;
+    private DataAccess9 dataAccess;
 
     @GetMapping("student9/api/v1/book")
     public Book getBook() {
@@ -21,13 +21,13 @@ public class BookController9 {
 }
 
 @Service
- class DataAccess2{
+ class DataAccess9 {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
     private final String SELECT_BOOK = "SELECT * FROM book WHERE book_id = ?";
 
-    public DataAccess2() { }
+    public DataAccess9() { }
 
     public Book getBook(int bookId) {
 
