@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BookController5 {
 
     @GetMapping("student5/api/v1/book")
-    public String getBook() {
-        var book = new Book5(1, "This is a book", "1111-111-111-1111", 9.99);
-        return book.toString();
-
+    public Book5 getBook() {
+        return new Book5(1, "This is a book", "1111-111-111-1111", 9.99);
     }
 }
