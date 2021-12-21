@@ -13,10 +13,19 @@ public class Book {
         this.price = price;
     }
 
-    public String toString() {
-        return  "Book ID: " + Integer.toString(book_id)
-                + "\nBook title: " + title
-                + "\nBook isbn: " + isbn
-                + "\nBook price: " + price;
+    public int getId() {
+        return book_id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public String getPrice() {
+        return "$" + String.format("%.2f", price);
     }
 }
