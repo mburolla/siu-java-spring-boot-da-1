@@ -29,9 +29,4 @@ public class BookController3 {
         }, bookId);
         return bookList;
     }
-
-//    public Book3 getBook(){
-//            Book3 book = new Book3(1,"Of Mice and Men", "1111-1111-1111-1111", 9.99);
-//            return book;
-//    }
 }
