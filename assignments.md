@@ -27,7 +27,7 @@ favor color AND favorite band.  Submit a PR wait
 for the instructor to approve it.  Once it has been approved, get the latest changes for the `dev` branch
 and delete your working branch for this exercise.
 
-# Ex. 6
+# Ex. 6 Return Hardcoded Book
 Create a `BookController{studentid}` in your student package that has supports the following endpoint:
 
 `GET student{id}/api/v1/book`
@@ -41,3 +41,8 @@ The endpoint returns an arbitrary hardcoded book of your choice.
 Create a request in Postman that hits this new endpoint:
 
 `localhost:8080/student{your id}/api/v1/book`
+
+# Ex. 7 Connect Book Endpoint to Database
+Follow the example from the reference repo and use a `JDBCTemplate` to return book id 1 from the database in your `BookController`.
+
+`https://gitlab.com/mburolla/java-spring-boot-web-api-2/-/blob/step-4/src/main/java/com/example/demo/service/DataAccess.java#L40`
