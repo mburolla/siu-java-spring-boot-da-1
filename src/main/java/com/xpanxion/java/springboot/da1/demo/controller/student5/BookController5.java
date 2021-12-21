@@ -1,4 +1,5 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student5;
+
 import com.xpanxion.java.springboot.da1.demo.model.student5.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,7 +22,7 @@ public class BookController5 {
     }
 
     @GetMapping("student5/api/v1/book/{id}")
-    public Book getPerson(@PathVariable("id") Integer id) {
+    public Book getBook(@PathVariable("id") Integer id) {
         var bookList = dataAccess.getBook(id);
         return bookList.get(0);
     }
@@ -49,7 +50,8 @@ class DataAccess {
     // Methods
     //
 
-    public List<Book> getBook(Integer personId) {
+
+    public List<Book> getBook(Integer bookId) {
         List<Book> bookList;
         bookList = jdbcTemplate.query(SELECT_BOOK, (row, rowNum) -> {
             var id = Integer.parseInt(row.getString("book_id"));
@@ -57,7 +59,7 @@ class DataAccess {
             var isbn =  row.getString("isbn");
             var price = Double.parseDouble(row.getString("price"));
             return new Book(id, title, isbn, price);
-        }, personId);
+        }, bookId);
         return bookList;
     }
 }
