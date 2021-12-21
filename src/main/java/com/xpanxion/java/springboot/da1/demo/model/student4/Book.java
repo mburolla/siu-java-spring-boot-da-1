@@ -1,20 +1,18 @@
 package com.xpanxion.java.springboot.da1.demo.model.student4;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 
-    public class Book {
+public class Book {
 
         @Id
         // @GeneratedValue
         private int id;
         private String title;
-        private int isbn;
+        private String isbn;
         private double price;
 
-        public Book(int id, String title, int isbn, double price) {
+        public Book(int id, String title, String isbn, double price) {
             this.id = id;
             this.title = title;
             this.isbn = isbn;
@@ -24,7 +22,7 @@ import javax.persistence.Table;
         public Book() { // Required.
             this.id = 1;
             this.title = "Java";
-            this.isbn = 1234;
+            this.isbn = "1234-2334-3444-4324";
             this.price = 23.40;
         }
 
@@ -36,13 +34,14 @@ import javax.persistence.Table;
 
         public void setTitle(String title) {this.title = title;}
 
-        public int getIsbn() {return isbn;}
+        public String getIsbn() {return isbn;}
 
-        public void setIsbn(int isbn) {this.isbn = isbn;}
+        public void setIsbn(String isbn) {this.isbn = isbn;}
 
         public double getPrice() {return price;}
 
         public void setPrice(double price) {this.price = price;}
+
     }
 
 
