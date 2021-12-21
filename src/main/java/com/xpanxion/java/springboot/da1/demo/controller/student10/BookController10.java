@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.xpanxion.java.springboot.da1.demo.model.student10.Book;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 
-@Service
 @RestController
 public class BookController10 {
 
