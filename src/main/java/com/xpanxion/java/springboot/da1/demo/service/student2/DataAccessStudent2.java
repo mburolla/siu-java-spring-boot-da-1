@@ -1,6 +1,7 @@
 package com.xpanxion.java.springboot.da1.demo.service.student2;
 
 import com.xpanxion.java.springboot.da1.demo.model.student2.Book;
+import com.xpanxion.java.springboot.da1.demo.model.student2.Manager;
 import org.springframework.stereotype.Service;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class DataAccessStudent2 {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     private final String SELECT_BOOK = "select * from book where book_id = ?";
+    private final String GET_MANAGERS = "select * from manager";
 
     //
     // Constructors
@@ -49,5 +51,16 @@ public class DataAccessStudent2 {
             return new Book(book_id, title, isbn, price);
         }, searchId);
         return bookList;
+    }
+
+    @GetMapping("student2/api/v1/managers")
+    public List<Manager> getManagers() {
+        List<Manager> managerList;
+        managerList = jdbcTemplate.query(GET_MANAGERS, (row, rowNum) -> {
+            var manager_id = Integer.parseInt(row.getString("manager_id"));
+            var full_name =  row.getString("full_name");
+            return new Manager(manager_id, full_name);
+        });
+        return managerList;
     }
 }
