@@ -5,7 +5,7 @@ import javax.persistence.Table;
 import javax.persistence.Entity;
 
 public class Book {
-    @Id
+
     private int book_id;
     private String title;
     private String isbn;
