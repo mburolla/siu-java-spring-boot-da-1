@@ -6,21 +6,21 @@ import javax.persistence.Entity;
 
 @Entity
 @Table(name="BOOK")
-public class Book5 {
+public class Book {
     @Id
     private int book_id;
     private String title;
     private String isbn;
     private double price;
 
-    public Book5() {
+    public Book() {
         this.book_id = -1;
         this.title = "";
         this.isbn = "";
         this.price = -1;
     }
 
-    public Book5(int book_id, String title, String isbn, double price) {
+    public Book(int book_id, String title, String isbn, double price) {
         this.book_id = book_id;
         this.title = title;
         this.isbn = isbn;
@@ -61,7 +61,7 @@ public class Book5 {
 
     @Override
     public String toString() {
-        return "Book5{" +
+        return "Book{" +
                 "book_id=" + book_id +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
