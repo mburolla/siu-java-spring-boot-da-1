@@ -52,4 +52,5 @@ Create a `ManagerController` that contains the following endpoint:
 
 `GET student{id}/api/v1/managers`
 
-This endpoint returns a List of Managers (add a Manager model to your student directory).
+This endpoint returns a List of all the Managers from the managers table. Add a Manager model to your 
+student directory.
