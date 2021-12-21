@@ -2,9 +2,9 @@ package com.xpanxion.java.springboot.da1.demo.model.student7;
 
 public class Book {
 
-    String title;
-    String isbn;
-    double price;
+    private  String title;
+    private String isbn;
+    private double price;
 
     public Book(String title, String isbn, double price) {
         this.title=title;
