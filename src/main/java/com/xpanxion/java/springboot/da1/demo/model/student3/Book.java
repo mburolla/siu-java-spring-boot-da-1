@@ -1,17 +1,26 @@
 package com.xpanxion.java.springboot.da1.demo.model.student3;
 
-public class Book3 {
+public class Book {
 
     private int id;
     private String title;
     private String isbn;
     private double price;
 
-    public Book3(int id, String title, String isbn, double price){
+    public Book(int id, String title, String isbn, double price){
         this.id = id;
         this.title = title;
         this.isbn = isbn;
         this. price = price;
+    }
+
+    public Book(int id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
+    public Book(int id) {
+        this.id = id;
     }
 
     public int getId() {
