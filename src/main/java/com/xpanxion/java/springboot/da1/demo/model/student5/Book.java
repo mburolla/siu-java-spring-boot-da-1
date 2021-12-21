@@ -1,4 +1,4 @@
-package com.xpanxion.java.springboot.da1.demo.model.student4.student5;
+package com.xpanxion.java.springboot.da1.demo.model.student5;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
