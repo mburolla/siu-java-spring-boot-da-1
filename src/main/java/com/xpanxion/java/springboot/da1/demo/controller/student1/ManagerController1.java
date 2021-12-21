@@ -14,16 +14,16 @@ import java.util.List;
 public class ManagerController1 {
 
     @Autowired
-    DataAccess dataAccess;
+    DataAccess1 dataAccess1;
 
     @GetMapping("student{id}/api/v1/managers")
     public List<Manager> getManagers(@PathVariable("id") Integer id) {
-        var managersList = dataAccess.getManagers();
+        var managersList = dataAccess1.getManagers();
         return managersList;
     }
 
     @Service
-    public static class DataAccess {
+    public static class DataAccess1 {
 
         @Autowired
         private JdbcTemplate jdbcTemplate;
