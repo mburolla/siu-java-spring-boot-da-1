@@ -1,32 +1,32 @@
 package com.xpanxion.java.springboot.da1.demo.model.student5;
 
 public class Manager {
-    private int manager_id;
-    private String full_name;
+    private int managerId;
+    private String fullName;
 
     public Manager() {
-        this.manager_id = -1;
-        this.full_name = "";
+        this.managerId = -1;
+        this.fullName = "";
     }
 
-    public Manager(int manager_id, String full_name) {
-        this.manager_id = manager_id;
-        this.full_name = full_name;
+    public Manager(int managerId, String fullName) {
+        this.managerId = managerId;
+        this.fullName = fullName;
     }
 
-    public int getManager_id() {
-        return manager_id;
+    public int getManagerId() {
+        return managerId;
     }
 
-    public void setManager_id(int manager_id) {
-        this.manager_id = manager_id;
+    public void setManagerId(int managerId) {
+        this.managerId = managerId;
     }
 
-    public String getFull_name() {
-        return full_name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 }
