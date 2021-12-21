@@ -30,17 +30,6 @@ public class BookController3 {
         return bookList;
     }
 
-//    public List<Person> getPerson(Integer personId) {
-//        List<Person> personList;
-//        personList = jdbcTemplate.query(SELECT_PERSON, (row, rowNum) -> {
-//            var id = Integer.parseInt(row.getString("id"));
-//            var name =  row.getString("firstname");
-//            return new Person(id, name);
-//        }, personId);
-//        return personList;
-//    }
-
-
 //    public Book3 getBook(){
 //            Book3 book = new Book3(1,"Of Mice and Men", "1111-1111-1111-1111", 9.99);
 //            return book;

@@ -14,15 +14,6 @@ public class Book {
         this. price = price;
     }
 
-    public Book(int id, String title) {
-        this.id = id;
-        this.title = title;
-    }
-
-    public Book(int id) {
-        this.id = id;
-    }
-
     public int getId() {
         return id;
     }
