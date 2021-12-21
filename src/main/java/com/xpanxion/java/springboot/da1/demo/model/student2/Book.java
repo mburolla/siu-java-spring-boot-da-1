@@ -6,14 +6,14 @@ public class Book {
     private String isbn;
     private double price;
 
-    public Book() {
-        this.book_id = 1;
-        this.title = "title-1";
-        this.isbn = "1111-111-111-1111";
-        this.price = 1.00;
+    public Book(int book_id, String title, String isbn, double price) {
+        this.book_id = book_id;
+        this.title = title;
+        this.isbn = isbn;
+        this.price = price;
     }
 
-    public String getBook() {
+    public String toString() {
         return  "Book ID: " + Integer.toString(book_id)
                 + "\nBook title: " + title
                 + "\nBook isbn: " + isbn
