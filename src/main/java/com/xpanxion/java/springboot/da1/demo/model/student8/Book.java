@@ -2,18 +2,26 @@ package com.xpanxion.java.springboot.da1.demo.model.student8;
 
 public class Book {
 
-    String name;
+    // DATA
+
+    int id;
+    String title;
     String isbn;
     double price;
 
-    public Book(String name, String isbn, double price) {
-        this.name = name;
+    // CONSTRUCTOR
+
+    public Book(int id, String title, String isbn, double price) {
+        this.id = id;
+        this.title = title;
         this.isbn = isbn;
         this.price = price;
     }
 
-    public String getName() {
-        return name;
+    // ACCESSORS
+
+    public String getTitle() {
+        return title;
     }
 
     public String getIsbn() {
@@ -24,10 +32,18 @@ public class Book {
         return price;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    // OVERRIDES
+
+
     @Override
     public String toString() {
         return "Book{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", price=" + price +
                 '}';
