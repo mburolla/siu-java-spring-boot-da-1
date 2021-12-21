@@ -15,7 +15,7 @@ import java.util.List;
 public class BookController8 {
 
     @Autowired
-    private DataAccess dataAccess;
+    private DataAccess8 dataAccess;
 
 
     @GetMapping("student8/api/v1/book")
@@ -32,7 +32,7 @@ public class BookController8 {
     }
 
     @Service
-    static class DataAccess {
+    static class DataAccess8 {
 
         // DATA
 
@@ -42,7 +42,7 @@ public class BookController8 {
 
         // CONSTRUCTOR
 
-        public DataAccess() {
+        public DataAccess8() {
 
         }
 
