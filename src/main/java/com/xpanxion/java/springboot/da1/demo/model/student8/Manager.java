@@ -17,4 +17,12 @@ public class Manager {
     public String getFullName() {
         return fullName;
     }
+
+    @Override
+    public String toString() {
+        return "Manager{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                '}';
+    }
 }

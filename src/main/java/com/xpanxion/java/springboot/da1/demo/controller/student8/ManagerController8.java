@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,6 +24,11 @@ public class ManagerController8 {
         return managers;
     }
 
+    @PostMapping("student8/api/v1/managers")
+    public void createManager(@RequestBody Manager newManager) {
+        dataAccess.createManager(newManager);
+    }
+
     @Service
     static class DataAccess8 {
 
@@ -30,6 +37,7 @@ public class ManagerController8 {
         @Autowired
         private JdbcTemplate jdbcTemplate;
         private final String SELECT_All_MANAGERS = "select * from manager";
+        private final String ADD_A_MANAGER = "INSERT INTO MANAGER (full_name) VALUES (?)";
 
         // CONSTRUCTOR
 
@@ -49,6 +57,10 @@ public class ManagerController8 {
             return listOfManagers;
         }
 
+        public void createManager(Manager manager) {
+            System.out.println(manager);
+            jdbcTemplate.update(ADD_A_MANAGER, manager.getFullName());
+        }
     }
 
 }
