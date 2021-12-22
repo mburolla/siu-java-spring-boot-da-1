@@ -8,19 +8,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping("student{id}/api/v1/managers")
 @RestController
 public class ManagerController1 {
 
     @Autowired
     DataAccess1 dataAccess1;
 
-    @GetMapping("student{id}/api/v1/managers")
+    @GetMapping()
     public List<Manager> getManagers(@PathVariable("id") Integer id) {
         var managersList = dataAccess1.getManagers();
         return managersList;
     }
 
-    @PostMapping("student{id}/api/v1/managers")
+    @PostMapping()
     public void insertManager(@PathVariable("id") Integer id, @RequestBody Manager manager) {
         dataAccess1.insertManager(manager);
     }
