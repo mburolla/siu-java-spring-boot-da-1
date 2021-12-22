@@ -3,6 +3,7 @@ package com.xpanxion.java.springboot.da1.demo.model.student9;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Manager {
+    private int id;
     private String full_name;
 
     public Manager() {}
@@ -10,6 +11,14 @@ public class Manager {
     public Manager(@JsonProperty("name") String full_name){
         this.full_name = full_name;
     }
+
+
+    public Manager(@JsonProperty("manager_id") int id,@JsonProperty("name") String full_name){
+        this.full_name = full_name;
+        this.id = id;
+    }
+
+
 
     public String getFull_name() {
         return full_name;

@@ -51,7 +51,7 @@ class DataAccessManager {
          managerList = jdbcTemplate.query(SELECT_ALL_MANAGERS, (row,rowNum) -> {
             var id = Integer.parseInt(row.getString("manager_id"));
             var full_name = row.getString("full_name");
-            return new Manager(full_name);
+            return new Manager(id,full_name);
         });
          return managerList;
     }
