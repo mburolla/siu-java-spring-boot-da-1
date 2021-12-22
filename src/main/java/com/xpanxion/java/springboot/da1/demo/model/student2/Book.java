@@ -28,6 +28,4 @@ public class Book {
     public String getPrice() {
         return "$" + String.format("%.2f", price);
     }
-
-
 }
