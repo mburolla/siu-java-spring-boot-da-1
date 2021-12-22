@@ -4,21 +4,25 @@ import com.xpanxion.java.springboot.da1.demo.model.student5.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RequestMapping("student5/api/v1/managers")
 @RestController
 public class ManagerController5 {
 
     @Autowired
     private ManagerDataAccess dataAccess;
 
-    @GetMapping("student5/api/v1/managers")
+    @GetMapping
     public List<Manager> getManagers() {
         var managers = dataAccess.getManagers();
         return managers;
+    }
+
+    @PostMapping
+    public void insertManager(String fullName) {
+        dataAccess.insertManagers(fullName);
     }
 }
 
@@ -51,5 +55,9 @@ class ManagerDataAccess {
             return new Manager(id, fullName);
         });
         return managerList;
+    }
+
+    public void insertManagers(String fullName) {
+        jdbcTemplate.update("INSERT INTO manager (full_name) VALUES (?)", fullName);
     }
 }
