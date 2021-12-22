@@ -1,20 +1,18 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student4;
-
-import com.xpanxion.java.springboot.da1.demo.model.student4.Book;
 import com.xpanxion.java.springboot.da1.demo.model.student4.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 public class ManagerController4 {
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     private final String SELECT_MANAGER = "select * from manager";
+    private final String INSERT_MANAGER = "insert into manager (full_name) values (?)";
 
     @GetMapping("student4/api/v1/manager")
     public List<Manager> getManager() {
@@ -26,6 +24,10 @@ public class ManagerController4 {
         });
         return managerList;
     }
+
+    @PostMapping("student4/api/v1/managers")
+    public Manager insertManager(@RequestBody Manager manager) {
+        jdbcTemplate.update(INSERT_MANAGER,manager.getName());
+        return manager;
+    }
 }
-
-
