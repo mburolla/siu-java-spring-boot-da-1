@@ -47,10 +47,20 @@ Follow the example from the reference repo and use a `JDBCTemplate` to return bo
 
 `https://gitlab.com/mburolla/java-spring-boot-web-api-2/-/blob/step-4/src/main/java/com/example/demo/service/DataAccess.java#L40`
 
-# Ex. 8 Create Managers Endpoint
+# Ex. 8 Create Managers GET Endpoint
 Create a `ManagerController` that contains the following endpoint:
 
 `GET student{id}/api/v1/managers`
 
 This endpoint returns a List of all the Managers from the managers table. Add a Manager model to your 
 student directory.
+
+# Ex. 9 Create Managers POST Endpoint
+Create the following endpoint in your `ManagerController`:
+
+`POST student{id}/api/v1/managers`
+
+This endpoint will add (insert) a manager into the `managers` table.  Create a POST request in Postman
+and be sure to add the following header for this request:
+
+`Content-Type` `application/json`
