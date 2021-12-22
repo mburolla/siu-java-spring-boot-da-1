@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 import java.util.List;
@@ -21,13 +22,14 @@ public class DataAccessStudent2 {
     private JdbcTemplate jdbcTemplate;
     private final String SELECT_BOOK = "select * from book where book_id = ?";
     private final String GET_MANAGERS = "select * from manager";
+    private final String POST_MANAGERS = "insert into manager (full_name) values (?)";
 
     //
     // Constructors
     //
 
     public DataAccessStudent2() {
-        // Spring dependency injection (@Autowired) eleminiates the need for us to create the jdbcTemplate:
+        // Spring dependency injection (@Autowired) eliminates the need for us to create the jdbcTemplate:
         // DriverManagerDataSource dataSource = new DriverManagerDataSource();
         // dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         // dataSource.setUrl("jdbc:mysql://localhost:3306/marty");
@@ -62,5 +64,10 @@ public class DataAccessStudent2 {
             return new Manager(manager_id, full_name);
         });
         return managerList;
+    }
+
+    @PostMapping("student2/api/v1/managers")
+    public void postManagers(String full_name) {
+        jdbcTemplate.update(POST_MANAGERS, full_name);
     }
 }
