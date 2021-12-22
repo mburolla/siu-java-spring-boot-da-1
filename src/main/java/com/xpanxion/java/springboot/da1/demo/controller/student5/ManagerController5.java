@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RequestMapping("student5/api/v1/managers")
 @RestController
 public class ManagerController5 {
@@ -16,8 +17,7 @@ public class ManagerController5 {
 
     @GetMapping
     public List<Manager> getManagers() {
-        var managers = dataAccess.getManagers();
-        return managers;
+        return dataAccess.getManagers();
     }
 
     @PostMapping
@@ -36,6 +36,7 @@ class ManagerDataAccess {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     private final String SELECT_MANAGER = "select * from manager";
+    private final String INSERT_MANAGER = "INSERT INTO manager (full_name) VALUES (?)";
 
     //
     // Constructors
@@ -58,6 +59,6 @@ class ManagerDataAccess {
     }
 
     public void insertManagers(String fullName) {
-        jdbcTemplate.update("INSERT INTO manager (full_name) VALUES (?)", fullName);
+        jdbcTemplate.update(INSERT_MANAGER, fullName);
     }
 }
