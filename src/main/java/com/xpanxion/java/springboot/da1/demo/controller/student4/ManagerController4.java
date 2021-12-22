@@ -14,7 +14,7 @@ public class ManagerController4 {
     private final String SELECT_MANAGER = "select * from manager";
     private final String INSERT_MANAGER = "insert into manager (full_name) values (?)";
 
-    @GetMapping("student4/api/v1/managers")
+    @GetMapping("student4/api/v1/manager")
     public List<Manager> getManager() {
         List<Manager> managerList;
         managerList = jdbcTemplate.query(SELECT_MANAGER, (row, rowNum) -> {
