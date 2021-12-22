@@ -1,12 +1,7 @@
 package com.xpanxion.java.springboot.da1.demo.model.student4;
 
-import javax.persistence.Id;
-
-
 public class Book {
 
-        @Id
-        // @GeneratedValue
         private int id;
         private String title;
         private String isbn;
