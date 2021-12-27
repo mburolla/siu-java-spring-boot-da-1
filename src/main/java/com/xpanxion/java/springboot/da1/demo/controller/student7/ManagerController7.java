@@ -37,7 +37,7 @@ public class ManagerController7 {
     @PutMapping("student7/api/v1/managers")
     public Manager updateManager(@RequestBody Manager manager) {
         jdbcTemplate.update(UPDATE_MANAGER, manager.getFullName(), manager.getId());
-                return manager;
+        return manager;
     }
 
 
