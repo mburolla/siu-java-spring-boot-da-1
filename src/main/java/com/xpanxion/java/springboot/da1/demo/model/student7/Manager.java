@@ -1,11 +1,12 @@
 package com.xpanxion.java.springboot.da1.demo.model.student7;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Manager {
     private int id;
     private String fullName;
 
     public Manager() {
-
     }
 
     public Manager(int id, String fullName) {
@@ -29,3 +30,4 @@ public class Manager {
         this.fullName = fullName;
     }
 }
+

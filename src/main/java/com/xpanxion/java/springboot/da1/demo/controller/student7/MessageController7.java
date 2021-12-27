@@ -8,6 +8,6 @@ public class MessageController7 {
 
     @GetMapping("student7/api/v1/message")
     public String getMessage() {
-        return "My name is Austin H.W. King, my favorite color is blue, and my favorite band is Led Zeppelin.";
+        return "My name is Austin H.W. King, my favorite color is blue, and my favorite band is Led Zeppelin. For christmas i got a bag of coffee!";
     }
 }

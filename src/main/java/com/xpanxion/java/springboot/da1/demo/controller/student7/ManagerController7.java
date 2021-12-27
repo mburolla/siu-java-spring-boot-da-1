@@ -17,7 +17,7 @@ public class ManagerController7 {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     private final String SELECT_MANAGERS = "select * from manager";
-    private final String INSERT_MANAGER = "INSERT INTO manager(full_name) Values(?)";
+    private final String INSERT_MANAGER = "insert into student7_da.manager(full_name) Values (?)";
 
     @GetMapping("student7/api/v1/managers")
     public List<Manager> getManagers() {
@@ -31,7 +31,7 @@ public class ManagerController7 {
     }
 
     @PostMapping("student7/api/v1/managers")
-    public Manager insertManager(@RequestBody Manager manager) {
+    public Manager getManagers2(@RequestBody Manager manager) {
         jdbcTemplate.update(INSERT_MANAGER, manager.getFullName());
         return manager;
     }
