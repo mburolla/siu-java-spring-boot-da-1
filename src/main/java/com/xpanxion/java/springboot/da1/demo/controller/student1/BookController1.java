@@ -3,9 +3,6 @@ package com.xpanxion.java.springboot.da1.demo.controller.student1;
 import com.xpanxion.java.springboot.da1.demo.model.student1.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
