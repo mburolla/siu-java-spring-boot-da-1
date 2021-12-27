@@ -2,6 +2,8 @@ package com.xpanxion.java.springboot.da1.demo.service.student2;
 
 import com.xpanxion.java.springboot.da1.demo.model.student2.Book;
 import com.xpanxion.java.springboot.da1.demo.model.student2.Manager;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,12 @@ public class DataAccessStudent2 {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private MapSqlParameterSource mapSqlParameterSource;
     private final String SELECT_BOOK = "select * from book where book_id = ?";
+    private final String POST_BOOK = "insert into book (book_id, title, isbn, price) values (?, ?, ?, ?)";
     private final String GET_MANAGERS = "select * from manager";
     private final String POST_MANAGERS = "insert into manager (full_name) values (?)";
     private final String PUT_MANAGERS = "update manager set full_name = ? where manager_id = ?";
@@ -55,6 +62,19 @@ public class DataAccessStudent2 {
             return new Book(book_id, title, isbn, price);
         }, searchId);
         return bookList;
+    }
+
+    @PostMapping("student2/api/v1/bookstores/1/books")
+    public void postBook(Book book, int quantity) {
+        jdbcTemplate.update(POST_BOOK, book.getId(), book.getTitle(), book.getIsbn(), book.getPrice());
+
+        MapSqlParameterSource parameters = new MapSqlParameterSource()
+                .addValue("book_id", book.getId())
+                .addValue("quantity", quantity);
+
+        namedParameterJdbcTemplate.update("insert into bookstore_book (bookstore_id, book_id, quantity)"
+                        + "values (1, :book_id, :quantity)", parameters);
+
     }
 
     @GetMapping("student2/api/v1/managers")
