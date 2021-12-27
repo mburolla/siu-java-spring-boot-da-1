@@ -3,10 +3,7 @@ package com.xpanxion.java.springboot.da1.demo.controller.student10;
 import com.xpanxion.java.springboot.da1.demo.model.student10.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,6 +14,7 @@ public class ManagerController10 {
     private JdbcTemplate jdbcTemplate;
     private final String SELECT_MANAGER = "select * from manager";
     private final String INSERT_MANAGER = "insert into manager (full_name) values (?)";
+    private final String UPDATE_MANAGER = "update manager set full_name = ? where manager_id = ?";
 
 
     @GetMapping("student10/api/v1/managers")
@@ -35,4 +33,11 @@ public class ManagerController10 {
         jdbcTemplate.update(INSERT_MANAGER, (manager.getFull_name()));
         return manager;
     }
+
+    @PutMapping("student10/api/v1/managers")
+    public Manager updateManager (@RequestBody Manager manager){
+        jdbcTemplate.update(UPDATE_MANAGER, manager.getFull_name(), manager.getManager_id());
+        return manager;
+    }
+
 }
