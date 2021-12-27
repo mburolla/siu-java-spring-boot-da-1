@@ -13,13 +13,14 @@ public class ManagerController4 {
 
     private final String SELECT_MANAGER = "select * from manager";
     private final String INSERT_MANAGER = "insert into manager (full_name) values (?)";
+    private final String UPDATE_MANAGER = "update Manager set full_name = ? where manager_id = ?";
 
     @GetMapping("student4/api/v1/manager")
     public List<Manager> getManager() {
         List<Manager> managerList;
         managerList = jdbcTemplate.query(SELECT_MANAGER, (row, rowNum) -> {
             int id = Integer.parseInt(row.getString("manager_id"));
-            String name= row.getString("full_name");
+            String name = row.getString("full_name");
             return new Manager(id, name);
         });
         return managerList;
@@ -27,7 +28,13 @@ public class ManagerController4 {
 
     @PostMapping("student4/api/v1/managers")
     public Manager insertManager(@RequestBody Manager manager) {
-        jdbcTemplate.update(INSERT_MANAGER,manager.getName());
+        jdbcTemplate.update(INSERT_MANAGER, manager.getName());
+        return manager;
+    }
+
+    @PutMapping("student4/api/v1/managers")
+    public Manager updateManager(@RequestBody Manager manager) {
+        jdbcTemplate.update(UPDATE_MANAGER, manager.getName(), manager.getId());
         return manager;
     }
 }
