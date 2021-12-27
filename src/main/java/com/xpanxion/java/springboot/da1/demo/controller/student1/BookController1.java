@@ -45,7 +45,6 @@ public class BookController1 {
         @Autowired
         private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-        private KeyHolder holder = new GeneratedKeyHolder();
         private final String SELECT_BOOK = "select * from book where book_id = ?";
         private final String SELECT_BOOK_BY_NAME = "SELECT * FROM book WHERE title = ?";
         private final String INSERT_BOOK =
@@ -67,6 +66,8 @@ public class BookController1 {
         }
 
         public int insertBook(Book newBook) {
+            KeyHolder holder = new GeneratedKeyHolder();
+
             MapSqlParameterSource parameters = new MapSqlParameterSource()
                     .addValue("title", newBook.getTitle())
                     .addValue("isbn", newBook.getIsbn())
