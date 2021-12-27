@@ -36,7 +36,11 @@ public class Book {
         return id;
     }
 
-    // OVERRIDES
+    public void setId(int id) {
+        this.id = id;
+    }
+
+// OVERRIDES
 
 
     @Override

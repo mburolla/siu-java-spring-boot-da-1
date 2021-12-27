@@ -3,10 +3,14 @@ package com.xpanxion.java.springboot.da1.demo.controller.student8;
 import com.xpanxion.java.springboot.da1.demo.model.student8.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -31,6 +35,11 @@ public class BookController8 {
         return bookList.get(0);
     }
 
+    @PostMapping("student8/api/v1/bookstores/{bookstoreID}/books")
+    public void addBooktoBookstore(@RequestBody Book book, @PathVariable("bookstoreID") Integer bookstoreID) {
+        dataAccess.addBooktoBookstore(book, bookstoreID);
+    }
+
     @Service
     static class DataAccess8 {
 
@@ -38,19 +47,23 @@ public class BookController8 {
 
         @Autowired
         private JdbcTemplate jdbcTemplate;
-        private final String SELECT_BOOK = "select * from book where book_id = ?";
+
+        @Autowired
+        private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+        private final String SELECT_BOOK_BY_ID = "select * from book where book_id = ?";
+        private final String ADD_A_BOOK = "insert into book (title, isbn, price) VALUES (:title, :isbn, :price)";
+        private final String ADD_BOOK_TO_BOOKSTORE = "insert into bookstore_book (bookstore_id, book_id, quantity) values (:bookstore_id, :book_id, :quantity)";
 
         // CONSTRUCTOR
 
-        public DataAccess8() {
-
-        }
+        public DataAccess8() {}
 
         // METHODS
 
         public List<Book> getBook(Integer bookId) {
             List<Book> bookList;
-            bookList = jdbcTemplate.query(SELECT_BOOK, (row, rowNum) -> {
+            bookList = jdbcTemplate.query(SELECT_BOOK_BY_ID, (row, rowNum) -> {
                 int id = Integer.parseInt(row.getString("book_id"));
                 String title = row.getString("title");
                 String isbn = row.getString("isbn");
@@ -58,6 +71,20 @@ public class BookController8 {
                 return new Book(id, title, isbn, price);
             }, bookId);
             return bookList;
+        }
+
+        public void addBooktoBookstore(Book book, Integer bookstoreID) {
+            KeyHolder holder = new GeneratedKeyHolder();
+            MapSqlParameterSource namedParameters = new MapSqlParameterSource()
+                    .addValue("title", book.getTitle())
+                    .addValue("isbn", book.getIsbn())
+                    .addValue("price", book.getPrice())
+                    .addValue("bookstore_id", bookstoreID)
+                    .addValue("quantity", 1);
+            namedParameterJdbcTemplate.update(ADD_A_BOOK, namedParameters, holder);
+            book.setId(holder.getKey().intValue());
+            namedParameters.addValue("book_id", book.getId());
+            namedParameterJdbcTemplate.update(ADD_BOOK_TO_BOOKSTORE, namedParameters);
         }
 
     }
