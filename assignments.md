@@ -64,3 +64,54 @@ This endpoint will add (insert) a manager into the `managers` table.  Create a P
 and be sure to add the following header for this request:
 
 `Content-Type` `application/json`
+
+---
+
+#### Christmas
+
+---
+# Ex. 10 After Christmas Warmup 
+Update the `MessageController` in your student package to include something that you got for Christmas
+this year ("sleep" is an acceptable answer).  Submit a PR wait for the instructor to approve it.  Once it has been approved, get the latest changes for the `dev` branch
+and delete your working branch for this exercise. 
+
+# Ex. 11 Create Managers PUT Endpoint
+Create the following endpoint in your `ManagerController`:
+
+`PUT student{id}/api/v1/managers`
+
+This endpoint will update a manager into the `managers` table.  Create a PUT request in Postman
+and be sure to add the following header for this request:
+
+`Content-Type` `application/json`
+
+# Ex. 12 Create Book Endpoint
+Create the following endpoint in your `BookController`:
+
+`POST student{id}/api/v1/bookstores/{bookstoreId}/books`]
+
+This endpoint inserts one book into the `book` table and links this book to an existing bookstore
+in the `bookstore_book` table.
+
+HINT: The `namedParameterJdbcTemplate` may be useful to you.
+
+# Ex. 13 Bookstore Inventory
+Create the following endpoint in a new controller `BookStoreController`:
+
+`GET student{id}/api/v1/bookstores/{bookstoreId}/books`]
+
+This endpoint calculates the price of all the books in a bookstore and returns a list of books:
+
+```
+ [
+    {
+      "book_id": <book id>
+      "title": <book title>
+      "isbn": <isbn>
+      "quantity: <quantity>
+      "price" : <price>
+      "total_price": <total price for all these books in the bookstore>
+    }
+    ... 
+ ]
+```
