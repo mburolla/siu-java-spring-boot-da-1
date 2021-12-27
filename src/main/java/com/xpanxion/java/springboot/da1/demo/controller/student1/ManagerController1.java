@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("student{id}/api/v1/managers")
+@RequestMapping("student1/api/v1/managers")
 @RestController
 public class ManagerController1 {
 
@@ -16,14 +16,20 @@ public class ManagerController1 {
     DataAccess1 dataAccess1;
 
     @GetMapping
-    public List<Manager> getManagers(@PathVariable("id") Integer id) {
+    public List<Manager> getManagers() {
         var managersList = dataAccess1.getManagers();
         return managersList;
     }
 
     @PostMapping
-    public void insertManager(@PathVariable("id") Integer id, @RequestBody Manager manager) {
+    public void insertManager(@RequestBody Manager manager) {
         dataAccess1.insertManager(manager);
+    }
+
+    @PutMapping
+    public void updateManager(@RequestBody Manager updateManager) {
+        dataAccess1.updateManager(updateManager);
+
     }
 
     @Service
@@ -32,6 +38,7 @@ public class ManagerController1 {
         @Autowired
         private JdbcTemplate jdbcTemplate;
         private final String SELECT_MANAGERS = "select * from manager";
+        private final String UPDATE_MANAGER = "update manager set full_name = ? where manager_id = ?";
         private final String INSERT_MANAGER = "insert into manager (full_name) values (?)";
 
         public List<Manager> getManagers() {
@@ -43,6 +50,10 @@ public class ManagerController1 {
                 return new Manager(id, fullName);
             });
             return managersList;
+        }
+
+        public void updateManager(Manager manager) {
+            jdbcTemplate.update(UPDATE_MANAGER, manager.getFullName(), manager.getManagerId());
         }
 
         public void insertManager(Manager manager) {
