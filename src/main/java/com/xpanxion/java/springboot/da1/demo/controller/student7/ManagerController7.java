@@ -4,10 +4,7 @@ import com.xpanxion.java.springboot.da1.demo.model.student7.Book;
 import com.xpanxion.java.springboot.da1.demo.model.student7.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +15,7 @@ public class ManagerController7 {
     private JdbcTemplate jdbcTemplate;
     private final String SELECT_MANAGERS = "select * from manager";
     private final String INSERT_MANAGER = "insert into student7_da.manager(full_name) Values (?)";
+    private final String UPDATE_MANAGER = "UPDATE manager SET full_name= ? WHERE manager_id= ?";
 
     @GetMapping("student7/api/v1/managers")
     public List<Manager> getManagers() {
@@ -31,8 +29,17 @@ public class ManagerController7 {
     }
 
     @PostMapping("student7/api/v1/managers")
-    public Manager getManagers2(@RequestBody Manager manager) {
+    public Manager insertManager(@RequestBody Manager manager) {
         jdbcTemplate.update(INSERT_MANAGER, manager.getFullName());
         return manager;
     }
+
+    @PutMapping("student7/api/v1/managers")
+    public Manager updateManager(@RequestBody Manager manager) {
+        jdbcTemplate.update(UPDATE_MANAGER, manager.getFullName(), manager.getId());
+        return manager;
+    }
+
+
+
 }
