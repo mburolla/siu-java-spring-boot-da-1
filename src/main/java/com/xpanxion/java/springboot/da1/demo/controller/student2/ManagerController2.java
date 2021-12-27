@@ -25,8 +25,7 @@ public class ManagerController2 {
     }
 
     @PutMapping("student2/api/v1/managers")
-    public void putManager(@RequestBody String nameIdRequest) {
-        String[] requestArray = nameIdRequest.split(", ", 2);
-        dataAccess.putManagers(requestArray[0], Integer.parseInt(requestArray[1]));
+    public void putManager(@RequestBody Manager manager) {
+        dataAccess.putManagers(manager.getFull_name(), manager.getId());
     }
 }
