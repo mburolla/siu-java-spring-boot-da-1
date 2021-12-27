@@ -4,10 +4,7 @@ import com.xpanxion.java.springboot.da1.demo.model.student8.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,9 +22,17 @@ public class ManagerController8 {
     }
 
     @PostMapping("student8/api/v1/managers")
-    public void createManager(@RequestBody Manager newManager) {
-        dataAccess.createManager(newManager);
+    public void createManager(@RequestBody Manager manager) {
+        dataAccess.createManager(manager);
     }
+
+
+    @PutMapping("student8/api/v1/managers")
+    public void updateManager(@RequestBody Manager manager) {
+        dataAccess.updateManager(manager);
+    }
+
+
 
     @Service
     static class DataAccess8 {
@@ -38,6 +43,8 @@ public class ManagerController8 {
         private JdbcTemplate jdbcTemplate;
         private final String SELECT_All_MANAGERS = "select * from manager";
         private final String ADD_A_MANAGER = "INSERT INTO MANAGER (full_name) VALUES (?)";
+        private final String UPDATE_A_MANAGER = "UPDATE MANAGER SET full_name = ? where manager_id = ?";
+
 
         // CONSTRUCTOR
 
@@ -60,6 +67,11 @@ public class ManagerController8 {
         public void createManager(Manager manager) {
             System.out.println(manager);
             jdbcTemplate.update(ADD_A_MANAGER, manager.getFullName());
+        }
+
+        public void updateManager(Manager manager) {
+            System.out.println(manager);
+            jdbcTemplate.update(UPDATE_A_MANAGER, manager.getFullName(), manager.getId());
         }
     }
 
