@@ -24,6 +24,11 @@ public class ManagerController5 {
     public void insertManager(String fullName) {
         dataAccess.insertManagers(fullName);
     }
+
+    @PutMapping
+    public void updateManager(String fullName, int managerID) {
+        dataAccess.updateManager(fullName, managerID);
+    }
 }
 
 @Service
@@ -37,6 +42,7 @@ class ManagerDataAccess {
     private JdbcTemplate jdbcTemplate;
     private final String SELECT_MANAGER = "select * from manager";
     private final String INSERT_MANAGER = "INSERT INTO manager (full_name) VALUES (?)";
+    private final String UPDATE_MANAGER = "UPDATE manager SET full_name = (?) WHERE manager_id = (?)";
 
     //
     // Constructors
@@ -56,6 +62,10 @@ class ManagerDataAccess {
             return new Manager(id, fullName);
         });
         return managerList;
+    }
+
+    public void updateManager(String newManagerName, int managerID) {
+        jdbcTemplate.update(UPDATE_MANAGER, newManagerName, managerID);
     }
 
     public void insertManagers(String fullName) {
