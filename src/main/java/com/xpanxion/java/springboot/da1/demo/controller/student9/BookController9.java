@@ -17,6 +17,7 @@ import java.util.Map;
 
 @RestController
 public class BookController9 {
+
     @Autowired
     private DataAccess9 dataAccess;
 
@@ -25,6 +26,7 @@ public class BookController9 {
         var temp = dataAccess.getBook(1);
         return temp;
     }
+
 
     @PostMapping("student9/api/v1/bookstores/{bookstoreId}/{quantity}/books")
     public void insertBook(@PathVariable Integer bookstoreId,@PathVariable Integer quantity, @RequestBody Book book){
