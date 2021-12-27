@@ -20,7 +20,7 @@ public class ManagerController4 {
         List<Manager> managerList;
         managerList = jdbcTemplate.query(SELECT_MANAGER, (row, rowNum) -> {
             int id = Integer.parseInt(row.getString("manager_id"));
-            String name =row.getString("full_name");
+            String name= row.getString("full_name");
             return new Manager(id, name);
         });
         return managerList;
