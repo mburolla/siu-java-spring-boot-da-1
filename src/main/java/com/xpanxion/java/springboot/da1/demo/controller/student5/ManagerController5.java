@@ -21,13 +21,13 @@ public class ManagerController5 {
     }
 
     @PostMapping
-    public void insertManager(String fullName) {
-        dataAccess.insertManagers(fullName);
+    public void insertManager(@RequestBody Manager manager) {
+        dataAccess.insertManagers(manager);
     }
 
     @PutMapping
-    public void updateManager(String fullName, int managerID) {
-        dataAccess.updateManager(fullName, managerID);
+    public void updateManager(@RequestBody Manager manager) {
+        dataAccess.updateManager(manager);
     }
 }
 
@@ -54,6 +54,7 @@ class ManagerDataAccess {
     //
     // Methods
     //
+
     public List<Manager> getManagers() {
         List<Manager> managerList;
         managerList = jdbcTemplate.query(SELECT_MANAGER, (row, rowNum) -> {
@@ -64,11 +65,11 @@ class ManagerDataAccess {
         return managerList;
     }
 
-    public void updateManager(String newManagerName, int managerID) {
-        jdbcTemplate.update(UPDATE_MANAGER, newManagerName, managerID);
+    public void updateManager(Manager manager) {
+        jdbcTemplate.update(UPDATE_MANAGER, manager.getFullName(), manager.getManagerId());
     }
 
-    public void insertManagers(String fullName) {
-        jdbcTemplate.update(INSERT_MANAGER, fullName);
+    public void insertManagers(Manager manager) {
+        jdbcTemplate.update(INSERT_MANAGER, manager.getFullName());
     }
 }
