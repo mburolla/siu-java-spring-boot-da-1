@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class DataAccessStudent2 {
     private final String SELECT_BOOK = "select * from book where book_id = ?";
     private final String GET_MANAGERS = "select * from manager";
     private final String POST_MANAGERS = "insert into manager (full_name) values (?)";
+    private final String PUT_MANAGERS = "update manager set full_name = ? where manager_id = ?";
 
     //
     // Constructors
@@ -69,5 +71,10 @@ public class DataAccessStudent2 {
     @PostMapping("student2/api/v1/managers")
     public void postManagers(String full_name) {
         jdbcTemplate.update(POST_MANAGERS, full_name);
+    }
+
+    @PutMapping("student2/api/v1/managers")
+    public void putManagers(String full_name, int manager_id) {
+        jdbcTemplate.update(PUT_MANAGERS, full_name, manager_id);
     }
 }

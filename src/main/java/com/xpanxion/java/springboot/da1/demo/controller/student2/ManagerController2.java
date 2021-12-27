@@ -3,10 +3,7 @@ package com.xpanxion.java.springboot.da1.demo.controller.student2;
 import com.xpanxion.java.springboot.da1.demo.model.student2.Manager;
 import com.xpanxion.java.springboot.da1.demo.service.student2.DataAccessStudent2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +22,10 @@ public class ManagerController2 {
     @PostMapping("student2/api/v1/managers")
     public void postManager(@RequestBody String full_name) {
         dataAccess.postManagers(full_name);
+    }
+
+    @PutMapping("student2/api/v1/managers")
+    public void putManager(@RequestBody Manager manager) {
+        dataAccess.putManagers(manager.getFull_name(), manager.getId());
     }
 }
