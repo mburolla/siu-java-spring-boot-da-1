@@ -4,6 +4,10 @@ public class Manager {
     private int id;
     private String fullName;
 
+    public Manager() {
+
+    }
+
     public Manager(int id, String fullName) {
         this.id=id;
         this.fullName=fullName;
