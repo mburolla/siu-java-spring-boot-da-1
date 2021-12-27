@@ -52,10 +52,6 @@ public class BookController7 {
                 .addValue("bookId", keyId.getKey().intValue())
                 .addValue("quantity", 1);
         namedParameterJdbcTemplate.update(LINK_BOOKSTORE, bookstoreParameters);
-
-
-
-
     }
 }
 
