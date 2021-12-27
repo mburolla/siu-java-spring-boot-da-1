@@ -4,6 +4,8 @@ import com.xpanxion.java.springboot.da1.demo.model.student10.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -14,6 +16,8 @@ public class ManagerController10 {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     private final String SELECT_MANAGER = "select * from manager";
+    private final String INSERT_MANAGER = "insert into manager (full_name) values (?)";
+
 
     @GetMapping("student10/api/v1/managers")
     public List<Manager> getManagers () {
@@ -26,4 +30,9 @@ public class ManagerController10 {
         return managerList;
     }
 
+    @PostMapping("student10/api/v1/managers")
+    public Manager addManager (@RequestBody Manager manager) {
+        jdbcTemplate.update(INSERT_MANAGER, (manager.getFull_name()));
+        return manager;
+    }
 }
