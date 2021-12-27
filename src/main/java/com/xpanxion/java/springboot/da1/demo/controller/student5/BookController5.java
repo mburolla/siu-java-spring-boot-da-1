@@ -76,10 +76,9 @@ class BookDataAccess {
     }
 
     public void insertBookIntoInventory(Integer bookstoreId, Integer bookId, Integer quantity) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("bookstore_id", bookstoreId);
-        params.put("book_id", bookId);
-        params.put("quantity", quantity);
+        SqlParameterSource params = new MapSqlParameterSource("bookstore_id", bookstoreId)
+            .addValue("book_id", bookId)
+            .addValue("quantity", quantity);
         namedParameterJdbcTemplate.update(INSERT_BOOK_INTO_INVENTORY, params);
     }
 
