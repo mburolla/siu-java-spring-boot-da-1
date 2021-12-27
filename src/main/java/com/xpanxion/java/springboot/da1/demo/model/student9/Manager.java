@@ -18,7 +18,13 @@ public class Manager {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFull_name() {
         return full_name;

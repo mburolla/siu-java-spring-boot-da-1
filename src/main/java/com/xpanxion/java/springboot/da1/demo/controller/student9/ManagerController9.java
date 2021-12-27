@@ -27,6 +27,11 @@ public class ManagerController9 {
        dataAccessManager.addManager(manager);
     }
 
+    @PutMapping
+    public void updateManager(@RequestBody Manager manager){
+        dataAccessManager.updateManager(manager);
+    }
+
 
 }
 
@@ -38,9 +43,16 @@ class DataAccessManager {
 
     private final String INSERT_MANAGER = "INSERT INTO manager (full_name) VALUES (?)";
 
+    private final String UPDATE_MANAGER = "UPDATE manager SET full_name = ? WHERE manager_id = ?";
+
+
 
 
     public DataAccessManager() {}
+
+    public void updateManager(Manager manager){
+        jdbcTemplate.update(UPDATE_MANAGER,manager.getFull_name(),manager.getId());
+    }
 
     public void addManager(Manager manager){
          jdbcTemplate.update(INSERT_MANAGER,manager.getFull_name());
