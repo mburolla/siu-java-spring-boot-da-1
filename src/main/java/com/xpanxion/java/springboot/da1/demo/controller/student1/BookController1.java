@@ -77,19 +77,6 @@ public class BookController1 {
         }
 
         public Book addToBookstore(Book newBook, int bookstoreId, int bookId) {
-//            List <Book> bookList;
-//            bookList = jdbcTemplate.query(SELECT_BOOK_BY_NAME, (row, column) -> {
-//                var id = Integer.parseInt(row.getString("book_id"));
-//                var title =  row.getString("title");
-//                var isbn = row.getString("isbn");
-//                var price = Double.parseDouble(row.getString("price"));
-//
-//                return new Book(id, title, isbn, price);
-//            },newBook.getTitle());
-//
-//            int bookId = bookList.get(0).getBook_id();
-//            jdbcTemplate.update(ADD_TO_BOOKSTORE, bookstoreId, bookId, 3 );
-
             MapSqlParameterSource bookstore_parameters = new MapSqlParameterSource()
                     .addValue("bookstore_id", bookstoreId)
                     .addValue("book_id", bookId)
