@@ -10,6 +10,7 @@ public class MessageController3 {
     public String getMessage() {
         return "My name is Keith H. Inscore. " +
                 "My favorite color is olive green. " +
-                "My favorite band is Guns N' Roses.";
+                "My favorite band is Guns N' Roses. " +
+                "For Christmas I got a gargantuan Tiamat and a KitchenAid.";
     }
 }

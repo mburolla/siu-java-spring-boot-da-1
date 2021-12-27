@@ -8,6 +8,6 @@ public class MessageController9 {
 
     @GetMapping("student9/api/v1/message")
     public String getMessage() {
-        return "My name is Emanuel C Garcia. My favorite color is Red. My favorite band is All Time Low ";
+        return "My name is Emanuel C Garcia. My favorite color is Red. My favorite band is All Time Low. For Christmas i received a new mouse and a homepod mini";
     }
 }

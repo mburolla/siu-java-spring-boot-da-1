@@ -10,7 +10,8 @@ public class MessageController5 {
     public String getMessage() {
         return "My name is Aaron D. Weegens. " +
                 "My favorite color is pink. " +
-                "My favorite band is Neurosis.";
+                "My favorite band is Neurosis." +
+                "For xmas I got a Neurosis flag.";
 
     }
 }
