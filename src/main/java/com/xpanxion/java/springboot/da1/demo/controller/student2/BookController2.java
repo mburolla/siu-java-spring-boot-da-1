@@ -20,10 +20,7 @@ public class BookController2 {
     }
 
     @PostMapping("student2/api/v1/bookstores/1/books")
-    public void putBook(@RequestBody String bookInput) {
-        String[] inputArray = bookInput.split(", ", 5);
-        Book book = new Book(Integer.parseInt(inputArray[0]), inputArray[1], inputArray[2], Double.parseDouble(inputArray[3]));
-        int quantity = Integer.parseInt(inputArray[4]);
-        dataAccess.postBook(book, quantity);
+    public void putBook(@RequestBody Book book) {
+        dataAccess.postBook(book);
     }
 }

@@ -65,15 +65,13 @@ public class DataAccessStudent2 {
     }
 
     @PostMapping("student2/api/v1/bookstores/1/books")
-    public void postBook(Book book, int quantity) {
+    public void postBook(Book book) {
         jdbcTemplate.update(POST_BOOK, book.getId(), book.getTitle(), book.getIsbn(), book.getPrice());
 
         MapSqlParameterSource parameters = new MapSqlParameterSource()
-                .addValue("book_id", book.getId())
-                .addValue("quantity", quantity);
+                .addValue("book_id", book.getId());
 
-        namedParameterJdbcTemplate.update("insert into bookstore_book (bookstore_id, book_id, quantity)"
-                        + "values (1, :book_id, :quantity)", parameters);
+        namedParameterJdbcTemplate.update("insert into bookstore_book (bookstore_id, book_id, quantity) values (1, :book_id, 1)", parameters);
 
     }
 
