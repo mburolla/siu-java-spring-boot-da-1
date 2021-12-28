@@ -82,8 +82,8 @@ public class BookController8 {
                     .addValue("bookstore_id", bookstoreID)
                     .addValue("quantity", 1);
             namedParameterJdbcTemplate.update(ADD_A_BOOK, namedParameters, holder);
-            book.setId(holder.getKey().intValue());
-            namedParameters.addValue("book_id", book.getId());
+            book.setBookId(holder.getKey().intValue());
+            namedParameters.addValue("book_id", book.getBookId());
             namedParameterJdbcTemplate.update(ADD_BOOK_TO_BOOKSTORE, namedParameters);
         }
 
