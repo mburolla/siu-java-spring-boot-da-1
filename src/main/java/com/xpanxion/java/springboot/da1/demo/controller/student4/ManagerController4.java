@@ -25,5 +25,4 @@ public class ManagerController4 {
         dataAccessManager.updateManager(manager);
         return manager;
     }
-
 }

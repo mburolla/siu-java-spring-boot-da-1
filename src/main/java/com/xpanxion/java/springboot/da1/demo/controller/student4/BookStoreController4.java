@@ -18,5 +18,4 @@ public class BookStoreController4 {
     public List<BookstoreBook> getBookstoreBooks(@PathVariable int bookstoreId) {
         return dataAccess.getBookstoreBooks(bookstoreId);
     }
-
 }
