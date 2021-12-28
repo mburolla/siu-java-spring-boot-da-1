@@ -25,7 +25,7 @@ public class Book {
         return isbn;
     }
 
-    public String getPrice() {
-        return "$" + String.format("%.2f", price);
+    public double getPrice() {
+        return price;
     }
 }
