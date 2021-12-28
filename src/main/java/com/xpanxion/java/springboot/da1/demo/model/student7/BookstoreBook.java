@@ -15,7 +15,6 @@ public class BookstoreBook {
         this.quantity=quantity;
         this.price=price;
         this.totalPrice=totalPrice;
-
     }
 
     public int getBookId() {

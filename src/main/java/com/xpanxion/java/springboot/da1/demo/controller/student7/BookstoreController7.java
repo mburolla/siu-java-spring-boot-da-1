@@ -36,8 +36,8 @@ public class BookstoreController7 {
 
             String priceString = "$" + Double.toString(price) + "0";
 
-            int totalPriceNum = 0;
-            totalPriceNum += price * quantity;
+            double totalPriceNum = 0;
+            totalPriceNum = price * quantity;
             String totalPrice = "$" + Double.toString(totalPriceNum) +"0";
 
             return new BookstoreBook(bookId, title, isbn, quantity, priceString, totalPrice);
