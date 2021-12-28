@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class BookStoreController {
+public class BookStoreController5 {
 
     @Autowired
     private DataAccessStudent5 dataAccess;

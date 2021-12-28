@@ -1,8 +1,5 @@
 package com.xpanxion.java.springboot.da1.demo.model.student5;
 
-
-import com.xpanxion.java.springboot.da1.demo.service.student5.DataAccessStudent5;
-
 import java.math.BigDecimal;
 
 public class InventoryItem {

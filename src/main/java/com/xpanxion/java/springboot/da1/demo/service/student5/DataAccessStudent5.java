@@ -1,4 +1,5 @@
 package com.xpanxion.java.springboot.da1.demo.service.student5;
+
 import com.xpanxion.java.springboot.da1.demo.model.student5.Book;
 import com.xpanxion.java.springboot.da1.demo.model.student5.InventoryItem;
 import com.xpanxion.java.springboot.da1.demo.model.student5.Manager;
@@ -11,8 +12,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
