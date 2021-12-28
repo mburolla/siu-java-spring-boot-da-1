@@ -8,7 +8,7 @@ public class InventoryItem {
     private String isbn;
     private int quantity;
     private BigDecimal price;
-    private BigDecimal total_price;
+    private BigDecimal totalPrice;
 
     public InventoryItem(Book book, int quantity) {
         this.quantity = quantity;
@@ -16,7 +16,7 @@ public class InventoryItem {
         this.title = book.getTitle();
         this.isbn = book.getIsbn();
         this.price = book.getPrice();
-        this.total_price = price.multiply(BigDecimal.valueOf(quantity));
+        this.totalPrice = price.multiply(BigDecimal.valueOf(quantity));
     }
 
     public int getBookId() {
@@ -59,11 +59,11 @@ public class InventoryItem {
         this.price = price;
     }
 
-    public BigDecimal getTotal_price() {
-        return total_price;
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotal_price(BigDecimal total_price) {
-        this.total_price = total_price;
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }
