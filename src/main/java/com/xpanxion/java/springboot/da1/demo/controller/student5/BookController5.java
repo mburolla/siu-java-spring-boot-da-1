@@ -18,8 +18,8 @@ public class BookController5 {
 
     @GetMapping("student5/api/v1/book/{id}")
     public Book getBook(@PathVariable("id") Integer id) {
-        var book = dataAccess.getBook(id);
-        return book.get(0);
+        var bookList = dataAccess.getBook(id);
+        return bookList.get(0);
     }
 
     @PostMapping("student5/api/v1/bookstores/{bookstoreId}/books")
