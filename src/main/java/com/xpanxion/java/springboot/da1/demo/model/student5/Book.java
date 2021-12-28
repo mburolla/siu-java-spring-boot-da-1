@@ -1,28 +1,26 @@
 package com.xpanxion.java.springboot.da1.demo.model.student5;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Entity;
+import java.math.BigDecimal;
 
 public class Book {
 
     private int book_id;
     private String title;
     private String isbn;
-    private double price;
+    private BigDecimal price;
 
     public Book() {
         this.book_id = -1;
         this.title = "";
         this.isbn = "";
-        this.price = -1;
+        this.price = new BigDecimal(-1);
     }
 
     public Book(int book_id, String title, String isbn, double price) {
         this.book_id = book_id;
         this.title = title;
         this.isbn = isbn;
-        this.price = price;
+        this.price = new BigDecimal(price);
     }
 
     public int getBook_id() {
@@ -49,11 +47,11 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
