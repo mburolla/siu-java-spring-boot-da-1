@@ -3,6 +3,7 @@ package com.xpanxion.java.springboot.da1.demo.service.student5;
 import com.xpanxion.java.springboot.da1.demo.model.student5.Book;
 import com.xpanxion.java.springboot.da1.demo.model.student5.InventoryItem;
 import com.xpanxion.java.springboot.da1.demo.model.student5.Manager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DataAccessStudent5 {
+public class DataService5 {
 
     //
     // Data Members
@@ -25,22 +26,47 @@ public class DataAccessStudent5 {
     private JdbcTemplate jdbcTemplate;
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-// SQL SELECT
-    private final String SELECT_BOOKSTORE_BOOKS = "SELECT * FROM bookstore_book WHERE bookstore_id = ?";
-    private final String SELECT_BOOK = "SELECT * FROM book WHERE book_id = ?";
-    private final String SELECT_MANAGER = "select * from manager";
-// SQL INSERT
-    private final String INSERT_BOOK = "INSERT INTO book (title, isbn, price) VALUES (:title, :isbn, :price)";
-    private final String INSERT_BOOK_INTO_INVENTORY = "INSERT INTO bookstore_book (bookstore_id, book_id, quantity) VALUES (:bookstore_id, :book_id, :quantity)";
-    private final String INSERT_MANAGER = "INSERT INTO manager (full_name) VALUES (?)";
-// SQL UPDATE
-    private final String UPDATE_MANAGER = "UPDATE manager SET full_name = (?) WHERE manager_id = (?)";
+
+    // SQL SELECT
+    private final String SELECT_BOOKSTORE_BOOKS = """
+        SELECT *
+        FROM bookstore_book
+        WHERE bookstore_id = ?
+        """;
+    private final String SELECT_BOOK = """
+        SELECT *
+        FROM book
+        WHERE book_id = ?
+        """;
+    private final String SELECT_MANAGER = """
+        SELECT *
+        FROM manager
+        """;
+    // SQL INSERT
+    private final String INSERT_BOOK = """
+        INSERT INTO book (title, isbn, price)
+        VALUES (:title, :isbn, :price)
+        """;
+    private final String INSERT_BOOK_INTO_INVENTORY = """ 
+        INSERT INTO bookstore_book (bookstore_id, book_id, quantity)
+        VALUES (:bookstore_id, :book_id, :quantity)
+        """;
+    private final String INSERT_MANAGER = """
+        INSERT INTO manager (full_name)
+        VALUES (?)
+        """;
+    // SQL UPDATE
+    private final String UPDATE_MANAGER = """
+        UPDATE manage
+        SET full_name = (?)
+        WHERE manager_id = (?)
+        """;
 
     //
     // Methods
     //
 
-// Book Data Access
+    // Book Data Access
     public int insertBook(Book book) {
         final KeyHolder keyId = new GeneratedKeyHolder();
         SqlParameterSource params = new MapSqlParameterSource("title", book.getTitle())
@@ -69,7 +95,7 @@ public class DataAccessStudent5 {
         return bookList;
     }
 
-// Bookstore Data Access
+    // Bookstore Data Access
     public List<InventoryItem> getBookstoreInventory(Integer bookstoreId) {
         List<InventoryItem> inventoryList;
         inventoryList = jdbcTemplate.query(SELECT_BOOKSTORE_BOOKS, (row, rowNum) -> {
@@ -80,7 +106,7 @@ public class DataAccessStudent5 {
         return inventoryList;
     }
 
-//Manager Data Access
+    //Manager Data Access
     public List<Manager> getManagers() {
         List<Manager> managerList;
         managerList = jdbcTemplate.query(SELECT_MANAGER, (row, rowNum) -> {

@@ -1,7 +1,8 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student5;
 
 import com.xpanxion.java.springboot.da1.demo.model.student5.Book;
-import com.xpanxion.java.springboot.da1.demo.service.student5.DataAccessStudent5;
+import com.xpanxion.java.springboot.da1.demo.service.student5.DataService5;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class BookController5 {
 
     @Autowired
-    private DataAccessStudent5 dataAccess;
+    private DataService5 dataAccess;
 
     @GetMapping("student5/api/v1/book")
     public Book getBook() {
