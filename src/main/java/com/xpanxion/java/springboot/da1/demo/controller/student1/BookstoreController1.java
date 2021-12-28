@@ -31,11 +31,14 @@ public class BookstoreController1 {
         JdbcTemplate jdbcTemplate;
 
         private final String GET_BOOKSTORE_BOOKS =
-                "select b.book_id, b.title, b.isbn, bsb.quantity, b.price, (quantity * price) AS total_price\n" +
-                "from bookstore_book as bsb\n" +
-                "join book as b on bsb.book_id = b.book_id\n" +
-                "join bookstore as bs on bs.bookstore_id = bsb.bookstore_id\n" +
-                "where bsb.bookstore_id = ?;";
+                """
+                select b.book_id, b.title, b.isbn, bsb.quantity, b.price, (quantity * price) AS total_price
+                from bookstore_book as bsb 
+                join book as b on bsb.book_id = b.book_id
+                join bookstore as bs on bs.bookstore_id = bsb.bookstore_id
+                where bsb.bookstore_id = ?
+                
+                """;
 
         public List<BookstoreBook> getBookstoreBooks(int bookstoreId) {
 
