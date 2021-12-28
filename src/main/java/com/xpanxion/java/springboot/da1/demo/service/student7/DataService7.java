@@ -29,17 +29,12 @@ public class DataService7 {
     private final String INSERT_BOOK = "INSERT INTO book(title, isbn, price) Values (:title, :isbn, :price)";
     private final String LINK_BOOKSTORE = "INSERT INTO bookstore_book(bookstore_id, book_id,quantity) VALUES (:bookstoreId,:bookId,:quantity)";
     private final String SELECT_BOOKSTORE_BOOK = """
-            "SELECT bk.book_id, title, isbn, bsb.quantity, price
-            " +
-            " FROM book as bk INNER JOIN bookstore_book as bsb
-            " +
-            "ON bk.book_id = bsb.book_id
-            " +
-            "INNER JOIN bookstore bs
-            " +
-            "ON bsb.bookstore_id = bs.bookstore_id
-            " +
-            "WHERE bs.bookstore_id = ?"
+            SELECT bk.book_id, title, isbn, bsb.quantity, price
+            FROM book as bk INNER JOIN bookstore_book as bsb
+            ON bk.book_id = bsb.book_id
+            INNER JOIN bookstore bs
+            ON bsb.bookstore_id = bs.bookstore_id
+            WHERE bs.bookstore_id = ?
             """;
 //    Returns a book from database
     public List<Book> getBook() {
