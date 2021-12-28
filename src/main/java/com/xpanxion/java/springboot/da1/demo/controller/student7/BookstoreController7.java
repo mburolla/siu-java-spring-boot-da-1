@@ -15,12 +15,14 @@ public class BookstoreController7 {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
-    final String SELECT_BOOKSTORE_BOOK = "SELECT bk.book_id, title, isbn, bsb.quantity, price\n" +
-                " FROM book as bk INNER JOIN bookstore_book as bsb\n" +
-                "ON bk.book_id = bsb.book_id\n" +
-                "INNER JOIN bookstore bs\n" +
-                "ON bsb.bookstore_id = bs.bookstore_id\n" +
-                "WHERE bs.bookstore_id = ?";
+    final String SELECT_BOOKSTORE_BOOK = """
+            "SELECT bk.book_id, title, isbn, bsb.quantity, price\n" +
+            " FROM book as bk INNER JOIN bookstore_book as bsb\n" +
+            "ON bk.book_id = bsb.book_id\n" +
+            "INNER JOIN bookstore bs\n" +
+            "ON bsb.bookstore_id = bs.bookstore_id\n" +
+            "WHERE bs.bookstore_id = ?"
+            """;
 
     @GetMapping("student7/api/v1/bookstores/{bookstoreId}/books")
     public List<BookstoreBook> getPrice(@PathVariable int bookstoreId) {
