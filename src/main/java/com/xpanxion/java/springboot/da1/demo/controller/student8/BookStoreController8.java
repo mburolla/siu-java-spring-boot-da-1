@@ -16,24 +16,27 @@ public class BookStoreController8 {
     @Autowired
     private DataAccess8 dataAccess;
 
-
-
     @GetMapping("student8/api/v1/bookstores/{bookstoreId}/books")
     public List<Book> getBooksInBookstore(@PathVariable("bookstoreId") Integer id) {
         var bookList = dataAccess.getBooksInBookstore(id);
         return bookList;
     }
 
-
     @Service
     static class DataAccess8 {
 
         // DATA
+
         @Autowired
         private JdbcTemplate jdbcTemplate;
-        private final String SELECT_BOOKS_BY_BOOKSTORE = "select book.title, book.book_id, book.isbn, book.price, bookstore_book.quantity\nfrom book inner join bookstore_book\nwhere bookstore_book.book_id = book.book_id\nand bookstore_book.bookstore_id = ?";
+        private final String SELECT_BOOKS_BY_BOOKSTORE = """
+            select book.title, book.book_id, book.isbn, book.price, bookstore_book.quantity\n
+            from book inner join bookstore_book\n
+            where bookstore_book.book_id = book.book_id\n
+            and bookstore_book.bookstore_id = ?""";
 
         // CONSTRUCTOR
+
         public DataAccess8() {}
 
         // METHODS

@@ -81,6 +81,4 @@ public class Book {
                 ", totalCost=" + totalCost +
                 '}';
     }
-
-    // METHO
 }
