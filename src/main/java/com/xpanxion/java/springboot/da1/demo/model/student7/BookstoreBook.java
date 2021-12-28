@@ -1,12 +1,12 @@
 package com.xpanxion.java.springboot.da1.demo.model.student7;
 
 public class BookstoreBook {
-    int bookId;
-    String title;
-    String isbn;
-    int quantity;
-    String price;
-    String totalPrice;
+    private int bookId;
+    private String title;
+    private String isbn;
+    private int quantity;
+    private String price;
+    private String totalPrice;
 
     public BookstoreBook(int bookId, String title, String isbn, int quantity, String price, String totalPrice) {
         this.bookId=bookId;
