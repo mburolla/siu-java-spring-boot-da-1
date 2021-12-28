@@ -12,17 +12,18 @@ public class ManagerController4 {
 
     @GetMapping("student4/api/v1/manager")
     public List<Manager> getManagers(){
-        var temp = dataAccessManager.getManager();
-        return temp;
+        return dataAccessManager.getManager();
     }
 
     @PostMapping("student4/api/v1/managers")
-    public void insertManager(@RequestBody Manager manager){
+    public Manager insertManager(@RequestBody Manager manager){
         dataAccessManager.insertManager(manager);
+        return manager;
     }
     @PutMapping("student4/api/v1/managers")
-    public void updateManager(@RequestBody Manager manager){
+    public Manager updateManager(@RequestBody Manager manager){
         dataAccessManager.updateManager(manager);
+        return manager;
     }
 
 }
