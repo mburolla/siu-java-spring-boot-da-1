@@ -98,7 +98,7 @@ HINT: The `namedParameterJdbcTemplate` may be useful to you.
 # Ex. 13 Bookstore Inventory
 Create the following endpoint in a new controller `BookStoreController`:
 
-`GET student{id}/api/v1/bookstores/{bookstoreId}/books`]
+`GET student{id}/api/v1/bookstores/{bookstoreId}/books`
 
 This endpoint calculates the price of all the books in a bookstore and returns a list of books:
 
@@ -114,4 +114,29 @@ This endpoint calculates the price of all the books in a bookstore and returns a
     }
     ... 
  ]
+```
+
+# Ex. 14 Technical Debt: Controllers Are Not Ideal
+Ideally, controllers should be as lightweight as possible.  Most (or all) of the work in a 
+controller should be done in one or more classes. 
+
+Create a class called `DataService{studentid}` and place it in a new student package under the 
+service package (Be sure to append your student id to this class to avoid namespace collisions 
+with SpringBoot).  Also be sure to annotate this class as a `@Service`.
+
+Move the code from the endpoints into the controllers into public methods
+in the `DataService` class.  All the controllers should resemble the following:
+
+```java
+@RestController
+public class ProductController {
+
+   @Autowired
+   private DataService instructorDataService;
+
+   @GetMapping("instructor/api/v1/products")
+   public List<Product> getProducts() {
+       return instructorDataService.getProducts();
+   }
+}
 ```
