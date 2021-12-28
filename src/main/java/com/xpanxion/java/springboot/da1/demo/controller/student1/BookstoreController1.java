@@ -42,14 +42,14 @@ public class BookstoreController1 {
             List<BookstoreBook> bookstoreBooks;
 
             bookstoreBooks = jdbcTemplate.query(GET_BOOKSTORE_BOOKS, (row, rowNum) -> {
-                var book_id = Integer.parseInt(row.getString("book_id"));
+                var bookId = Integer.parseInt(row.getString("book_id"));
                 var title = row.getString("title");
                 var isbn = row.getString("isbn");
                 var quantity = Integer.parseInt(row.getString("quantity"));
                 var price = Double.parseDouble(row.getString("price"));
-                var total_price = Double.parseDouble(row.getString("total_price"));
+                var totalPrice = Double.parseDouble(row.getString("total_price"));
 
-                return new BookstoreBook(book_id, title, isbn, quantity, price, total_price);
+                return new BookstoreBook(bookId, title, isbn, quantity, price, totalPrice);
 
             }, bookstoreId);
 

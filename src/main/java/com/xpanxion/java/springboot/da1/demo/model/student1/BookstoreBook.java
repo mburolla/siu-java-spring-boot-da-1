@@ -2,28 +2,28 @@ package com.xpanxion.java.springboot.da1.demo.model.student1;
 
 public class BookstoreBook {
 
-    private int book_id;
+    private int bookId;
     private String title;
     private String isbn;
     private int quantity;
     private double price;
-    private double total_price;
+    private double totalPrice;
 
-    public BookstoreBook(int book_id, String title, String isbn, int quantity, double price, double total_price) {
-        this.book_id = book_id;
+    public BookstoreBook(int bookId, String title, String isbn, int quantity, double price, double totalPrice) {
+        this.bookId = bookId;
         this.title = title;
         this.isbn = isbn;
         this.quantity = quantity;
         this.price = price;
-        this.total_price = total_price;
+        this.totalPrice = totalPrice;
     }
 
     public int getBook_id() {
-        return book_id;
+        return bookId;
     }
 
-    public void setBook_id(int book_id) {
-        this.book_id = book_id;
+    public void setBook_id(int bookId) {
+        this.bookId = bookId;
     }
 
     public String getTitle() {
@@ -58,12 +58,12 @@ public class BookstoreBook {
         this.price = price;
     }
 
-    public double getTotal_price() {
-        return total_price;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotal_price(double total_price) {
-        this.total_price = total_price;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
 }
