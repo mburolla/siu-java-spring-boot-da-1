@@ -29,7 +29,12 @@ class DataAccessStudent9 {
     public DataAccessStudent9() {}
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    private final String SELECT_INVENTORY = "SELECT b.book_id, title, isbn, quantity, price, (quantity * price) AS 'total_price' from book b JOIN bookstore_book bs ON b.book_id = bs.book_id JOIN bookstore bm ON bs.bookstore_id = bm.bookstore_id WHERE bm.bookstore_id = ?";
+    private final String SELECT_INVENTORY =
+            """
+                    SELECT b.book_id, title, isbn, quantity, price, (quantity * price) AS 'total_price'
+                    from book b JOIN bookstore_book bs ON b.book_id = bs.book_id JOIN bookstore bm ON bs.bookstore_id = bm.bookstore_id
+                    WHERE bm.bookstore_id = ?
+                    """;
 
     public List<BookInventoryBook> getBookStoreInventory(int bookstoreId) {
         List<BookInventoryBook> bookInventoryBookList;
