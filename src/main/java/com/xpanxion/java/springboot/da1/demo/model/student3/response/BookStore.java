@@ -4,8 +4,11 @@ import java.math.BigDecimal;
 
 public class BookStore {
 
-    private int bookId, quantity;
-    private String title, isbn, displayTotalPrice;
+    private int bookId;
+    private int quantity;
+    private String title;
+    private String isbn;
+    private String displayTotalPrice;
     private double price;
     private BigDecimal totalPrice;
 
