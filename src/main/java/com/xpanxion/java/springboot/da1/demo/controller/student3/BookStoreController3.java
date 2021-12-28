@@ -37,8 +37,7 @@ public class BookStoreController3 {
            var quantity = Integer.parseInt(row.getString("quantity"));
            var price = Double.parseDouble(row.getString("price"));
            BigDecimal totalPrice = new BigDecimal(quantity * price);
-           String displayTotalPrice = formatter.format(totalPrice);
-           return new BookStore(bookId,title,isbn,quantity,price,totalPrice, displayTotalPrice);
+           return new BookStore(bookId,title,isbn,quantity,price,totalPrice);
        }, bookstoreId);
     return inventory;
    }

@@ -1,6 +1,7 @@
 package com.xpanxion.java.springboot.da1.demo.model.student3.response;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 
 public class BookStore {
 
@@ -12,14 +13,18 @@ public class BookStore {
     private double price;
     private BigDecimal totalPrice;
 
-    public BookStore(int bookId, String title, String isbn, int quantity, double price, BigDecimal totalPrice, String displayTotalPrice){
+    public BookStore(int bookId, String title, String isbn, int quantity, double price, BigDecimal totalPrice){
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
         this.bookId = bookId;
         this.title = title;
         this.isbn = isbn;
         this.quantity = quantity;
         this.price = price;
         this.totalPrice = totalPrice;
-        this.displayTotalPrice = displayTotalPrice;
+        this.displayTotalPrice = formatter.format(totalPrice);
+
+
     }
 
     public int getBookId() {
