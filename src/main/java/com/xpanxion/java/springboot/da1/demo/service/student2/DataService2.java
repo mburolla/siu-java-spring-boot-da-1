@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import java.util.List;
 
 @Service
-public class DataAccessStudent2 {
+public class DataService2 {
 
     //
     // Data Members
@@ -44,7 +44,7 @@ public class DataAccessStudent2 {
     // Constructors
     //
 
-    public DataAccessStudent2() {
+    public DataService2() {
         // Spring dependency injection (@Autowired) eliminates the need for us to create the jdbcTemplate:
         // DriverManagerDataSource dataSource = new DriverManagerDataSource();
         // dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
