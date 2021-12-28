@@ -3,13 +3,15 @@ package com.xpanxion.java.springboot.da1.demo.model.student5;
 
 import com.xpanxion.java.springboot.da1.demo.service.student5.DataAccessStudent5;
 
+import java.math.BigDecimal;
+
 public class InventoryItem {
     private int bookId;
     private String title;
     private String isbn;
     private int quantity;
-    private double price;
-    private double total_price;
+    private BigDecimal price;
+    private BigDecimal total_price;
 
     public InventoryItem(Book book, int quantity) {
         this.quantity = quantity;
@@ -17,7 +19,7 @@ public class InventoryItem {
         this.title = book.getTitle();
         this.isbn = book.getIsbn();
         this.price = book.getPrice();
-        this.total_price = this.price * this.quantity;
+        this.total_price = price.multiply(BigDecimal.valueOf(quantity));
     }
 
     public int getBookId() {
@@ -52,19 +54,19 @@ public class InventoryItem {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public double getTotal_price() {
+    public BigDecimal getTotal_price() {
         return total_price;
     }
 
-    public void setTotal_price(double total_price) {
+    public void setTotal_price(BigDecimal total_price) {
         this.total_price = total_price;
     }
 }
