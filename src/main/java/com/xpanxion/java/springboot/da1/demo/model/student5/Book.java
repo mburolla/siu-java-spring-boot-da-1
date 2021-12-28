@@ -1,9 +1,5 @@
 package com.xpanxion.java.springboot.da1.demo.model.student5;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Entity;
-
 public class Book {
 
     private int book_id;
