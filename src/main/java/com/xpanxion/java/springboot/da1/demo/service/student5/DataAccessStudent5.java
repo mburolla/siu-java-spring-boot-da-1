@@ -25,13 +25,15 @@ public class DataAccessStudent5 {
     private JdbcTemplate jdbcTemplate;
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
+// SQL SELECT
     private final String SELECT_BOOKSTORE_BOOKS = "SELECT * FROM bookstore_book WHERE bookstore_id = ?";
     private final String SELECT_BOOK = "SELECT * FROM book WHERE book_id = ?";
+    private final String SELECT_MANAGER = "select * from manager";
+// SQL INSERT
     private final String INSERT_BOOK = "INSERT INTO book (title, isbn, price) VALUES (:title, :isbn, :price)";
     private final String INSERT_BOOK_INTO_INVENTORY = "INSERT INTO bookstore_book (bookstore_id, book_id, quantity) VALUES (:bookstore_id, :book_id, :quantity)";
-    private final String SELECT_MANAGER = "select * from manager";
     private final String INSERT_MANAGER = "INSERT INTO manager (full_name) VALUES (?)";
+// SQL UPDATE
     private final String UPDATE_MANAGER = "UPDATE manager SET full_name = (?) WHERE manager_id = (?)";
 
     //
