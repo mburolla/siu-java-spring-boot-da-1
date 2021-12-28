@@ -17,7 +17,8 @@ public class BookController4{
     }
 
     @PostMapping("student4/api/v1/bookstores/{bookstoreId}/books")
-    public void insertBook(@PathVariable Integer bookstoreId,@PathVariable Integer quantity, @RequestBody Book book){
+    public Book insertBook(@PathVariable Integer bookstoreId, @RequestBody Book book){
         dataAccess.insertBook(bookstoreId,book);
+        return book;
     }
 }
