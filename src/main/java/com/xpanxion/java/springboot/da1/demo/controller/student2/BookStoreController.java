@@ -1,7 +1,7 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student2;
 
 import com.xpanxion.java.springboot.da1.demo.model.student2.Book;
-import com.xpanxion.java.springboot.da1.demo.service.student2.DataAccessStudent2;
+import com.xpanxion.java.springboot.da1.demo.service.student2.DataService2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class BookStoreController {
 
     @Autowired
-    private DataAccessStudent2 dataAccess;
+    private DataService2 dataAccess;
 
     @GetMapping("student2/api/v1/bookstores/1/books")
     public List<Book> getBookstoreBooks() {
