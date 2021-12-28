@@ -28,7 +28,13 @@ public class DataAccessStudent2 {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private MapSqlParameterSource mapSqlParameterSource;
     private final String SELECT_BOOK = "select * from book where book_id = ?";
-    private final String JOIN_BOOK_BOOKSTORE_BOOK = "select * from bookstore_book bsb join book b on b.book_id = bsb.book_id join bookstore bs on bsb.bookstore_id = bs.bookstore_id where bs.bookstore_id = ?";
+    private final String JOIN_BOOK_BOOKSTORE_BOOK = """
+            select * 
+            from bookstore_book bsb 
+                join book b on b.book_id = bsb.book_id 
+                join bookstore bs on bsb.bookstore_id = bs.bookstore_id 
+            where bs.bookstore_id = ?
+            """;
     private final String POST_BOOK = "insert into book (book_id, title, isbn, price) values (?, ?, ?, ?)";
     private final String GET_MANAGERS = "select * from manager";
     private final String POST_MANAGERS = "insert into manager (full_name) values (?)";
