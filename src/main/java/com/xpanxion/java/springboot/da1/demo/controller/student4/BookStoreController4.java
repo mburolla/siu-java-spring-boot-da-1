@@ -14,11 +14,13 @@ public class BookStoreController4 {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    private final String SELECT_BOOK =  "select b.book_id, b.title, b.isbn, a.quantity, b.price, (quantity * price) AS total_price\n" +
-                                        "from bookstore_book as a\n" +
-                                        "join book as b on a.book_id = b.book_id\n" +
-                                        "join bookstore as c on c.bookstore_id = a.bookstore_id\n" +
-                                        "where a.bookstore_id = ?;";
+    private final String SELECT_BOOK =  """
+                                        select b.book_id, b.title, b.isbn, a.quantity, b.price, (quantity * price) AS total_price
+                                        from bookstore_book as a
+                                        join book as b on a.book_id = b.book_id
+                                        join bookstore as c on c.bookstore_id = a.bookstore_id
+                                        where a.bookstore_id = ?
+                                        """;
 
     @GetMapping("student4/api/v1/bookstores/{bookstoreId}/books")
     public List<BookstoreBook> getBookstoreBooks(@PathVariable int bookstoreId) {
