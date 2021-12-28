@@ -1,7 +1,8 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student5;
 
 import com.xpanxion.java.springboot.da1.demo.model.student5.Manager;
-import com.xpanxion.java.springboot.da1.demo.service.student5.DataAccessStudent5;
+import com.xpanxion.java.springboot.da1.demo.service.student5.DataService5;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public class ManagerController5 {
 
     @Autowired
-    private DataAccessStudent5 dataAccess;
+    private DataService5 dataAccess;
 
     @GetMapping
     public List<Manager> getManagers() {
