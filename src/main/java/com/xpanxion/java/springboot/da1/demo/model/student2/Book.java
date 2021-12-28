@@ -5,6 +5,7 @@ public class Book {
     private String title;
     private String isbn;
     private double price;
+    private double totalPrice;
 
     public Book(int book_id, String title, String isbn, double price) {
         this.book_id = book_id;
@@ -27,5 +28,13 @@ public class Book {
 
     public double getPrice() {
         return price;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

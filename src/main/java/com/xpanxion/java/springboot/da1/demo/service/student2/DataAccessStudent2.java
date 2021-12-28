@@ -28,6 +28,7 @@ public class DataAccessStudent2 {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private MapSqlParameterSource mapSqlParameterSource;
     private final String SELECT_BOOK = "select * from book where book_id = ?";
+    private final String JOIN_BOOK_BOOKSTORE_BOOK = "select * from bookstore_book bsb join book b on b.book_id = bsb.book_id join bookstore bs on bsb.bookstore_id = bs.bookstore_id where bs.bookstore_id = ?";
     private final String POST_BOOK = "insert into book (book_id, title, isbn, price) values (?, ?, ?, ?)";
     private final String GET_MANAGERS = "select * from manager";
     private final String POST_MANAGERS = "insert into manager (full_name) values (?)";
@@ -61,6 +62,20 @@ public class DataAccessStudent2 {
             var price =  Double.parseDouble(row.getString("price"));
             return new Book(book_id, title, isbn, price);
         }, searchId);
+        return bookList;
+    }
+
+    @GetMapping("student2/api/v1/bookstores/1/books")
+    public List<Book> getBookstoreBooks(Integer bookstoreId) {
+        List<Book> bookList;
+
+        bookList = jdbcTemplate.query(JOIN_BOOK_BOOKSTORE_BOOK, (row, rowNum) -> {
+            var book_id = Integer.parseInt(row.getString("book_id"));
+            var title = row.getString("title");
+            var isbn = row.getString("isbn");
+            var price = Double.parseDouble(row.getString("price"));
+            return new Book(book_id, title, isbn, price);
+            }, bookstoreId);
         return bookList;
     }
 
