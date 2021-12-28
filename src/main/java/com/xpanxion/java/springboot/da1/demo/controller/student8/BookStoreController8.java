@@ -30,9 +30,9 @@ public class BookStoreController8 {
         @Autowired
         private JdbcTemplate jdbcTemplate;
         private final String SELECT_BOOKS_BY_BOOKSTORE = """
-            select book.title, book.book_id, book.isbn, book.price, bookstore_book.quantity\n
-            from book inner join bookstore_book\n
-            where bookstore_book.book_id = book.book_id\n
+            select book.title, book.book_id, book.isbn, book.price, bookstore_book.quantity
+            from book inner join bookstore_book
+            where bookstore_book.book_id = book.book_id
             and bookstore_book.bookstore_id = ?""";
 
         // CONSTRUCTOR
