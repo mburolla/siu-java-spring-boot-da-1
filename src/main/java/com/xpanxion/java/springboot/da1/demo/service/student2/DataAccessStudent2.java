@@ -66,7 +66,7 @@ public class DataAccessStudent2 {
             var title =  row.getString("title");
             var isbn =  row.getString("isbn");
             var price =  Double.parseDouble(row.getString("price"));
-            return new Book(book_id, title, isbn, price);
+            return new Book(book_id, title, isbn, price, price);
         }, searchId);
         return bookList;
     }
@@ -80,7 +80,8 @@ public class DataAccessStudent2 {
             var title = row.getString("title");
             var isbn = row.getString("isbn");
             var price = Double.parseDouble(row.getString("price"));
-            return new Book(book_id, title, isbn, price);
+            var totalPrice = price * Integer.parseInt(row.getString("quantity"));
+            return new Book(book_id, title, isbn, price, totalPrice);
             }, bookstoreId);
         return bookList;
     }

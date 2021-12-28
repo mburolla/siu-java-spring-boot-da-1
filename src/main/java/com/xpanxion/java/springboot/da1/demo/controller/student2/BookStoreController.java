@@ -15,17 +15,7 @@ public class BookStoreController {
 
     @GetMapping("student2/api/v1/bookstores/1/books")
     public List<Book> getBookstoreBooks() {
-        int count = 0;
-
         var bookList = dataAccess.getBookstoreBooks(1);
-        for (Book n : bookList) {
-            if(count == 0) {
-                n.setTotalPrice(n.getPrice());
-            } else {
-                n.setTotalPrice(n.getPrice() + bookList.get(count - 1).getTotalPrice());
-            }
-            count += 1;
-        }
         return bookList;
     }
 

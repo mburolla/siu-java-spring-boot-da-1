@@ -7,11 +7,12 @@ public class Book {
     private double price;
     private double totalPrice;
 
-    public Book(int book_id, String title, String isbn, double price) {
+    public Book(int book_id, String title, String isbn, double price, double totalPrice) {
         this.book_id = book_id;
         this.title = title;
         this.isbn = isbn;
         this.price = price;
+        this.totalPrice = totalPrice;
     }
 
     public int getId() {
