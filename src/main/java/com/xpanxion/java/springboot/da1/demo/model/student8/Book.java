@@ -14,7 +14,9 @@ public class Book {
     double totalCost;
     String displayCost;
 
-    // CONSTRUCTOR
+    // CONSTRUCTORS
+
+    public Book() {}
 
     public Book(int bookId, String title, String isbn, double price) {
         this.bookId = bookId;
@@ -35,6 +37,8 @@ public class Book {
     }
 
     // ACCESSORS
+
+    // Getters
 
     public String getTitle() {
         return title;
@@ -64,6 +68,8 @@ public class Book {
         return displayCost;
     }
 
+    // Setters
+
     public void setBookId(int bookId) {
         this.bookId = bookId;
     }
@@ -81,4 +87,5 @@ public class Book {
                 ", totalCost=" + totalCost +
                 '}';
     }
+
 }
