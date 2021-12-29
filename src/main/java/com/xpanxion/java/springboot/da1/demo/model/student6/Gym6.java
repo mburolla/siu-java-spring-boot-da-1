@@ -5,8 +5,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="GYM")
-public class Gym {
+@Table(name="GYM6")
+public class Gym6 {
 
     //MEM VARS
     @Id
@@ -20,7 +20,7 @@ public class Gym {
 
     //CONSTRUCTOR
 
-    public Gym(int id, String name, String street1, String street2, String city, String state, int zip) {
+    public Gym6(int id, String name, String street1, String street2, String city, String state, int zip) {
         this.id = id;
         this.name = name;
         this.street1 = street1;
