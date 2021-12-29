@@ -166,3 +166,34 @@ Create the following endpoint:
 
 The endpoint contains a reference to the `GymService` and adds a gym to the
 gym table.
+
+# Ex. 16 Find Gyms
+Create the following endpoint:
+
+`GET student{id}/api/v1/gym?name={partial gym name}`
+
+This endpoint will use SpringData JPA to return all the gyms that have a similar name:
+
+For example:
+`GET student{id}/api/v1/gym?name=Gold`
+
+Ouput:
+```
+[
+ {
+   "id": 1,
+   "name": "Gold's Gym of New York"
+ },
+ {
+   "id": 2,
+   "name": "Gold & silver Gym"
+ },
+ {
+   "id": 3
+   "name": "Golden Oldies Gym for Old Folks"
+ }
+]
+```
+
+
+
