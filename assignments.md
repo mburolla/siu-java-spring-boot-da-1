@@ -164,5 +164,5 @@ Create the following endpoint:
 
 `POST student{id}/api/v1/gym`
 
-The endpoint contains a reference to the `GymService` and adds a gym6 to the
+The endpoint contains a reference to the `GymService` and adds a gym to the
 gym6 table.
