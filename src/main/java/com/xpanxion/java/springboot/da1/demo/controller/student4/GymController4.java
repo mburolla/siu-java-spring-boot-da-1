@@ -1,6 +1,5 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student4;
 
-
 import com.xpanxion.java.springboot.da1.demo.model.student4.Gym;
 import com.xpanxion.java.springboot.da1.demo.service.student4.GymServiceStudent4;
 import org.springframework.beans.factory.annotation.Autowired;
