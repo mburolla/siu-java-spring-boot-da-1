@@ -162,7 +162,7 @@ called `Gym`.  The `Gym` model has the following fields:
 
 Create the following endpoint:
 
-`POST student{id}/api/v1/gym6`
+`POST student{id}/api/v1/gym`
 
 The endpoint contains a reference to the `GymService` and adds a gym6 to the
 gym6 table.
