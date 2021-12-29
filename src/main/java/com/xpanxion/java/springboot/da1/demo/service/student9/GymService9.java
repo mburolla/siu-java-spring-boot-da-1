@@ -1,7 +1,6 @@
 package com.xpanxion.java.springboot.da1.demo.service.student9;
 
-import com.xpanxion.java.springboot.da1.demo.model.instructor.Product;
-import com.xpanxion.java.springboot.da1.demo.model.student9.Gym;
+import com.xpanxion.java.springboot.da1.demo.model.student9.Gym9;
 import com.xpanxion.java.springboot.da1.demo.repository.instructor.GymRepository9;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,7 @@ public class GymService9 {
 
 
     //Methods
-    public Gym addGym(Gym gym){
+    public Gym9 addGym(Gym9 gym){
         return gymRepository9.save(gym);
     }
 }

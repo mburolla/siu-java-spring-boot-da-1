@@ -1,6 +1,6 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student3;
 
-import com.xpanxion.java.springboot.da1.demo.model.student3.Gym;
+import com.xpanxion.java.springboot.da1.demo.model.student3.Gym3;
 import com.xpanxion.java.springboot.da1.demo.service.student3.GymService3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +14,7 @@ public class GymController3 {
     GymService3 gymService3;
 
     @PostMapping("student3/api/v1/gym")
-    public Gym addGym(@RequestBody Gym gym){
+    public Gym3 addGym(@RequestBody Gym3 gym){
         return gymService3.addGym(gym);
     }
 }

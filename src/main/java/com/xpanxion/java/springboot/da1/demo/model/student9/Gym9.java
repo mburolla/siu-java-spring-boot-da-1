@@ -1,21 +1,23 @@
-package com.xpanxion.java.springboot.da1.demo.model.student1;
+package com.xpanxion.java.springboot.da1.demo.model.student9;
 
 import javax.persistence.*;
 
 @Entity
-public class Gym {
+@Table(name = "GYM")
+public class Gym9 {
 
+    //Data members
     @Id
     @SequenceGenerator(
-            name = "student1_sequence",
-            sequenceName = "student1_sequence",
+            name="gym_sequence",
+            sequenceName = "gym_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "student1_sequence"
+            generator = "gym_sequence"
     )
-    private int id;
+    private long id;
     private String name;
     private String street1;
     private String street2;
@@ -23,7 +25,9 @@ public class Gym {
     private String state;
     private int zip;
 
-    public Gym(int id, String name, String street1, String street2, String city, String state, int zip) {
+    public Gym9() {}
+
+    public Gym9(long id, String name, String street1, String street2, String city, String state, int zip) {
         this.id = id;
         this.name = name;
         this.street1 = street1;
@@ -33,11 +37,21 @@ public class Gym {
         this.zip = zip;
     }
 
-    public int getId() {
+    public Gym9(String name, String street1, String street2, String city, String state, int zip) {
+        this.name = name;
+        this.street1 = street1;
+        this.street2 = street2;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+    }
+
+    //Accessors
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

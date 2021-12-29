@@ -1,62 +1,41 @@
-package com.xpanxion.java.springboot.da1.demo.model.student3;
-
+package com.xpanxion.java.springboot.da1.demo.model.student7;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "GYM")
-public class Gym {
-
-    //
-    //Data members
-    //
-
+@Table(name="GYM")
+public class Gym7 {
     @Id
-    private int gymId;
+    private int id;
     private String name;
     private String street1;
     private String street2;
     private String city;
     private String state;
-    private int zip;
+    private String zip;
 
-    //
-    //Constructors
-    //
+    public Gym7() {
 
-    public Gym(){
-        this.gymId = -1;
-        this.name = "";
-        this.street1 = "";
-        this.street2 = "";
-        this.city = "";
-        this.state = "";
-        this.zip = -1;
     }
 
-    public Gym(int gymId, String name, String street1, String street2, String city, String state, int zip){
-        this.gymId = gymId;
-        this.name = name;
-        this.street1 = street1;
-        this.street2 = street2;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
+    public Gym7(int id, String name, String street1, String street2, String city, String state, String zip) {
+        this.id=id;
+        this.name=name;
+        this.street1=street1;
+        this.street2=street2;
+        this.city=city;
+        this.state=state;
+        this.zip=zip;
     }
 
-    //
-    //Accessors
-    //
-
-
-    public int getGymId() {
-        return gymId;
+    public int getId() {
+        return id;
     }
 
-    public void setGymId(int gymId) {
-        this.gymId = gymId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -99,11 +78,11 @@ public class Gym {
         this.state = state;
     }
 
-    public int getZip() {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip(int zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 }
