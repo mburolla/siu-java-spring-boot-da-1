@@ -5,6 +5,8 @@ import com.xpanxion.java.springboot.da1.demo.repository.student8.GymRepository8;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GymService8 {
 
@@ -21,5 +23,10 @@ public class GymService8 {
 
     public Gym8 createGym(Gym8 gym) {
         return gymRepository8.save(gym);
+    }
+
+    public List<Gym8> findGym(String name) {
+        var gyms = gymRepository8.findByNameContaining(name);
+        return gyms;
     }
 }

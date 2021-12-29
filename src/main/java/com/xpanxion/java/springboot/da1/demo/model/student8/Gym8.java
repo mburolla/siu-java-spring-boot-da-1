@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="gym")
+@Table(name="gym8")
 public class Gym8 {
 
     // DATA
@@ -20,6 +20,8 @@ public class Gym8 {
     private String zip;
 
     // CONSTRUCTOR
+
+    public Gym8() {}
 
     public Gym8(int id, String name, String street1, String street2, String city, String state, String zip) {
         this.id = id;
