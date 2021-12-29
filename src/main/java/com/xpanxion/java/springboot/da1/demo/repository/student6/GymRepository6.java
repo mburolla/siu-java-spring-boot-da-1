@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface GymRepository6 extends JpaRepository<Gym6, Integer> {
 
-   public Gym6 findByFirstname(String name);
+   //public Gym6 findByFirstname(String name);
 }
