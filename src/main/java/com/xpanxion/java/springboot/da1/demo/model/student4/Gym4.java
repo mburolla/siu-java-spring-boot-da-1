@@ -3,7 +3,7 @@ package com.xpanxion.java.springboot.da1.demo.model.student4;
 import javax.persistence.*;
 
 @Entity
-public class Gym {
+public class Gym4 {
 
     @Id
     @SequenceGenerator(
@@ -23,10 +23,10 @@ public class Gym {
     private String state;
     private int zip;
 
-    public Gym() {
+    public Gym4() {
     }
 
-    public Gym(int id, String name, String street1, String street2, String city, String state, int zip) {
+    public Gym4(int id, String name, String street1, String street2, String city, String state, int zip) {
         this.id = id;
         this.name = name;
         this.street1 = street1;

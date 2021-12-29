@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Gym")
-public class Gym {
+public class Gym10 {
 
     @Id
     private int id;
@@ -17,7 +17,7 @@ public class Gym {
     private String state;
     private int zip;
 
-    public Gym() {
+    public Gym10() {
         this.id = -1;
         this.name = "";
         this.street1 = "";
@@ -27,7 +27,7 @@ public class Gym {
         this.zip = -1;
     }
 
-    public Gym(int id, String name, String street1, String street2, String city, String state, int zip) {
+    public Gym10(int id, String name, String street1, String street2, String city, String state, int zip) {
         this.id = id;
         this.name = name;
         this.street1 = street1;
