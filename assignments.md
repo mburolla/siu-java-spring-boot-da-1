@@ -177,7 +177,7 @@ This endpoint will use SpringData JPA to return all the gyms that have a similar
 For example:
 `GET student{id}/api/v1/gym?name=Gold`
 
-Ouput:
+Output:
 ```
 [
  {
@@ -186,11 +186,11 @@ Ouput:
  },
  {
    "id": 2,
-   "name": "Gold & silver Gym"
+   "name": "Gold & Silver Gym"
  },
  {
    "id": 3
-   "name": "Golden Oldies Gym for Old Folks"
+   "name": "Golden Oldies Gym for Old Folks Like Me"
  }
 ]
 ```
