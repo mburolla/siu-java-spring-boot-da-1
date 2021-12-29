@@ -140,3 +140,29 @@ public class ProductController {
    }
 }
 ```
+
+# Ex. 15 SpringData JPA: Gym Endpoint
+Copy the approach used in the [reference repo](https://gitlab.com/mburolla/java-spring-boot-spring-data-mysql/-/blob/main/src/main/java/com/xpanxion/springboot/mysql/demo/controller/ProductController.java) for the Product
+controller, but instead of a Product entity, use a Gym entity.
+
+Create a `GymService{studentId}` in your student service package.  Create a
+`GymRepository{studentId)` in a student package under the repository
+package.  `GymService` contains a `GymRepository` as a private data member.
+
+Create a method on the `GymService` called addGym that accepts a model
+called `Gym`.  The `Gym` model has the following fields:
+
+- id
+- name
+- street1
+- street2
+- city
+- state
+- zip
+
+Create the following endpoint:
+
+`POST student{id}/api/v1/gym`
+
+The endpoint contains a reference to the `GymService` and adds a gym to the
+gym table.
