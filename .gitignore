@@ -10,7 +10,7 @@ target/**
 *.war
 *.ear
 
-#IntelliJ files
+# IntelliJ project files
 **/*.iml
 .idea/**
 .idea
