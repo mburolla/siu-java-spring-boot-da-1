@@ -13,16 +13,7 @@ public class GymService1 {
 
     public void addGym(Gym gym) {
 
-        var id = gym.getId();
-        var name = gym.getName();
-        var street1 = gym.getStreet1();
-        var street2 = gym.getStreet2();
-        var city = gym.getCity();
-        var state = gym.getState();
-        var zip = gym.getZip();
-
-        Gym newGym = new Gym(id, name, street1, street2, city, state, zip);
-        gymRepository1.save(newGym);
+        gymRepository1.save(gym);
 
     }
 
