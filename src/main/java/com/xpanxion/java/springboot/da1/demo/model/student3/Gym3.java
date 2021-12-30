@@ -1,9 +1,8 @@
 package com.xpanxion.java.springboot.da1.demo.model.student3;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "GYM3")
@@ -14,7 +13,16 @@ public class Gym3 {
     //
 
     @Id
-    private int gymId;
+    @SequenceGenerator(
+            name = "gym_sequence",
+            sequenceName = "gym_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "gym_sequence"
+    )
+    private long gymId;
     private String name;
     private String street1;
     private String street2;
@@ -27,7 +35,7 @@ public class Gym3 {
     //
 
     public Gym3(){
-        this.gymId = -1;
+        this.gymId = -1L;
         this.name = "";
         this.street1 = "";
         this.street2 = "";
@@ -36,7 +44,7 @@ public class Gym3 {
         this.zip = -1;
     }
 
-    public Gym3(int gymId, String name, String street1, String street2, String city, String state, int zip){
+    public Gym3(long gymId, String name, String street1, String street2, String city, String state, int zip){
         this.gymId = gymId;
         this.name = name;
         this.street1 = street1;
@@ -50,12 +58,11 @@ public class Gym3 {
     //Accessors
     //
 
-
-    public int getGymId() {
+    public long getGymId() {
         return gymId;
     }
 
-    public void setGymId(int gymId) {
+    public void setGymId(long gymId) {
         this.gymId = gymId;
     }
 
@@ -105,5 +112,18 @@ public class Gym3 {
 
     public void setZip(int zip) {
         this.zip = zip;
+    }
+
+    @Override
+    public String toString() {
+        return "Gym3{" +
+                "gymId=" + gymId +
+                ", name='" + name + '\'' +
+                ", street1='" + street1 + '\'' +
+                ", street2='" + street2 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip=" + zip +
+                '}';
     }
 }

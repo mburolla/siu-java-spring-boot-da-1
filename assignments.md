@@ -221,7 +221,7 @@ Create the following endpoints:
 This endpoint allows the API to keep track of a person's workouts.  Be sure to create a table
 that links to the memberId.
 
-# Ex 19.  405 Method Not Allowed
+# Ex. 19 405 Method Not Allowed
 Tired of seeing this error in Postman?  Me too!
 
 Start a new IntelliJ project and create a Java commandline tool that creates a function signature 
@@ -231,7 +231,7 @@ Input:
 ```
 HTTP Method: GET
 URI: api/v1/products/{productId}/stuff?page=page&size=size
-Model: Product
+Model: None
 Name: getAllProducts
 Return: List<Product>
 ```
@@ -239,8 +239,26 @@ Return: List<Product>
 Output:
 ```
 @GetMapping("api/v1/products/{productId}/stuff")  //?page=page&size=size
-public List<Product> getAllProducts(@PathVariable productID, @RequestParam int page, @RequestParam int size, @RequestBody Product product) {
+public List<Product> getAllProducts(@PathVariable productID, @RequestParam int page, @RequestParam int size) {
 ```
+
+---
+
+Input:
+```
+HTTP Method: POST
+URI: api/v1/products/
+Model: Product
+Name: addProduct
+Return: Product
+```
+
+Output:
+```
+@PostMapping("api/v1/products/")
+public Product getAllProducts(@RequestBody Product product) {
+```
+
 
 Be sure to:
 - Create a new GitHub repo in your account
