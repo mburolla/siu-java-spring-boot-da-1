@@ -215,8 +215,8 @@ Make sure to link this member to the Gym.
 # Ex. 18 Member Workout History
 Create the following endpoints:
 
-`POST student{id}/api/v1/member/{memberId}/checkin&time=2021-12-30 13:48:28`
-`POST student{id}/api/v1/member/{memberId}/checkout&time=2021-12-30 13:48:28`
+`POST student{id}/api/v1/member/{memberId}/checkin?time=2021-12-30 13:48:28`
+`POST student{id}/api/v1/member/{memberId}/checkout?time=2021-12-30 13:48:28`
 
 This endpoint allows the API to keep track of a person's workouts.  Be sure to create a table
 that links to the memberId.
