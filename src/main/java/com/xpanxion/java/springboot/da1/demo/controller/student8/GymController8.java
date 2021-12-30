@@ -1,10 +1,12 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student8;
 
 import com.xpanxion.java.springboot.da1.demo.model.student8.Gym8;
+import com.xpanxion.java.springboot.da1.demo.model.student8.Member8;
 import com.xpanxion.java.springboot.da1.demo.service.student8.GymService8;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
@@ -24,4 +26,8 @@ public class GymController8 {
         gymService8.createGym(gym);
     }
 
+    @PostMapping("student8/api/v1/gym/{gymId}/member")
+    public void addMember(@RequestBody Member8 member, @PathVariable("gymId") Integer gymId) {
+        gymService8.addMember(member, gymId);
+    }
 }
