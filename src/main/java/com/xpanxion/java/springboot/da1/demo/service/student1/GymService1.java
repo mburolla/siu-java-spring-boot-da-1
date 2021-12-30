@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class GymService1 {
@@ -30,15 +32,18 @@ public class GymService1 {
 
     }
 
-    public void addGymMember(int gymId, GymMember1 gymMember1) {
+    public AtomicReference<String> addGymMember(int gymId, GymMember1 gymMember1) {
 
-        Gym1 gym = gymRepository1.findById(gymId);
-        if (gym != null) {
+        AtomicReference<String> result = new AtomicReference<>("Gym Added!");
 
-            gymMemberRepository1.save(gymMember1);
+        gymMember1.setGymId(gymId);
+        Optional<Gym1> gym = gymRepository1.findById(gymId);
+        gym.ifPresentOrElse(
+                gym1 -> gymMemberRepository1.save(gymMember1),
+                () -> result.set("Gym not found!")
+                );
 
-        }
-
+        return result;
     }
 
 }
