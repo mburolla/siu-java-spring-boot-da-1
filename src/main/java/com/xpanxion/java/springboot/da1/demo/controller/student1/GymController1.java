@@ -1,6 +1,7 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student1;
 
 import com.xpanxion.java.springboot.da1.demo.model.student1.Gym1;
+import com.xpanxion.java.springboot.da1.demo.model.student1.GymMember1;
 import com.xpanxion.java.springboot.da1.demo.service.student1.GymService1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,13 @@ public class GymController1 {
     public void addGym(@RequestBody Gym1 gym) {
 
         gymService1.addGym(gym);
+
+    }
+
+    @PostMapping(path = "{gymId}/member")
+    public void addMember(@PathVariable("gymId") int gymId, @RequestBody GymMember1 gymMember) {
+
+        gymService1.addGymMember(gymId, gymMember);
 
     }
 
