@@ -1,17 +1,15 @@
 package com.xpanxion.java.springboot.da1.demo.model.student5;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="GYM5")
-public class Gym {
+@Table(name="gym5")
+public class Gym5 {
 
     @Id
-    @GeneratedValue
-    private Integer id;
+    private Long id;
     private String name;
     private String street1;
     private String street2;
@@ -19,8 +17,8 @@ public class Gym {
     private String state;
     private String zip;
 
-    public Gym() {
-        this.id = -1;
+    public Gym5() {
+        this.id = -1l;
         this.name = "";
         this.street1 = "";
         this.street2 = "";
@@ -29,7 +27,7 @@ public class Gym {
         this.zip = "";
     }
 
-    public Gym(Integer id, String name, String street1, String street2, String city, String state, String zip) {
+    public Gym5(Long id, String name, String street1, String street2, String city, String state, String zip) {
         this.id = id;
         this.name = name;
         this.street1 = street1;
@@ -39,11 +37,11 @@ public class Gym {
         this.zip = zip;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -93,5 +91,18 @@ public class Gym {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    @Override
+    public String toString() {
+        return "Gym5{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", street1='" + street1 + '\'' +
+                ", street2='" + street2 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
+                '}';
     }
 }
