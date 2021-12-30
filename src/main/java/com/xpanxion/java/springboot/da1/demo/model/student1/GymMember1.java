@@ -1,7 +1,7 @@
 package com.xpanxion.java.springboot.da1.demo.model.student1;
 
 import javax.persistence.*;
-import java.text.DateFormat;
+import java.sql.Date;
 
 @Entity
 @Table(name="gymMember1")
@@ -18,16 +18,18 @@ public class GymMember1 {
             generator = "student1_sequence"
     )
     private int id;
+    private int gymId;
     private String firstName;
     private String lastName;
-    private String dob;
-    private String subscriptionStart;
-    private String subscriptionEnd;
+    private Date dob;
+    private Date subscriptionStart;
+    private Date subscriptionEnd;
 
     public GymMember1() {};
 
-    public GymMember1(int id, String firstName, String lastName, String dob, String subscriptionStart, String subscriptionEnd) {
+    public GymMember1(int id, int gymId, String firstName, String lastName, Date dob, Date subscriptionStart, Date subscriptionEnd) {
         this.id = id;
+        this.gymId = gymId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
@@ -41,6 +43,14 @@ public class GymMember1 {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getGymId() {
+        return gymId;
+    }
+
+    public void setGymId(int gymId) {
+        this.gymId = gymId;
     }
 
     public String getFirstName() {
@@ -59,27 +69,27 @@ public class GymMember1 {
         this.lastName = lastName;
     }
 
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
 
     public void setDob(String dob) {
-        this.dob = dob;
+        this.dob = Date.valueOf(dob);
     }
 
-    public String getSubscriptionStart() {
+    public Date getSubscriptionStart() {
         return subscriptionStart;
     }
 
     public void setSubscriptionStart(String subscriptionStart) {
-        this.subscriptionStart = subscriptionStart;
+        this.subscriptionStart = Date.valueOf(subscriptionStart);
     }
 
-    public String getSubscriptionEnd() {
+    public Date getSubscriptionEnd() {
         return subscriptionEnd;
     }
 
     public void setSubscriptionEnd(String subscriptionEnd) {
-        this.subscriptionEnd = subscriptionEnd;
+        this.subscriptionEnd = Date.valueOf(subscriptionEnd);
     }
 }
