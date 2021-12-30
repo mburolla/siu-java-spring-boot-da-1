@@ -23,9 +23,9 @@ public class MemberController2 {
     // Post Methods
     //
 
-    @PostMapping("student2/api/v1/1/member")
-    public Member2 addMember(@RequestBody Member2 member) {
-        return memberService2.addMember(1, member);
+    @PostMapping("student2/api/v1/{gymId}/member")
+    public Member2 addMember(@PathVariable Integer gymId, @RequestBody Member2 member) {
+        return memberService2.addMember(gymId, member);
     }
 }
 
