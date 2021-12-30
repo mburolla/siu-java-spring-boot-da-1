@@ -24,7 +24,7 @@ public class GymServiceStudent4 {
     }
 
     public List<Gym4> getFindByName(String name) {
-        return gymRepositoryStudent4.findByName(name);
+        return gymRepositoryStudent4.findByNameContaining(name);
     }
 }
 
