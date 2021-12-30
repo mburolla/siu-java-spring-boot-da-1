@@ -28,11 +28,7 @@ public class GymService10 {
         return gymRepository.save(gym);
     }
 
-    public List<Gym10> getGym(String gymName) {
-        return gymRepository.findByNameLike(gymName);
-    }
-
-    public List<Gym10> getGymNames(String name){
-        return gymRepository.findByNameLike(name);
+    public List<Gym10> findByNameContaining(String gymName) {
+        return gymRepository.findByNameContaining(gymName);
     }
 }

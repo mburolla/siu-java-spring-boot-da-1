@@ -20,8 +20,8 @@ public class GymController10 {
         return gymService.addGym(gym);
     }
 
-    @GetMapping("student10/api/v1/gym/name={gymName}")
-    public List<Gym10> getGym(@PathVariable String gymName){
-        return gymService.getGym(gymName);
+    @GetMapping("student10/api/v1/gym") // student10/api/v1/gym?name=gold
+    public List<Gym10> getGym(@RequestParam String name){
+        return gymService.findByNameContaining(name);
     }
 }

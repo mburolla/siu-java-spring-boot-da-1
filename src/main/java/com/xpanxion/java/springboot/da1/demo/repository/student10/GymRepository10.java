@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface GymRepository10 extends JpaRepository<Gym10, Integer> {
 
-    List<Gym10> findByNameLike(String gymName);
+    List<Gym10> findByNameContaining(String name);
 
     Gym10 findById(int id);
 }
