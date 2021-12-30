@@ -16,9 +16,8 @@ public class GymController1 {
 
     @GetMapping
     public List<Gym1> findGym(@RequestParam String name) {
-        System.out.println("name= " + name);
-        var gyms = gymService1.findGym(name);
-        return gyms;
+
+        return gymService1.findGym(name);
 
     }
 

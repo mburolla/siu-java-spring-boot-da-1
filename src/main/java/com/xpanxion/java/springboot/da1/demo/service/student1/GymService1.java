@@ -22,8 +22,7 @@ public class GymService1 {
 
     public List<Gym1> findGym(String name) {
 
-        var gyms = gymRepository1.findByNameContaining(name);
-        return gyms;
+        return gymRepository1.findByNameContaining(name);
 
     }
 
