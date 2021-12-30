@@ -1,35 +1,26 @@
-package com.xpanxion.java.springboot.da1.demo.model.student5;
+package com.xpanxion.java.springboot.da1.demo.model.student6;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="GYM")
-public class Gym {
+@Table(name="GYM6")
+public class Gym6 {
 
+    //MEM VARS
     @Id
-    @GeneratedValue
-    private Integer id;
+    private int id;
     private String name;
     private String street1;
     private String street2;
     private String city;
     private String state;
-    private String zip;
+    private int zip;
 
-    public Gym() {
-        this.id = -1;
-        this.name = "";
-        this.street1 = "";
-        this.street2 = "";
-        this.city = "";
-        this.state = "";
-        this.zip = "";
-    }
+    //CONSTRUCTOR
 
-    public Gym(Integer id, String name, String street1, String street2, String city, String state, String zip) {
+    public Gym6(int id, String name, String street1, String street2, String city, String state, int zip) {
         this.id = id;
         this.name = name;
         this.street1 = street1;
@@ -39,11 +30,13 @@ public class Gym {
         this.zip = zip;
     }
 
-    public Integer getId() {
+    //GETTERS AND SETTERS
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -87,11 +80,11 @@ public class Gym {
         this.state = state;
     }
 
-    public String getZip() {
+    public int getZip() {
         return zip;
     }
 
-    public void setZip(String zip) {
+    public void setZip(int zip) {
         this.zip = zip;
     }
 }

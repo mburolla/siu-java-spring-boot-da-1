@@ -3,6 +3,7 @@ package com.xpanxion.java.springboot.da1.demo.model.student4;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Gym4")
 public class Gym4 {
 
     @Id

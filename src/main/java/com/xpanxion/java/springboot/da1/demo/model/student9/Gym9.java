@@ -3,7 +3,7 @@ package com.xpanxion.java.springboot.da1.demo.model.student9;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "GYM")
+@Table(name = "GYM9")
 public class Gym9 {
 
     //Data members

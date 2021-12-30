@@ -195,5 +195,57 @@ Output:
 ]
 ```
 
+# Ex. 17 Member
+Create the following endpoint:
 
+`POST student{id}/api/v1/gym/{gymId}/member`
 
+This endpoint adds a member for the specified `gymId`.  A member has the following attributes:
+
+- id
+- gymId
+- first name
+- last name
+- date of birth
+- subscription start date
+- subscription end date
+
+Make sure to link this member to the Gym.
+
+# Ex. 18 Member Workout History
+Create the following endpoints:
+
+`POST student{id}/api/v1/member/{memberId}/checkin&time=2021-12-30 13:48:28`
+`POST student{id}/api/v1/member/{memberId}/checkout&time=2021-12-30 13:48:28`
+
+This endpoint allows the API to keep track of a person's workouts.  Be sure to create a table
+that links to the memberId.
+
+# Ex 19.  405 Method Not Allowed
+Tired of seeing this error in Postman?  Me too!
+
+Start a new IntelliJ project and create a Java commandline tool that creates a function signature 
+for a SpringBoot ReST endpoint. The program works something like this:
+
+Input:
+```
+HTTP Method: GET
+URI: api/v1/products/{productId}/stuff?page=page&size=size
+Model: Product
+Name: getAllProducts
+Return: List<Product>
+```
+
+Output:
+```
+@GetMapping("api/v1/products/{productId}/stuff")  //?page=page&size=size
+public List<Product> getAllProducts(@PathVariable productID, @RequestParam int page, @RequestParam int size, @RequestBody Product product) {
+```
+
+Be sure to:
+- Create a new GitHub repo in your account
+- Create a nice ReadMe that describes:
+  - The problem that this solves
+  - How to use this tool & examples
+- Sell it for $1.2M
+- Give Marty %10

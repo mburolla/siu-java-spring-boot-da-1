@@ -3,6 +3,7 @@ package com.xpanxion.java.springboot.da1.demo.model.student1;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Gym1")
 public class Gym1 {
 
     @Id
@@ -22,6 +23,8 @@ public class Gym1 {
     private String city;
     private String state;
     private int zip;
+
+    public Gym1() {}
 
     public Gym1(int id, String name, String street1, String street2, String city, String state, int zip) {
         this.id = id;
