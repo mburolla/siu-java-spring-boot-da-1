@@ -14,7 +14,7 @@ public class GymController5 {
     private GymService5 gymService;
 
     //GET
-    @GetMapping("gym")
+    @GetMapping("student5/api/v1/gym")
     public List<Gym5> findAllByNameContaining(@RequestParam("name") String name) {
         return gymService.findAllByNameContaining(name);
     }
