@@ -255,7 +255,7 @@ Return: Product
 
 Output:
 ```
-@GetMapping("api/v1/products/")
+@PostMapping("api/v1/products/")
 public Product getAllProducts(@RequestBody Product product) {
 ```
 
