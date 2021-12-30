@@ -1,14 +1,21 @@
 package com.xpanxion.java.springboot.da1.demo.model.student5;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="gym5")
 public class Gym5 {
 
     @Id
+    @SequenceGenerator(
+            name = "gym_sequence",
+            sequenceName = "gym_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "gym_sequence"
+    )
     private Long id;
     private String name;
     private String street1;
@@ -27,8 +34,7 @@ public class Gym5 {
         this.zip = "";
     }
 
-    public Gym5(Long id, String name, String street1, String street2, String city, String state, String zip) {
-        this.id = id;
+    public Gym5(String name, String street1, String street2, String city, String state, String zip) {
         this.name = name;
         this.street1 = street1;
         this.street2 = street2;
