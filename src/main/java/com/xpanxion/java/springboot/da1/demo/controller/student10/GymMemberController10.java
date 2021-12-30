@@ -16,7 +16,6 @@ public class GymMemberController10 {
 
     @PostMapping("student10/api/v1/gym/{gymId}/member")
     public GymMember10 addMember(@PathVariable int gymId, @RequestBody GymMember10 gymMember10) {
-        return gymMember10;
-        //return memberService.addMember(1, member);
+        return memberService.addMember(gymId, gymMember10);
     }
 }
