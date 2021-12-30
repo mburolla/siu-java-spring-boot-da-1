@@ -222,7 +222,7 @@ This endpoint allows the API to keep track of a person's workouts.  Be sure to c
 that links to the memberId.
 
 # Ex 19.  405 Method Not Allowed
-Tired of seeing this error in Postman?  Mee too!
+Tired of seeing this error in Postman?  Me too!
 
 Start a new IntelliJ project and create a Java commandline tool that creates a function signature 
 for a SpringBoot ReST endpoint. The program works something like this:
