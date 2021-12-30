@@ -21,6 +21,8 @@ public class Gym8 {
 
     // CONSTRUCTOR
 
+    public Gym8() {}
+
     public Gym8(int id, String name, String street1, String street2, String city, String state, String zip) {
         this.id = id;
         this.name = name;
