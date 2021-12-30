@@ -1,11 +1,13 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student10;
 
 import com.xpanxion.java.springboot.da1.demo.model.student10.Gym10;
+import com.xpanxion.java.springboot.da1.demo.model.student10.GymMember10;
+import com.xpanxion.java.springboot.da1.demo.service.student10.GymMemberService10;
 import com.xpanxion.java.springboot.da1.demo.service.student10.GymService10;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class GymController10 {
@@ -18,4 +20,8 @@ public class GymController10 {
         return gymService.addGym(gym);
     }
 
+    @GetMapping("student10/api/v1/gym/name={gymName}")
+    public List<Gym10> getGym(@PathVariable String gymName){
+        return gymService.getGym(gymName);
+    }
 }
