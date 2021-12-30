@@ -23,7 +23,7 @@ public class GymController4 {
         }
 
         @GetMapping("student{id}/api/v1/gym?name=Gold")
-        private List<Gym4> getFindByName(@RequestParam String name){
-                return gymServiceStudent4.getFindByName(name);
+        private List<Gym4> getFindByNameContaining(@RequestParam String name){
+                return gymServiceStudent4.getFindByNameContaining(name);
         }
 }

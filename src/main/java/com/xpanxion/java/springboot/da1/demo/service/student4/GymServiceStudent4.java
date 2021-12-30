@@ -23,7 +23,7 @@ public class GymServiceStudent4 {
         return gymRepositoryStudent4.save(gym);
     }
 
-    public List<Gym4> getFindByName(String name) {
+    public List<Gym4> getFindByNameContaining(String name) {
         return gymRepositoryStudent4.findByNameContaining(name);
     }
 }
