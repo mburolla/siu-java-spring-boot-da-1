@@ -24,6 +24,8 @@ public class Gym1 {
     private String state;
     private int zip;
 
+    public Gym1() {}
+
     public Gym1(int id, String name, String street1, String street2, String city, String state, int zip) {
         this.id = id;
         this.name = name;

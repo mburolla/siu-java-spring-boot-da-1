@@ -3,17 +3,26 @@ package com.xpanxion.java.springboot.da1.demo.controller.student1;
 import com.xpanxion.java.springboot.da1.demo.model.student1.Gym1;
 import com.xpanxion.java.springboot.da1.demo.service.student1.GymService1;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@RequestMapping("student1/api/v1/gym1")
 @RestController
 public class GymController1 {
 
     @Autowired
     GymService1 gymService1;
 
-    @PostMapping("student1/api/v1/gym")
+    @GetMapping
+    public List<Gym1> findGym(@RequestParam String name) {
+        System.out.println("name= " + name);
+        var gyms = gymService1.findGym(name);
+        return gyms;
+
+    }
+
+    @PostMapping
     public void addGym(@RequestBody Gym1 gym) {
 
         gymService1.addGym(gym);
