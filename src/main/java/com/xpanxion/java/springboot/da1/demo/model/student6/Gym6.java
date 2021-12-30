@@ -2,12 +2,15 @@ package com.xpanxion.java.springboot.da1.demo.model.student6;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="GYM6")
 public class Gym6 {
 
+    @OneToOne(mappedBy = "gym6")
+    private Gym6 gym6;
     //MEM VARS
     @Id
     private int id;
