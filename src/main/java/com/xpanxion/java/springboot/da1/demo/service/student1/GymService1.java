@@ -1,7 +1,6 @@
 package com.xpanxion.java.springboot.da1.demo.service.student1;
 
 import com.xpanxion.java.springboot.da1.demo.model.student1.Gym1;
-import com.xpanxion.java.springboot.da1.demo.model.student5.Gym;
 import com.xpanxion.java.springboot.da1.demo.repository.student1.GymRepository1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
