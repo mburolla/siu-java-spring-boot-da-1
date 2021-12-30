@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Service
 public class GymServiceStudent4 {
@@ -18,7 +19,12 @@ public class GymServiceStudent4 {
     private GymRepositoryStudent4 gymRepositoryStudent4;
 
     //Methods
-    public Gym4 addGym(Gym4 gym){
+    public Gym4 addGym(Gym4 gym) {
         return gymRepositoryStudent4.save(gym);
     }
+
+    public List<Gym4> getFindByName(String name) {
+        return gymRepositoryStudent4.findByNameContaining(name);
+    }
 }
+
