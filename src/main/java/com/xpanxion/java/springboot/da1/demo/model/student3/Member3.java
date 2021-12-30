@@ -10,6 +10,7 @@ public class Member3 {
     //Data members
     //
 
+
     @Id
     @SequenceGenerator(
             name = "member_sequence",

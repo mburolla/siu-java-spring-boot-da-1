@@ -4,7 +4,6 @@ import com.xpanxion.java.springboot.da1.demo.model.student3.Gym3;
 import com.xpanxion.java.springboot.da1.demo.service.student3.GymService3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
