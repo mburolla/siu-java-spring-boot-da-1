@@ -1,7 +1,6 @@
 package com.xpanxion.java.springboot.da1.demo.model.student10;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name="GymMember10")
@@ -11,24 +10,23 @@ public class GymMember10 {
     private int id;
     private String firstName;
     private String lastName;
-    private Date dateOfBirth;
-    private Date startDate;
-    private Date endDate;
+    private String dateOfBirth;
+    private String startDate;
+    private String endDate;
 
-    @ManyToOne(targetEntity = Gym10.class)
-    @JoinColumn(name = "gymId", referencedColumnName = "id")
+    @ManyToOne
     private Gym10 gym;
 
     public GymMember10(){
         this.id = -1;
         this.firstName = "";
         this.lastName = "";
-        this.dateOfBirth = new Date(0);
-        this.startDate = new Date(0);
-        this.endDate = new Date(0);
+        this.dateOfBirth = "";
+        this.startDate = "";
+        this.endDate = "";
     }
 
-    public GymMember10(int id, Gym10 gym, String firstName, String lastName, Date dateOfBirth, Date startDate, Date endDate) {
+    public GymMember10(int id, Gym10 gym, String firstName, String lastName, String dateOfBirth, String startDate, String endDate) {
         this.id = id;
         this.gym = gym;
         this.firstName = firstName;
@@ -55,15 +53,15 @@ public class GymMember10 {
         return lastName;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
@@ -84,15 +82,15 @@ public class GymMember10 {
         this.lastName = lastName;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 }
