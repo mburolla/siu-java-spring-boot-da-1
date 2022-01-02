@@ -7,7 +7,9 @@ import com.xpanxion.java.springboot.da1.demo.repository.instructor.GymRepository
 import com.xpanxion.java.springboot.da1.demo.repository.instructor.MemberRepository0;
 import com.xpanxion.java.springboot.da1.demo.repository.instructor.WorkoutHistoryRepository0;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
 
@@ -29,7 +31,8 @@ public class MemberService0 {
     }
 
     public void checkMember(CheckType checkType, int memberId, Date time) {
-        var member = memberRepository0.findById(memberId).get();
+        var member = memberRepository0.findById(memberId).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found."));
         var workoutHistory = new WorkoutHistory0(member, time, checkType);
         workoutHistoryRepository0.save(workoutHistory);
     }

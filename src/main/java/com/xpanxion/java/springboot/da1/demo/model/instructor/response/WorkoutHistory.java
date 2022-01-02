@@ -10,7 +10,7 @@ public class WorkoutHistory {
     // Data Members
     //
 
-    private Date time;
+    private Date timeUtc;
     private int memberId;
     private CheckType checkType;
 
@@ -22,7 +22,7 @@ public class WorkoutHistory {
     }
 
     public WorkoutHistory(Date time, int memberId, CheckType checkType) {
-        this.time = time;
+        this.timeUtc = time;
         this.memberId = memberId;
         this.checkType = checkType;
     }
@@ -31,12 +31,12 @@ public class WorkoutHistory {
     // Accessors
     //
 
-    public Date getTime() {
-        return time;
+    public Date getTimeUtc() {
+        return timeUtc;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setTimeUtc(Date time) {
+        this.timeUtc = time;
     }
 
     public int getMemberId() {

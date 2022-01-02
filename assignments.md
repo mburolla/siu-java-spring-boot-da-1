@@ -218,12 +218,13 @@ Create the following endpoints:
 - `POST student{id}/api/v1/member/{memberId}/checkin?time=2021-12-30 13:48:28`
 - `POST student{id}/api/v1/member/{memberId}/checkout?time=2021-12-30 13:48:28`
 
-This endpoint allows the API to keep track of a person's workouts.  Be sure to create a table
-that links to the memberId.
+This endpoint allows the API to keep track of a person's workouts.  Be sure link to the memberId. 
+This endpoint should echo the arguments passed into it.  If a member id is passed into this endpoint,
+the endpoint should return an HTTP status code of `404`: `Member id not found`.  Otherwise 
+return an HTTP Status code of `200`.
 
-This endpoint should echo the arguements passed into it.
 
-# Ex. 19 405 Method Not Allowed
+# BONUS: 405 Method Not Allowed
 Tired of seeing this error in Postman?  Me too!
 
 Start a new IntelliJ project and create a Java commandline tool that creates a function signature 
