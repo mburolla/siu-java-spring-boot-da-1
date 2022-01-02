@@ -2,6 +2,7 @@ package com.xpanxion.java.springboot.da1.demo.controller.instructor;
 
 import com.xpanxion.java.springboot.da1.demo.model.instructor.CheckType;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.Member0;
+import com.xpanxion.java.springboot.da1.demo.model.instructor.response.WorkoutHistory;
 import com.xpanxion.java.springboot.da1.demo.service.instructor.MemberService0;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,14 +23,14 @@ public class MemberController0 {
     }
 
     @PostMapping("instructor/api/v1/member/{memberId}/checkin")
-    public String addWorkoutHistoryCheckIn(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd H:m:s") Date time, @PathVariable int memberId) {
+    public WorkoutHistory addWorkoutHistoryCheckIn(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd H:m:s") Date time, @PathVariable int memberId) {
         memberService0.checkMember(CheckType.CHECK_IN,memberId, time);
-        return "ok";
+        return new WorkoutHistory(time, memberId, CheckType.CHECK_IN);
     }
 
     @PostMapping("instructor/api/v1/member/{memberId}/checkout")
-    public String addWorkoutHistoryCheckout(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd H:m:s") Date time, @PathVariable int memberId) {
+    public WorkoutHistory addWorkoutHistoryCheckout(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd H:m:s") Date time, @PathVariable int memberId) {
         memberService0.checkMember(CheckType.CHECK_OUT,memberId, time);
-        return "ok";
+        return new WorkoutHistory(time, memberId, CheckType.CHECK_OUT);
     }
 }
