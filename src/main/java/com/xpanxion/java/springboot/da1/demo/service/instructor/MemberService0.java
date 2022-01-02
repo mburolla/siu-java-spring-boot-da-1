@@ -29,8 +29,8 @@ public class MemberService0 {
     }
 
     public void checkMember(CheckType checkType, int memberId, Date time) {
-
         var member = memberRepository0.findById(memberId).get();
-        workoutHistoryRepository0.save(new WorkoutHistory0(time, memberId, checkType));
+        var workoutHistory = new WorkoutHistory0(member, time, checkType);
+        workoutHistoryRepository0.save(workoutHistory);
     }
 }

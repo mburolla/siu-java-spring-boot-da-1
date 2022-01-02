@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name= "Member0")
+@Table(name="Member0")
 public class Member0 {
 
     //
@@ -18,7 +18,7 @@ public class Member0 {
     private int memberId;
 
     @OneToOne(targetEntity = Gym0.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "gym", referencedColumnName = "gymId")
+    @JoinColumn(name = "gym_id", referencedColumnName = "gymId")
     private Gym0 gym;
 
     private String firstName;
@@ -31,7 +31,8 @@ public class Member0 {
     // Constructors
     //
 
-    public Member0() {}
+    public Member0() {
+    }
 
     public Member0(Gym0 gym, String firstName, String lastName, Date DOB, Date startDate, Date endDate) {
         this.gym = gym;
