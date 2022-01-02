@@ -1,9 +1,6 @@
 package com.xpanxion.java.springboot.da1.demo.model.student2;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "GYM2")

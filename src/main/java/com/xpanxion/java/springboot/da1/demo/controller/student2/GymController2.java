@@ -34,5 +34,4 @@ public class GymController2 {
     public Gym2 addGym(@RequestBody Gym2 gym) {
         return gymService2.addGym(gym);
     }
-
 }
