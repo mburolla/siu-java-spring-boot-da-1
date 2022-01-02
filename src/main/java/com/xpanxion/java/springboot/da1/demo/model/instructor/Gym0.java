@@ -15,7 +15,7 @@ public class Gym0 {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int gymId;
 
     private String name;
     private String street1;
@@ -31,7 +31,7 @@ public class Gym0 {
     public Gym0() { }
 
     public Gym0(int id, String name, String street1, String street2, String city, String state, int zip) {
-        this.id = id;
+        this.gymId = id;
         this.name = name;
         this.street1 = street1;
         this.street2 = street2;
@@ -44,8 +44,8 @@ public class Gym0 {
     // Accessors
     //
 
-    public int getId() {
-        return id;
+    public int getGymId() {
+        return gymId;
     }
 
     public String getName() {
@@ -74,7 +74,7 @@ public class Gym0 {
 
 
     public void setId(int id) {
-        this.id = id;
+        this.gymId = id;
     }
 
     public void setName(String name) {
