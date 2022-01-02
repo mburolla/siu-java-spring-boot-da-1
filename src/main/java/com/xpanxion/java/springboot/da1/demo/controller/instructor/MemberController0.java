@@ -5,12 +5,8 @@ import com.xpanxion.java.springboot.da1.demo.model.instructor.Member0;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.response.WorkoutHistory;
 import com.xpanxion.java.springboot.da1.demo.service.instructor.MemberService0;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.server.WebServerException;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
 
