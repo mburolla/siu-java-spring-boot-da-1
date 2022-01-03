@@ -1,7 +1,8 @@
 package com.xpanxion.java.springboot.da1.demo.model.student3;
 
+import org.hibernate.annotations.Check;
+
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "CHECK_IN_OUT3")
@@ -23,22 +24,17 @@ public class CheckInOut3 {
     )
     private long checkInId;
     private long memberId;
-    private int checkType;
     private String time;
+    private CheckType3 checkType;
 
 
     //
     //Constructors
     //
 
-    public CheckInOut3() {
-        this.memberId = -1L;
-        this.checkType = -1;
-        this.time = "";
-    }
+    public CheckInOut3() { }
 
-
-    public CheckInOut3(long memberId, int checkType, String time) {
+    public CheckInOut3(long memberId, CheckType3 checkType, String time) {
         this.memberId = memberId;
         this.checkType = checkType;
         this.time = time;
@@ -64,11 +60,11 @@ public class CheckInOut3 {
         this.memberId = memberId;
     }
 
-    public int getCheckType() {
+    public CheckType3 getCheckType() {
         return checkType;
     }
 
-    public void setCheckType(int checkType) {
+    public void setCheckType(CheckType3 checkType) {
         this.checkType = checkType;
     }
 

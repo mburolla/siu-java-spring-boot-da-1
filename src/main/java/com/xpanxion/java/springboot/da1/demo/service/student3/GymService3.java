@@ -22,6 +22,10 @@ public class GymService3 {
     @Autowired
     private CheckInOutRepository3 checkInOutRepository;
 
+    //
+    //Get
+    //
+
     public Gym3 addGym(Gym3 gym){
         return gymRepository.save(gym);
     }
@@ -30,11 +34,20 @@ public class GymService3 {
         return gymRepository.findByNameContaining(name);
     }
 
+    //
+    //Post
+    //
+
     public Member3 addMember(Member3 member) {return memberRepository.save(member);}
 
     public CheckInOut3 addCheckIn(CheckInOut3 checkInOut3){
         return checkInOutRepository.save(checkInOut3);
     }
+
+    //
+    //Put
+    //
+
 
 //    public CheckInOut3 addCheckOut(CheckInOut3 checkInOut3){
 //        return checkInOutRepository.save(checkInOut3);
