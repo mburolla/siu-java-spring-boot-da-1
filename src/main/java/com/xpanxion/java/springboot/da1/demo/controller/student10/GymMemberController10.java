@@ -6,6 +6,9 @@ import com.xpanxion.java.springboot.da1.demo.service.student10.GymMemberService1
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 public class GymMemberController10 {
 
@@ -25,5 +28,11 @@ public class GymMemberController10 {
     @PostMapping("student10/api/v1/member/{memberId}/checkout")
     public Workout10 checkOut(@PathVariable int memberId, @RequestParam String time) {
         return memberService.checkOut(memberId, time);
+    }
+
+    @GetMapping("student10/api/v1/member/{memberId}/workout-history")
+    public List<Workout10> getWorkoutHistory(@PathVariable int memberId) {
+        List<Workout10> workouts = memberService.getWorkoutHistory(memberId);
+        return workouts;
     }
 }

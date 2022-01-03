@@ -1,6 +1,5 @@
 package com.xpanxion.java.springboot.da1.demo.model.student10;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -21,6 +20,12 @@ public class Workout10 {
         this.memberId = memberId;
         this.timeIn = timeIn;
         this.timeOut = null;
+    }
+
+    public Workout10(int memberId, String timeIn, String timeOut){
+        this.memberId = memberId;
+        this.timeIn = timeIn;
+        this.timeOut = timeOut;
     }
 
     public Workout10(int workoutId, int memberId, String timeIn, String timeOut){

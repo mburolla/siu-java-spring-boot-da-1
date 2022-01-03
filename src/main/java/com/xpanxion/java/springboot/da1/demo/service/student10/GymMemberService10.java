@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @Service
 public class GymMemberService10 {
 
@@ -48,5 +50,15 @@ public class GymMemberService10 {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member ID not found");
         }
 
+    }
+
+    public List<Workout10> getWorkoutHistory(int memberId) {
+        if(memberRepository.findById(memberId)!=null) {
+            var workoutList = workoutRepository.findAllByMemberIdOrderByTimeInAsc(memberId);
+            return workoutList;
+        }
+        else{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member ID not found");
+        }
     }
 }
