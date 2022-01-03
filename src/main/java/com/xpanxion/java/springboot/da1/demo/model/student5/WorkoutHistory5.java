@@ -18,36 +18,31 @@ public class WorkoutHistory5 {
             generator = "workout_id_sequence"
     )
     private long workoutId;
-    private long memberId;
     @Temporal(TemporalType.TIMESTAMP)
     private Date checkIn;
     @Temporal(TemporalType.TIMESTAMP)
     private Date checkOut;
 
+    @OneToOne
+    @JoinColumn(
+            name = "member_id",
+            referencedColumnName = "memberId"
+    )
+    private Member5 member;
+
     public WorkoutHistory5() {
     }
 
-    public WorkoutHistory5(long memberId, Date checkIn) {
-        this.memberId = memberId;
+    public WorkoutHistory5(Member5 member, Date checkIn) {
         this.checkIn = checkIn;
-        this.checkOut = null;
+        this.member = member;
     }
 
-    public WorkoutHistory5(long workoutId, long memberId, Date checkIn, Date checkOut) {
+    public WorkoutHistory5(long workoutId, Date checkIn, Date checkOut, Member5 member) {
         this.workoutId = workoutId;
-        this.memberId = memberId;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-    }
-
-    @Override
-    public String toString() {
-        return "WorkoutHistory5{" +
-                "workoutId=" + workoutId +
-                ", memberId=" + memberId +
-                ", checkIn=" + checkIn +
-                ", checkOut=" + checkOut +
-                '}';
+        this.member = member;
     }
 
     public long getWorkoutId() {
@@ -56,14 +51,6 @@ public class WorkoutHistory5 {
 
     public void setWorkoutId(long workoutId) {
         this.workoutId = workoutId;
-    }
-
-    public long getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(long memberId) {
-        this.memberId = memberId;
     }
 
     public Date getCheckIn() {
@@ -80,5 +67,23 @@ public class WorkoutHistory5 {
 
     public void setCheckOut(Date checkOut) {
         this.checkOut = checkOut;
+    }
+
+    public Member5 getMember() {
+        return member;
+    }
+
+    public void setMember(Member5 member) {
+        this.member = member;
+    }
+
+    @Override
+    public String toString() {
+        return "WorkoutHistory5{" +
+                "workoutId=" + workoutId +
+                ", checkIn=" + checkIn +
+                ", checkOut=" + checkOut +
+                ", member=" + member +
+                '}';
     }
 }

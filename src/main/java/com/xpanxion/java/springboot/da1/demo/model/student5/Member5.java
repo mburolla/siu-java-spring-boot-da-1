@@ -17,66 +17,56 @@ public class Member5 {
             strategy = GenerationType.SEQUENCE,
             generator = "member_sequence"
     )
-    private long id;
-    private long gymId;
+    private long memberId;
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
     private Date subscriptionStart;
     private Date subscriptionEnd;
 
+    @OneToOne
+    @JoinColumn(
+            name = "gym_id",
+            referencedColumnName = "gymId"
+    )
+    private Gym5 gym;
+
     public Member5() {
-        this.id = -1L;
-        this.gymId = -1L;
-        this.firstName = "";
-        this.lastName = "";
-        this.dateOfBirth = new Date();
-        this.subscriptionStart = new Date();
-        this.subscriptionEnd = new Date();
     }
 
-    public Member5(long id,
-                   String firstName,
-                   String lastName,
-                   Date dateOfBirth,
-                   Date subscriptionStart,
-                   Date subscriptionEnd) {
-        this.id = id;
-        this.gymId = -1L;
+    public Member5(Gym5 gym) {
+        this.gym = gym;
+    }
+
+    public Member5(long memberId, String firstName, String lastName, Date dateOfBirth, Date subscriptionStart, Date subscriptionEnd, Gym5 gym) {
+        this.memberId = memberId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.subscriptionStart = subscriptionStart;
         this.subscriptionEnd = subscriptionEnd;
+        this.gym = gym;
     }
 
     @Override
     public String toString() {
         return "Member5{" +
-                "id=" + id +
-                ", gymId=" + gymId +
+                "memberId=" + memberId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", subscriptionStart=" + subscriptionStart +
                 ", subscriptionEnd=" + subscriptionEnd +
+                ", gym=" + gym +
                 '}';
     }
 
-    public long getId() {
-        return id;
+    public long getMemberId() {
+        return memberId;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getGymId() {
-        return gymId;
-    }
-
-    public void setGymId(long gymId) {
-        this.gymId = gymId;
+    public void setMemberId(long memberId) {
+        this.memberId = memberId;
     }
 
     public String getFirstName() {
@@ -117,5 +107,13 @@ public class Member5 {
 
     public void setSubscriptionEnd(Date subscriptionEnd) {
         this.subscriptionEnd = subscriptionEnd;
+    }
+
+    public Gym5 getGym() {
+        return gym;
+    }
+
+    public void setGym(Gym5 gym) {
+        this.gym = gym;
     }
 }

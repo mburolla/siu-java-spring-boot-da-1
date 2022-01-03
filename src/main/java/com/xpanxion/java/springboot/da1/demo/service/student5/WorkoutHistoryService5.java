@@ -14,14 +14,18 @@ public class WorkoutHistoryService5 {
 
     @Autowired
     private WorkoutHistoryRepository5 workoutHistoryRepository;
+    @Autowired
+    private MemberService5 memberService;
 
     public WorkoutHistory5 workoutCheckIn(Long memberId, Date time) {
-        return workoutHistoryRepository.save(new WorkoutHistory5(memberId, time));
+        var member = memberService.getMember(memberId);
+        return workoutHistoryRepository.save(new WorkoutHistory5(member, time));
     }
 
     public WorkoutHistory5 workoutCheckOut(Long memberId, Date time) {
-        var workoutList = workoutHistoryRepository.findAllByMemberIdOrderByWorkoutIdDesc(memberId);
-        if (workoutList.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        var workoutList = workoutHistoryRepository.findAllByMemberMemberIdOrderByWorkoutIdDesc(memberId);
+        if (workoutList.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member id not found");
+        else if (workoutList.get(0).getCheckOut()!=null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "not currently checked in");
         var workout = workoutList.get(0);
         workout.setCheckOut(time);
         workoutHistoryRepository.save(workout);
