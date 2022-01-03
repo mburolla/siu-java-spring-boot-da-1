@@ -22,7 +22,7 @@ public class Member3 {
             generator = "member_sequence"
     )
     private int memberId;
-    private long gymId;
+    private int gymId;
     private String firstName;
     private String lastName;
     private String dateOfBirth;
@@ -35,7 +35,7 @@ public class Member3 {
 
     public Member3(){
         this.memberId = -1;
-        this.gymId = -1L;
+        this.gymId = -1;
         this.firstName = "";
         this.lastName = "";
         this.dateOfBirth = "";
@@ -45,7 +45,7 @@ public class Member3 {
 
     public Member3(Integer memberId, String firstName, String lastName, String dateOfBirth, String subStartDate, String subEndDate){
         this.memberId = memberId;
-        this.gymId = -1L;
+        this.gymId = -1;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -66,11 +66,11 @@ public class Member3 {
         this.memberId = memberId;
     }
 
-    public long getGymId() {
+    public int getGymId() {
         return gymId;
     }
 
-    public void setGymId(long gymId) {
+    public void setGymId(int gymId) {
         this.gymId = gymId;
     }
 

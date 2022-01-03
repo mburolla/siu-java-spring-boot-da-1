@@ -8,8 +8,13 @@ import com.xpanxion.java.springboot.da1.demo.repository.student3.CheckInOutRepos
 import com.xpanxion.java.springboot.da1.demo.repository.student3.GymRepository3;
 import com.xpanxion.java.springboot.da1.demo.repository.student3.MemberRepository3;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class GymService3 {
@@ -42,17 +47,27 @@ public class GymService3 {
     public Member3 addMember(Member3 member) {return memberRepository.save(member);}
 
     public CheckInOut3 addCheckIn(int memberId, String time, CheckType3 checkType3){
-        Member3 member = memberRepository.findById(memberId).get();
-        CheckInOut3 checkInOut3 = new CheckInOut3(member, checkType3, time);
-        return checkInOutRepository.save(checkInOut3);
+        try {
+            Member3 member = memberRepository.findById(memberId).get();
+            CheckInOut3 checkInOut3 = new CheckInOut3(member, checkType3, time);
+            return checkInOutRepository.save(checkInOut3);
+        }catch (NoSuchElementException noSuchElementException) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member Id Not Found!");
+        }
+    }
+
+    public CheckInOut3 addCheckOut(int memberId, String time, CheckType3 checkType3){
+        try{
+            Member3 member = memberRepository.findById(memberId).get();
+            CheckInOut3 checkInOut3 = new CheckInOut3(member, checkType3, time);
+            return checkInOutRepository.save(checkInOut3);
+        }catch (NoSuchElementException noSuchElementException){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member Id Not Found!");
+        }
     }
 
     //
     //Put
     //
 
-
-//    public CheckInOut3 addCheckOut(CheckInOut3 checkInOut3){
-//        return checkInOutRepository.save(checkInOut3);
-//    }
 }

@@ -19,9 +19,9 @@ public class CheckInOutController3 {
         return gymService3.addCheckIn(memberId, time, checkType.CHECKIN);
     }
 
-//    @PostMapping("student3/api/v1/member/{memberId}/checkout")
-//    public CheckInOut3 addCheckOut(@RequestParam String time, @PathVariable int memberId){
-//        return gymService3.addCheckOut(time);
-//    }
+    @PostMapping("student3/api/v1/member/{memberId}/checkout")
+    public CheckInOut3 addCheckOut(@RequestParam String time, @PathVariable int memberId){
+        return gymService3.addCheckOut(memberId, time, checkType.CHECKOUT);
+    }
 
 }
