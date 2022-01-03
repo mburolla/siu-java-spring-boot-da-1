@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface WorkoutHistoryRepository1 extends JpaRepository<WorkoutHistory1, Integer> {
 
+    List<WorkoutHistory1> findByMemberId(int memberId);
+
 }

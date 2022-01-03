@@ -22,6 +22,8 @@ public class WorkoutHistory1 {
     private Date timeUtc;
     private String checkType;
 
+    public WorkoutHistory1() {}
+
     public WorkoutHistory1(int id, int memberId, Date timeUtc, String checkType) {
         this.id = id;
         this.memberId = memberId;

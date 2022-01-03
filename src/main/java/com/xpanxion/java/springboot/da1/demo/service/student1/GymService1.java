@@ -8,14 +8,11 @@ import com.xpanxion.java.springboot.da1.demo.repository.student1.GymMemberReposi
 import com.xpanxion.java.springboot.da1.demo.repository.student1.GymRepository1;
 import com.xpanxion.java.springboot.da1.demo.repository.student1.TimestampsRepository1;
 import com.xpanxion.java.springboot.da1.demo.repository.student1.WorkoutHistoryRepository1;
-import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.text.ParseException;
@@ -40,30 +37,11 @@ public class GymService1 {
     @Autowired
     private TimestampsRepository1 timestampsRepository1;
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    private final String SELECT_MEMBER_WORKOUT_HISTORY = "select * from workout_history1 where member_id = ?";
-
-
     public List<WorkoutHistory1> getWorkoutHistory(Integer memberId) {
 
-        List<WorkoutHistory1> workoutHistory1;
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        var memberWorkoutHistory = workoutHistoryRepository1.findByMemberId(memberId);
 
-        workoutHistory1 = jdbcTemplate.query(SELECT_MEMBER_WORKOUT_HISTORY, (row, rowNum) -> {
-            var id = Integer.parseInt(row.getString("member_id"));
-            Date timeUtc = null;
-            try {
-                timeUtc = dateFormat.parse(row.getString("time_utc"));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            var checkType = row.getString("check_type");
-            return new WorkoutHistory1(1, id, timeUtc, checkType);
-        }, memberId);
-
-        return workoutHistory1;
+        return memberWorkoutHistory;
 
     }
 
