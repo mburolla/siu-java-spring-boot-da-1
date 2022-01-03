@@ -21,7 +21,7 @@ public class Member3 {
             strategy = GenerationType.SEQUENCE,
             generator = "member_sequence"
     )
-    private long memberId;
+    private int memberId;
     private long gymId;
     private String firstName;
     private String lastName;
@@ -34,7 +34,7 @@ public class Member3 {
     //
 
     public Member3(){
-        this.memberId = -1L;
+        this.memberId = -1;
         this.gymId = -1L;
         this.firstName = "";
         this.lastName = "";
@@ -43,7 +43,7 @@ public class Member3 {
         this.subEndDate = "";
     }
 
-    public Member3(Long memberId, String firstName, String lastName, String dateOfBirth, String subStartDate, String subEndDate){
+    public Member3(Integer memberId, String firstName, String lastName, String dateOfBirth, String subStartDate, String subEndDate){
         this.memberId = memberId;
         this.gymId = -1L;
         this.firstName = firstName;
@@ -58,11 +58,11 @@ public class Member3 {
     //
 
 
-    public long getMemberId() {
+    public int getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(long memberId) {
+    public void setMemberId(int memberId) {
         this.memberId = memberId;
     }
 

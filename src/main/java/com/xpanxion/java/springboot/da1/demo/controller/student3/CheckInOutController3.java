@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.*;
 public class CheckInOutController3 {
 
     @Autowired
-    GymService3 gymService3;
+    private GymService3 gymService3;
 
-    CheckType3 checkType;
+    private CheckType3 checkType;
 
     @PostMapping("student3/api/v1/member/{memberId}/checkin")
     public CheckInOut3 addCheckIn(@RequestParam String time, @PathVariable int memberId){
-        CheckInOut3 checkInOut3 = new CheckInOut3(memberId,checkType.CHECKIN, time);
-        return gymService3.addCheckIn(checkInOut3);
+        return gymService3.addCheckIn(memberId, time, checkType.CHECKIN);
     }
 
 //    @PostMapping("student3/api/v1/member/{memberId}/checkout")

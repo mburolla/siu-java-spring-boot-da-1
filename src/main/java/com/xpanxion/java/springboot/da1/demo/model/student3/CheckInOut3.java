@@ -23,7 +23,9 @@ public class CheckInOut3 {
             generator = "clock_sequence"
     )
     private long checkInId;
-    private long memberId;
+    @OneToOne(cascade = CascadeType.ALL, targetEntity = Member3.class)
+    @JoinColumn(name = "member_id", referencedColumnName = "memberId")
+    private Member3 member;
     private String time;
     private CheckType3 checkType;
 
@@ -32,10 +34,12 @@ public class CheckInOut3 {
     //Constructors
     //
 
-    public CheckInOut3() { }
+    public CheckInOut3() {
 
-    public CheckInOut3(long memberId, CheckType3 checkType, String time) {
-        this.memberId = memberId;
+    }
+
+    public CheckInOut3(Member3 member, CheckType3 checkType, String time) {
+        this.member = member;
         this.checkType = checkType;
         this.time = time;
     }
@@ -52,12 +56,12 @@ public class CheckInOut3 {
         this.checkInId = checkInId;
     }
 
-    public long getMemberId() {
-        return memberId;
+    public Member3 getMember() {
+        return member;
     }
 
-    public void setMemberId(long memberId) {
-        this.memberId = memberId;
+    public void setMember(Member3 member) {
+        this.member = member;
     }
 
     public CheckType3 getCheckType() {

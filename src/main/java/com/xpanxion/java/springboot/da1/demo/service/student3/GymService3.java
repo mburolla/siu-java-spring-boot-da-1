@@ -1,6 +1,7 @@
 package com.xpanxion.java.springboot.da1.demo.service.student3;
 
 import com.xpanxion.java.springboot.da1.demo.model.student3.CheckInOut3;
+import com.xpanxion.java.springboot.da1.demo.model.student3.CheckType3;
 import com.xpanxion.java.springboot.da1.demo.model.student3.Gym3;
 import com.xpanxion.java.springboot.da1.demo.model.student3.Member3;
 import com.xpanxion.java.springboot.da1.demo.repository.student3.CheckInOutRepository3;
@@ -40,7 +41,9 @@ public class GymService3 {
 
     public Member3 addMember(Member3 member) {return memberRepository.save(member);}
 
-    public CheckInOut3 addCheckIn(CheckInOut3 checkInOut3){
+    public CheckInOut3 addCheckIn(int memberId, String time, CheckType3 checkType3){
+        Member3 member = memberRepository.findById(memberId).get();
+        CheckInOut3 checkInOut3 = new CheckInOut3(member, checkType3, time);
         return checkInOutRepository.save(checkInOut3);
     }
 
