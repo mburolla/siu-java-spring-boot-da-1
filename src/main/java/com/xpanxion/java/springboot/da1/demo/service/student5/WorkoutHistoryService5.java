@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class WorkoutHistoryService5 {
@@ -25,11 +26,18 @@ public class WorkoutHistoryService5 {
     public WorkoutHistory5 workoutCheckOut(Long memberId, Date time) {
         var workoutList = workoutHistoryRepository.findAllByMemberMemberIdOrderByWorkoutIdDesc(memberId);
         if (workoutList.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member id not found");
-        else if (workoutList.get(0).getCheckOut()!=null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "not currently checked in");
+        else if (workoutList.get(0).getCheckOut()!=null) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "not currently checked in");
         var workout = workoutList.get(0);
         workout.setCheckOut(time);
         workoutHistoryRepository.save(workout);
 
         return workout;
+    }
+
+    public List<WorkoutHistory5> findAllByMemberMemberId(Long memberId) {
+        var member = memberService.getMember(memberId);
+        if (member == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found");
+        return workoutHistoryRepository.findAllByMemberMemberId(memberId);
     }
 }

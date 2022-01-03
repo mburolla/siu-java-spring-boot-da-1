@@ -17,7 +17,7 @@ public class WorkoutHistory5 {
             strategy = GenerationType.SEQUENCE,
             generator = "workout_id_sequence"
     )
-    private long workoutId;
+    private Long workoutId;
     @Temporal(TemporalType.TIMESTAMP)
     private Date checkIn;
     @Temporal(TemporalType.TIMESTAMP)
@@ -38,18 +38,18 @@ public class WorkoutHistory5 {
         this.member = member;
     }
 
-    public WorkoutHistory5(long workoutId, Date checkIn, Date checkOut, Member5 member) {
+    public WorkoutHistory5(Long workoutId, Date checkIn, Date checkOut, Member5 member) {
         this.workoutId = workoutId;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.member = member;
     }
 
-    public long getWorkoutId() {
+    public Long getWorkoutId() {
         return workoutId;
     }
 
-    public void setWorkoutId(long workoutId) {
+    public void setWorkoutId(Long workoutId) {
         this.workoutId = workoutId;
     }
 
