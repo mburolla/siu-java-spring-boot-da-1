@@ -26,5 +26,10 @@ public class GymServiceStudent4 {
     public List<Gym4> getFindByNameContaining(String name) {
         return gymRepositoryStudent4.findByNameContaining(name);
     }
+
+    public Gym4 getFindById(int id){
+        return gymRepositoryStudent4.findById(id);
+    }
 }
+
 

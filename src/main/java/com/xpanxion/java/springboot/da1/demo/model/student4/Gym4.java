@@ -16,7 +16,7 @@ public class Gym4 {
             strategy = GenerationType.SEQUENCE,
             generator = "gym_sequence"
     )
-    private int id;
+    private long id;
     private String name;
     private String street1;
     private String street2;
@@ -27,7 +27,7 @@ public class Gym4 {
     public Gym4() {
     }
 
-    public Gym4(int id, String name, String street1, String street2, String city, String state, int zip) {
+    public Gym4(long id, String name, String street1, String street2, String city, String state, int zip) {
         this.id = id;
         this.name = name;
         this.street1 = street1;
@@ -37,7 +37,7 @@ public class Gym4 {
         this.zip = zip;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

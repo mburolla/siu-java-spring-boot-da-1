@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="member4")
+@Table(name= "Member4")
 public class Member4 {
 
     @Id
@@ -17,6 +17,7 @@ public class Member4 {
             strategy = GenerationType.SEQUENCE,
             generator = "member_sequence"
     )
+
     private long id;
     private long gymId;
     private String firstName;
@@ -28,8 +29,8 @@ public class Member4 {
     public Member4() {
         this.id = -1L;
         this.gymId = -1L;
-        this.firstName ="";
-        this.lastName ="";
+        this.firstName = "";
+        this.lastName = "";
         this.dateOfBirth = new Date();
         this.subscriptionStart = new Date();
         this.subscriptionEnd = new Date();
@@ -49,6 +50,20 @@ public class Member4 {
         this.subscriptionStart = subscriptionStart;
         this.subscriptionEnd = subscriptionEnd;
     }
+
+    @Override
+    public String toString() {
+        return "Member5{" +
+                "id=" + id +
+                ", gymId=" + gymId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", subscriptionStart=" + subscriptionStart +
+                ", subscriptionEnd=" + subscriptionEnd +
+                '}';
+    }
+
     public long getId() {
         return id;
     }
@@ -103,17 +118,5 @@ public class Member4 {
 
     public void setSubscriptionEnd(Date subscriptionEnd) {
         this.subscriptionEnd = subscriptionEnd;
-    }
-    @Override
-    public String toString() {
-        return "Member5{" +
-                "id=" + id +
-                ", gymId=" + gymId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", subscriptionStart=" + subscriptionStart +
-                ", subscriptionEnd=" + subscriptionEnd +
-                '}';
     }
 }
