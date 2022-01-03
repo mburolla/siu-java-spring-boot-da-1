@@ -22,4 +22,8 @@ public class MemberService9 {
     public Member9 addMember(Member9 member9){
         return memberRepository9.save(member9);
     }
+
+    public Member9 getFindById(int id){
+        return memberRepository9.findById(id);
+    }
 }
