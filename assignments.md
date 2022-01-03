@@ -258,7 +258,8 @@ Example output:
 
 ```
 
-It should return an HTTP status code of `404` if a member is not found.
+It should return an HTTP status code of `404` if a member is not found. HINT: Add `server.error.include-message=always`
+to the `application.properties` file and throw a `ResponseStatusException`.
 
 # Ex. 20 Workout Length
 Create the following endpoint:
@@ -313,7 +314,6 @@ Output:
 @PostMapping("api/v1/products/")
 public Product getAllProducts(@RequestBody Product product) {
 ```
-
 
 Be sure to:
 - Create a new GitHub repo in your account
