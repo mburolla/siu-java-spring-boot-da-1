@@ -3,17 +3,17 @@
 # Ex. 1
 Update the `MessageController` in your student package with your first name only.  Submit a PR wait
 for the instructor to approve it.  Once it has been approved, get the latest changes for the `dev` branch
-and delete your working branch for this exercise. 
+and delete your working branch for this exercise.
 
 # Ex. 2
 Update the `MessageController` in your student package with your first AND last name.  Submit a PR wait
 for the instructor to approve it.  Once it has been approved, get the latest changes for the `dev` branch
-and delete your working branch for this exercise. 
+and delete your working branch for this exercise.
 
 # Ex. 3
 Update the `MessageController` in your student package with your first AND last name AND middle initial.  Submit a PR wait
 for the instructor to approve it.  Once it has been approved, get the latest changes for the `dev` branch
-and delete your working branch for this exercise. 
+and delete your working branch for this exercise.
 
 # Ex. 4
 Update the `MessageController` in your student package with your first AND last name AND middle initial AND your
@@ -32,7 +32,7 @@ Create a `BookController{studentid}` in your student package that has supports t
 
 `GET student{id}/api/v1/book`
 
-Create a `Book` model and place it in your student model package.  The `Book` model must align with the `Book` table in 
+Create a `Book` model and place it in your student model package.  The `Book` model must align with the `Book` table in
 the database.  Delete the test class in your model directory, it was just a placeholder because Git does not
 like empty directories.
 
@@ -52,7 +52,7 @@ Create a `ManagerController` that contains the following endpoint:
 
 `GET student{id}/api/v1/managers`
 
-This endpoint returns a List of all the Managers from the managers table. Add a Manager model to your 
+This endpoint returns a List of all the Managers from the managers table. Add a Manager model to your
 student directory.
 
 # Ex. 9 Create Managers POST Endpoint
@@ -70,10 +70,10 @@ and be sure to add the following header for this request:
 #### Christmas
 
 ---
-# Ex. 10 After Christmas Warmup 
+# Ex. 10 After Christmas Warmup
 Update the `MessageController` in your student package to include something that you got for Christmas
 this year ("sleep" is an acceptable answer).  Submit a PR wait for the instructor to approve it.  Once it has been approved, get the latest changes for the `dev` branch
-and delete your working branch for this exercise. 
+and delete your working branch for this exercise.
 
 # Ex. 11 Create Managers PUT Endpoint
 Create the following endpoint in your `ManagerController`:
@@ -117,11 +117,11 @@ This endpoint calculates the price of all the books in a bookstore and returns a
 ```
 
 # Ex. 14 Technical Debt: Controllers Are Not Ideal
-Ideally, controllers should be as lightweight as possible.  Most (or all) of the work in a 
-controller should be done in one or more classes. 
+Ideally, controllers should be as lightweight as possible.  Most (or all) of the work in a
+controller should be done in one or more classes.
 
-Create a class called `DataService{studentid}` and place it in a new student package under the 
-service package (Be sure to append your student id to this class to avoid namespace collisions 
+Create a class called `DataService{studentid}` and place it in a new student package under the
+service package (Be sure to append your student id to this class to avoid namespace collisions
 with SpringBoot).  Also be sure to annotate this class as a `@Service`.
 
 Move the code from the endpoints into the controllers into public methods
@@ -218,9 +218,9 @@ Create the following endpoints:
 - `POST student{id}/api/v1/member/{memberId}/checkin?time=2021-12-30 13:48:28`
 - `POST student{id}/api/v1/member/{memberId}/checkout?time=2021-12-30 13:48:28`
 
-This endpoint allows the API to keep track of a person's workouts.  Be sure link to the memberId. 
+This endpoint allows the API to keep track of a person's workouts.  Be sure link to the memberId.
 This endpoint should echo the arguments passed into it.  If a member id is passed into this endpoint,
-the endpoint should return an HTTP status code of `404`: `Member id not found`.  Otherwise, 
+the endpoint should return an HTTP status code of `404`: `Member id not found`.  Otherwise,
 return an HTTP Status code of `200`.
 
 
@@ -258,7 +258,8 @@ Example output:
 
 ```
 
-It should return an HTTP status code of `404` if a member is not found.
+It should return an HTTP status code of `404` if a member is not found. HINT: Add `server.error.include-message=always`
+to the `application.properties` file and throw a `ResponseStatusException`.
 
 # Ex. 20 Workout Length
 Create the following endpoint:
@@ -279,7 +280,7 @@ Example output:
 # BONUS: 405 Method Not Allowed
 Tired of seeing this error in Postman?  Me too!
 
-Start a new IntelliJ project and create a Java commandline tool that creates a function signature 
+Start a new IntelliJ project and create a Java commandline tool that creates a function signature
 for a SpringBoot ReST endpoint. The program works something like this:
 
 Input:
@@ -313,7 +314,6 @@ Output:
 @PostMapping("api/v1/products/")
 public Product getAllProducts(@RequestBody Product product) {
 ```
-
 
 Be sure to:
 - Create a new GitHub repo in your account
