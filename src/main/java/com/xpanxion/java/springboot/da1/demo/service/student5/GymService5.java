@@ -20,4 +20,8 @@ public class GymService5 {
     public Gym5 addGym(Gym5 gym) {
         return gymRepository.save(gym);
     }
+
+    public Gym5 findGym(Long gymId) {
+        return gymRepository.findGymByGymId(gymId);
+    }
 }

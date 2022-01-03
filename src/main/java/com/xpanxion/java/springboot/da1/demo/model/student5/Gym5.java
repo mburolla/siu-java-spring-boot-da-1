@@ -16,7 +16,7 @@ public class Gym5 {
             strategy = GenerationType.SEQUENCE,
             generator = "gym_sequence"
     )
-    private Long id;
+    private Long gymId;
     private String name;
     private String street1;
     private String street2;
@@ -25,16 +25,10 @@ public class Gym5 {
     private String zip;
 
     public Gym5() {
-        this.id = -1l;
-        this.name = "";
-        this.street1 = "";
-        this.street2 = "";
-        this.city = "";
-        this.state = "";
-        this.zip = "";
     }
 
-    public Gym5(String name, String street1, String street2, String city, String state, String zip) {
+    public Gym5(Long gymId, String name, String street1, String street2, String city, String state, String zip) {
+        this.gymId = gymId;
         this.name = name;
         this.street1 = street1;
         this.street2 = street2;
@@ -43,12 +37,25 @@ public class Gym5 {
         this.zip = zip;
     }
 
-    public Long getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Gym5{" +
+                "gymId=" + gymId +
+                ", name='" + name + '\'' +
+                ", street1='" + street1 + '\'' +
+                ", street2='" + street2 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
+                '}';
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getGymId() {
+        return gymId;
+    }
+
+    public void setGymId(Long gymId) {
+        this.gymId = gymId;
     }
 
     public String getName() {
@@ -97,18 +104,5 @@ public class Gym5 {
 
     public void setZip(String zip) {
         this.zip = zip;
-    }
-
-    @Override
-    public String toString() {
-        return "Gym5{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", street1='" + street1 + '\'' +
-                ", street2='" + street2 + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", zip='" + zip + '\'' +
-                '}';
     }
 }
