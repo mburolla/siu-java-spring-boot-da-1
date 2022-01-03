@@ -26,4 +26,6 @@ public class GymService6 {
         return gymRepository6.findByName(name);
     }
 
+
+
 }

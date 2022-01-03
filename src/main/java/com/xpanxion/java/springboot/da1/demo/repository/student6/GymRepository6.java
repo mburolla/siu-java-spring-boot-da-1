@@ -10,7 +10,9 @@ import java.util.List;
 @Repository
 public interface GymRepository6 extends JpaRepository<Gym6, Integer> {
 
-//   public Gym6 findByFirstname(String name);
-    @Query("select g from GYM6 where g.name = ?")
+
+    @Query("select g from Gym6 where g.name = ?")
     Gym6 findByName(String name);
+
+    //public Gym6 findByFirstname(String name);
 }
