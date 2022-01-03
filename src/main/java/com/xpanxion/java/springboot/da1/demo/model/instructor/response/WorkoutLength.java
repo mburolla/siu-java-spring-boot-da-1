@@ -1,4 +1,4 @@
-package com.xpanxion.java.springboot.da1.demo.model.instructor.internal;
+package com.xpanxion.java.springboot.da1.demo.model.instructor.response;
 
 import java.util.Objects;
 

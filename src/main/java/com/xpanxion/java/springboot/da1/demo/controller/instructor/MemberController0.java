@@ -2,7 +2,7 @@ package com.xpanxion.java.springboot.da1.demo.controller.instructor;
 
 import com.xpanxion.java.springboot.da1.demo.model.instructor.CheckType;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.Member0;
-import com.xpanxion.java.springboot.da1.demo.model.instructor.internal.WorkoutLength;
+import com.xpanxion.java.springboot.da1.demo.model.instructor.response.WorkoutLength;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.response.WorkoutHistory;
 import com.xpanxion.java.springboot.da1.demo.service.instructor.MemberService0;
 import org.springframework.beans.factory.annotation.Autowired;

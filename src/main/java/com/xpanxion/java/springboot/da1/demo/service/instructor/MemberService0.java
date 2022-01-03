@@ -4,7 +4,7 @@ import com.xpanxion.java.springboot.da1.demo.model.instructor.CheckType;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.Gym0;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.Member0;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.WorkoutHistory0;
-import com.xpanxion.java.springboot.da1.demo.model.instructor.internal.WorkoutLength;
+import com.xpanxion.java.springboot.da1.demo.model.instructor.response.WorkoutLength;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.response.WorkoutTime;
 import com.xpanxion.java.springboot.da1.demo.repository.instructor.GymRepository0;
 import com.xpanxion.java.springboot.da1.demo.repository.instructor.MemberRepository0;
