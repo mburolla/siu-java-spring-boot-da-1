@@ -1,7 +1,6 @@
 package com.xpanxion.java.springboot.da1.demo.model.student5;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
