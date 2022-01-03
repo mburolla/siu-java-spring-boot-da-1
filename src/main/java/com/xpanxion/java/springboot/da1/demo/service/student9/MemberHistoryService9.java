@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class MemberHistoryService9 {
@@ -38,5 +39,9 @@ public class MemberHistoryService9 {
         var memberHistory = new MemberHistory9(member9);
         memberHistory.setCheckOut(time);
         return memberHistoryRepository9.save(memberHistory);
+    }
+
+    public List<MemberHistory9> getMemberWorkOutHistory(int id){
+        return memberHistoryRepository9.getMemberWorkoutHistory(id);
     }
 }
