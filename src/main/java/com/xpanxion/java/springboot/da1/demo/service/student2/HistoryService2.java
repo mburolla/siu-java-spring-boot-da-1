@@ -29,27 +29,18 @@ public class HistoryService2 {
 
     public Checkin2 addHistoryIn(int memberId, Timestamp time) {
         checkin.setCheckin(time);
-
-        try {
-            checkin.setMember2(memberRepository2.findById(memberId));
-            if (checkin.getMember2() == null) {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "member id not found");
-            }
-        } catch (Exception e) {
-            throw e;
+        checkin.setMember2(memberRepository2.findById(memberId));
+        if (checkin.getMember2() == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "member id not found");
         }
         return checkinRepository2.save(checkin);
     }
 
     public Checkout2 addHistoryOut(int memberId, Timestamp time) {
         checkout.setCheckout(time);
-        try {
-            checkout.setMember2(memberRepository2.findById(memberId));
-            if (checkout.getMember2() == null) {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "member id not found");
-            }
-        } catch (Exception e) {
-            throw e;
+        checkout.setMember2(memberRepository2.findById(memberId));
+        if (checkout.getMember2() == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "member id not found");
         }
         return checkoutRepository2.save(checkout);
     }
