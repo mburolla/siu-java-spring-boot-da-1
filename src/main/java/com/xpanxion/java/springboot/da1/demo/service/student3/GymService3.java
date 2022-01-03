@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -32,17 +31,24 @@ public class GymService3 {
     //Get
     //
 
-    public Gym3 addGym(Gym3 gym){
-        return gymRepository.save(gym);
-    }
 
     public List<Gym3> getGym(String name){
         return gymRepository.findByNameContaining(name);
     }
 
+    public List<CheckInOut3> getWorkoutHistory(int memberId){
+        Member3 member3 = memberRepository.findById(memberId).get();
+        checkInOutRepository.findByMember3(member3);
+    }
+
+
     //
     //Post
     //
+
+    public Gym3 addGym(Gym3 gym){
+        return gymRepository.save(gym);
+    }
 
     public Member3 addMember(Member3 member, int gymId) {
         Gym3 gym3 = gymRepository.findById(gymId).get();
