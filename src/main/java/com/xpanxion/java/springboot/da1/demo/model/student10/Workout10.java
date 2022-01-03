@@ -22,12 +22,6 @@ public class Workout10 {
         this.timeOut = null;
     }
 
-    public Workout10(int memberId, String timeIn, String timeOut){
-        this.memberId = memberId;
-        this.timeIn = timeIn;
-        this.timeOut = timeOut;
-    }
-
     public Workout10(int workoutId, int memberId, String timeIn, String timeOut){
         this.workoutId = workoutId;
         this.memberId = memberId;
