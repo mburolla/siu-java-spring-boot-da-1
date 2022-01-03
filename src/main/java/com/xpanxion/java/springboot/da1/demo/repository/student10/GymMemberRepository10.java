@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GymMemberRepository10 extends JpaRepository<GymMember10, Integer> {
+    GymMember10 findById(int id);
 }

@@ -30,7 +30,7 @@ public class GymController9 {
     }
 
     @PostMapping("student9/api/v1/gym/{id}/member")
-    public Member9 addMember(@RequestBody Member9 member9,@PathVariable Integer id){
+    public Member9 addMember(@RequestBody Member9 member9, @PathVariable Integer id){
         var tempGym = gymService9.getFindById(id);
         member9.setGym(tempGym);
         return memberService9.addMember(member9);

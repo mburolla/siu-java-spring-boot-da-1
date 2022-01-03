@@ -5,8 +5,12 @@ import com.xpanxion.java.springboot.da1.demo.repository.student4.MemberRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 @Service
 public class MemberServiceStudent4 {
+
     @Autowired
     private MemberRepositoryStudent4 memberRepositoryStudent4;
 
