@@ -22,7 +22,7 @@ public class Gym3 {
             strategy = GenerationType.SEQUENCE,
             generator = "gym_sequence"
     )
-    private long gymId;
+    private int gymId;
     private String name;
     private String street1;
     private String street2;
@@ -35,7 +35,7 @@ public class Gym3 {
     //
 
     public Gym3(){
-        this.gymId = -1L;
+        this.gymId = -1;
         this.name = "";
         this.street1 = "";
         this.street2 = "";
@@ -44,7 +44,7 @@ public class Gym3 {
         this.zip = -1;
     }
 
-    public Gym3(long gymId, String name, String street1, String street2, String city, String state, int zip){
+    public Gym3(int gymId, String name, String street1, String street2, String city, String state, int zip){
         this.gymId = gymId;
         this.name = name;
         this.street1 = street1;
@@ -58,11 +58,11 @@ public class Gym3 {
     //Accessors
     //
 
-    public long getGymId() {
+    public int getGymId() {
         return gymId;
     }
 
-    public void setGymId(long gymId) {
+    public void setGymId(int gymId) {
         this.gymId = gymId;
     }
 

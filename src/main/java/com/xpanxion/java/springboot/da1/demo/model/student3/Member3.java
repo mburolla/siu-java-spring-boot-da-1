@@ -10,6 +10,7 @@ public class Member3 {
     //Data members
     //
 
+
     @Id
     @SequenceGenerator(
             name = "member_sequence",
@@ -20,8 +21,10 @@ public class Member3 {
             strategy = GenerationType.SEQUENCE,
             generator = "member_sequence"
     )
-    private long memberId;
-    private long gymId;
+    private int memberId;
+    @OneToOne(cascade = CascadeType.ALL, targetEntity = Gym3.class)
+    @JoinColumn(name = "gym_id", referencedColumnName = "gymId")
+    private Gym3 gym;
     private String firstName;
     private String lastName;
     private String dateOfBirth;
@@ -33,18 +36,11 @@ public class Member3 {
     //
 
     public Member3(){
-        this.memberId = -1L;
-        this.gymId = -1L;
-        this.firstName = "";
-        this.lastName = "";
-        this.dateOfBirth = "";
-        this.subStartDate = "";
-        this.subEndDate = "";
     }
 
-    public Member3(Long memberId, String firstName, String lastName, String dateOfBirth, String subStartDate, String subEndDate){
+    public Member3(Integer memberId, Gym3 gym, String firstName, String lastName, String dateOfBirth, String subStartDate, String subEndDate){
         this.memberId = memberId;
-        this.gymId = -1L;
+        this.gym = gym;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -57,20 +53,20 @@ public class Member3 {
     //
 
 
-    public long getMemberId() {
+    public int getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(long memberId) {
+    public void setMemberId(int memberId) {
         this.memberId = memberId;
     }
 
-    public long getGymId() {
-        return gymId;
+    public Gym3 getGym() {
+        return gym;
     }
 
-    public void setGymId(long gymId) {
-        this.gymId = gymId;
+    public void setGym(Gym3 gym) {
+        this.gym = gym;
     }
 
     public String getFirstName() {

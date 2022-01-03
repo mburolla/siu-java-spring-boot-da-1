@@ -20,6 +20,8 @@ public class Gym6 {
 
     //CONSTRUCTOR
 
+    public Gym6() {}
+
     public Gym6(int id, String name, String street1, String street2, String city, String state, int zip) {
         this.id = id;
         this.name = name;

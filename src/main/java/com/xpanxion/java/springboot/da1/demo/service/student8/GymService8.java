@@ -1,7 +1,9 @@
 package com.xpanxion.java.springboot.da1.demo.service.student8;
 
 import com.xpanxion.java.springboot.da1.demo.model.student8.Gym8;
+import com.xpanxion.java.springboot.da1.demo.model.student8.Member8;
 import com.xpanxion.java.springboot.da1.demo.repository.student8.GymRepository8;
+import com.xpanxion.java.springboot.da1.demo.repository.student8.MemberRepository8;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,9 @@ public class GymService8 {
 
     @Autowired
     private GymRepository8 gymRepository8;
+
+    @Autowired
+    private MemberRepository8 memberRepository8;
 
     // CONSTRUCTOR
 
@@ -28,5 +33,10 @@ public class GymService8 {
     public List<Gym8> findGym(String name) {
         var gyms = gymRepository8.findByNameContaining(name);
         return gyms;
+    }
+
+    public Member8 addMember(Member8 member, Integer gymId) {
+        member.setGymId(gymId);
+        return memberRepository8.save(member);
     }
 }

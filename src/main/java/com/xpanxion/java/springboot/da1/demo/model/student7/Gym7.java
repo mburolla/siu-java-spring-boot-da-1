@@ -1,13 +1,21 @@
 package com.xpanxion.java.springboot.da1.demo.model.student7;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="GYM7")
 public class Gym7 {
+
     @Id
+    @SequenceGenerator(
+            name = "gym7_sequence",
+            sequenceName = "gym7_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "gym7_sequence"
+    )
     private int id;
     private String name;
     private String street1;
@@ -84,5 +92,18 @@ public class Gym7 {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    @Override
+    public String toString() {
+        return "Gym7{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", street1='" + street1 + '\'' +
+                ", street2='" + street2 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
+                '}';
     }
 }

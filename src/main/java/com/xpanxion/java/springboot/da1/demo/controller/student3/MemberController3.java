@@ -16,9 +16,8 @@ public class MemberController3 {
     private GymService3 gymService3;
 
     @PostMapping("student3/api/v1/gym/{gymId}/member")
-    public Member3 addMember(@RequestBody Member3 member3, @PathVariable("gymId") Long gymId){
-        member3.setGymId(gymId);
-        return gymService3.addMember(member3);
+    public Member3 addMember(@RequestBody Member3 member3, @PathVariable("gymId") int gymId){
+        return gymService3.addMember(member3, gymId);
     }
 
 
