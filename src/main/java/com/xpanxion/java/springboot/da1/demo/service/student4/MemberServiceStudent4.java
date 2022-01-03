@@ -11,9 +11,6 @@ import javax.persistence.PersistenceContext;
 @Service
 public class MemberServiceStudent4 {
 
-    @PersistenceContext
-    public EntityManager entityManager;
-
     @Autowired
     private MemberRepositoryStudent4 memberRepositoryStudent4;
 
