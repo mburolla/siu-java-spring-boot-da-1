@@ -1,9 +1,6 @@
 package com.xpanxion.java.springboot.da1.demo.service.student3;
 
-import com.xpanxion.java.springboot.da1.demo.model.student3.CheckInOut3;
-import com.xpanxion.java.springboot.da1.demo.model.student3.CheckType3;
-import com.xpanxion.java.springboot.da1.demo.model.student3.Gym3;
-import com.xpanxion.java.springboot.da1.demo.model.student3.Member3;
+import com.xpanxion.java.springboot.da1.demo.model.student3.*;
 import com.xpanxion.java.springboot.da1.demo.repository.student3.CheckInOutRepository3;
 import com.xpanxion.java.springboot.da1.demo.repository.student3.GymRepository3;
 import com.xpanxion.java.springboot.da1.demo.repository.student3.MemberRepository3;
@@ -36,9 +33,11 @@ public class GymService3 {
         return gymRepository.findByNameContaining(name);
     }
 
-    public List<CheckInOut3> getWorkoutHistory(int memberId){
+    public List<WorkoutHistoryPresentation> getWorkoutHistory(int memberId){
         Member3 member3 = memberRepository.findById(memberId).get();
-        return checkInOutRepository.findByMember3(member3);
+        var checkInOutList = checkInOutRepository.findByMember3(member3);
+        return checkInOutList.stream()
+                .map(c -> new WorkoutHistoryPresentation(c.getMember3().getMemberId(), c.getTime(), c.getCheckType())).toList();
     }
 
 

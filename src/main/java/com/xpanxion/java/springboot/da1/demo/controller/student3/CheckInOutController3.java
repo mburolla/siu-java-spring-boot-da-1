@@ -2,6 +2,7 @@ package com.xpanxion.java.springboot.da1.demo.controller.student3;
 
 import com.xpanxion.java.springboot.da1.demo.model.student3.CheckInOut3;
 import com.xpanxion.java.springboot.da1.demo.model.student3.CheckType3;
+import com.xpanxion.java.springboot.da1.demo.model.student3.WorkoutHistoryPresentation;
 import com.xpanxion.java.springboot.da1.demo.service.student3.GymService3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class CheckInOutController3 {
     //
 
     @GetMapping("student3/api/v1/member/{memberId}/workout-history")
-    public List<CheckInOut3> getWorkoutHistory(@PathVariable int memberId){
+    public List<WorkoutHistoryPresentation> getWorkoutHistory(@PathVariable int memberId){
         return gymService3.getWorkoutHistory(memberId);
     }
 
