@@ -220,14 +220,14 @@ Create the following endpoints:
 
 This endpoint allows the API to keep track of a person's workouts.  Be sure link to the memberId. 
 This endpoint should echo the arguments passed into it.  If a member id is passed into this endpoint,
-the endpoint should return an HTTP status code of `404`: `Member id not found`.  Otherwise 
+the endpoint should return an HTTP status code of `404`: `Member id not found`.  Otherwise, 
 return an HTTP Status code of `200`.
 
 
 # Ex. 19 Get Member Workout History
 Create the following endpoint:
 
-- `GET /instructor/api/v1/member/{memberId}/workout-history`
+- `GET /student{id}/api/v1/member/{memberId}/workout-history`
 
 This endpoint returns the workout history for a user:
 
@@ -260,6 +260,21 @@ Example output:
 
 It should return an HTTP status code of `404` if a member is not found.
 
+# Ex. 20 Workout Length
+Create the following endpoint:
+
+`GET student{id}/api/v1/member/{memberId}/workout?type={min|max}`
+
+This endpoint returns the longest or shortest workout for a member.
+
+Example output:
+```
+{
+    "lengthInMinutes": 61,
+    "memberId": 33,
+    "date": "1/4/2022"
+}
+```
 
 # BONUS: 405 Method Not Allowed
 Tired of seeing this error in Postman?  Me too!

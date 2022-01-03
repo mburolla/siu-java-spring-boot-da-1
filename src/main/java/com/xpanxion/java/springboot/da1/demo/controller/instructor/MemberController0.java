@@ -2,6 +2,7 @@ package com.xpanxion.java.springboot.da1.demo.controller.instructor;
 
 import com.xpanxion.java.springboot.da1.demo.model.instructor.CheckType;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.Member0;
+import com.xpanxion.java.springboot.da1.demo.model.instructor.internal.WorkoutLength;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.response.WorkoutHistory;
 import com.xpanxion.java.springboot.da1.demo.service.instructor.MemberService0;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,10 @@ public class MemberController0 {
     public WorkoutHistory addWorkoutHistoryCheckout(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd H:m:s") Date time, @PathVariable int memberId) {
         memberService0.checkMember(CheckType.CHECK_OUT,memberId, time);
         return new WorkoutHistory(time, memberId, CheckType.CHECK_OUT);
+    }
+
+    @GetMapping("instructor/api/v1/member/{memberId}/workout") // ?type={max|min}
+    public WorkoutLength getLongestWorkout(@PathVariable int memberId, @RequestParam String type) {
+        return memberService0.getWorkout(memberId, type);
     }
 }

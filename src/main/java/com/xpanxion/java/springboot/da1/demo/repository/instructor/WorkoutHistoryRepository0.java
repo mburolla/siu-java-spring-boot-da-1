@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface WorkoutHistoryRepository0 extends JpaRepository<WorkoutHistory0, Integer> {
 
-    final String SELECT_WORKOUT_HISTORY = "select * from workout_history0 where member_id = :memberId";
+    final String SELECT_WORKOUT_HISTORY = "select * from workout_history0 where member_id = :memberId order by time asc";
 
     @Query(value = SELECT_WORKOUT_HISTORY, nativeQuery = true)
-    List<WorkoutHistory0> getWorkoutHistoryForMember(Integer memberId);
+    List<WorkoutHistory0> getSortedWorkoutHistory(Integer memberId);
 }
