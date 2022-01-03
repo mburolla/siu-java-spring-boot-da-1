@@ -11,4 +11,5 @@ import java.util.List;
 public interface GymRepository7 extends JpaRepository<Gym7, Integer> {
 
     List<Gym7> findByNameContaining(String name);
+    Gym7 findById(int id);
 }
