@@ -1,6 +1,7 @@
 package com.xpanxion.java.springboot.da1.demo.service.instructor;
 
 import com.xpanxion.java.springboot.da1.demo.model.instructor.CheckType;
+import com.xpanxion.java.springboot.da1.demo.model.instructor.Gym0;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.Member0;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.WorkoutHistory0;
 import com.xpanxion.java.springboot.da1.demo.model.instructor.response.WorkoutTime;
@@ -36,7 +37,7 @@ public class MemberService0 {
     //
 
     public int addMemberToGymId(Member0 member0, int gymId) {
-        member0.setGym(gymRepository0.findById(gymId).get());
+        member0.setGym(getGymOrThrow(gymId));
         return memberRepository0.save(member0).getMemberId();
     }
 
@@ -60,5 +61,11 @@ public class MemberService0 {
         var retval= memberRepository0.findById(memberId).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found."));
         return retval;
+    }
+
+    private Gym0 getGymOrThrow(int gymId) {
+        var gym = gymRepository0.findById(gymId).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Gym not found."));
+        return gym;
     }
 }

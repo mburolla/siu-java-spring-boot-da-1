@@ -258,7 +258,7 @@ Example output:
 
 ```
 
-It should return an HTTP status code of 404 if a member is not found.
+It should return an HTTP status code of `404` if a member is not found.
 
 
 # BONUS: 405 Method Not Allowed
