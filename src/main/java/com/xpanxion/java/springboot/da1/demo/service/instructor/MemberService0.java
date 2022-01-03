@@ -57,7 +57,7 @@ public class MemberService0 {
         return retval;
     }
 
-    public WorkoutLength getWorkout(int memberId, String type) {
+    public WorkoutLength getWorkout(int memberId, String type) { // TODO: Enumerate type.
         WorkoutLength retval = null;
         var workoutTimeList = getWorkoutHistory(memberId);
         var workoutLengthList = buildSortedWorkoutLengthList(workoutTimeList, memberId);
@@ -102,18 +102,17 @@ public class MemberService0 {
                 checkOutDate = wt.getTimeUtc();
 
             if (checkinDate != null && checkOutDate != null) {
-                var lcid = checkinDate.toInstant()
+                var localCheckInDate = checkinDate.toInstant()
                         .atZone(ZoneId.systemDefault())
                         .toLocalDateTime();
 
-                var lcod = checkOutDate.toInstant()
+                var localCheckoutDate = checkOutDate.toInstant()
                         .atZone(ZoneId.systemDefault())
                         .toLocalDateTime();
 
-                if (parseDate(lcid).equals(parseDate(lcod))) {
-                    Duration duration = Duration.between(lcid, lcod);
-                    long diffMinutes = Math.abs(duration.toMinutes());
-                    retval.add(new WorkoutLength(parseDate(lcid), diffMinutes, memberId));
+                if (parseDate(localCheckInDate).equals(parseDate(localCheckoutDate))) {
+                    Duration duration = Duration.between(localCheckInDate, localCheckoutDate);
+                    retval.add(new WorkoutLength(parseDate(localCheckInDate), Math.abs(duration.toMinutes()), memberId));
                 }
 
                 checkinDate = null;
