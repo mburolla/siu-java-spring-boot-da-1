@@ -19,10 +19,6 @@ public class Member2 {
     private Date subscriptionStart;
     private Date subscriptionEnd;
 
-    private long birthdayLong;
-    private long subStartLong;
-    private long subEndLong;
-
     @ManyToOne(targetEntity = Gym2.class)
     @JoinColumn(name = "gymId", referencedColumnName = "id")
     private Gym2 gym2;
