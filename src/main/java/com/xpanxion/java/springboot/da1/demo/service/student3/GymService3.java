@@ -34,10 +34,15 @@ public class GymService3 {
     }
 
     public List<WorkoutHistoryPresentation> getWorkoutHistory(int memberId){
-        Member3 member3 = memberRepository.findById(memberId).get();
-        var checkInOutList = checkInOutRepository.findByMember3(member3);
-        return checkInOutList.stream()
-                .map(c -> new WorkoutHistoryPresentation(c.getMember3().getMemberId(), c.getTime(), c.getCheckType())).toList();
+        try {
+            Member3 member3 = memberRepository.findById(memberId).get();
+            var checkInOutList = checkInOutRepository.findByMember3(member3);
+            return checkInOutList.stream()
+                    .map(c -> new WorkoutHistoryPresentation(c.getMember3().getMemberId(), c.getTime(), c.getCheckType())).toList();
+        }catch (NoSuchElementException noSuchElementException){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member Id Not Found!");
+        }
+
     }
 
 
