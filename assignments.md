@@ -212,7 +212,7 @@ This endpoint adds a member for the specified `gymId`.  A member has the followi
 
 Make sure to link this member to the Gym.
 
-# Ex. 18 Member Workout History
+# Ex. 18 Add Member Workout History
 Create the following endpoints:
 
 - `POST student{id}/api/v1/member/{memberId}/checkin?time=2021-12-30 13:48:28`
@@ -222,6 +222,43 @@ This endpoint allows the API to keep track of a person's workouts.  Be sure link
 This endpoint should echo the arguments passed into it.  If a member id is passed into this endpoint,
 the endpoint should return an HTTP status code of `404`: `Member id not found`.  Otherwise 
 return an HTTP Status code of `200`.
+
+
+# Ex. 19 Get Member Workout History
+Create the following endpoint:
+
+- `GET /instructor/api/v1/member/{memberId}/workout-history`
+
+This endpoint returns the workout history for a user:
+
+Example output:
+```
+[
+    {
+        "memberId": 32,
+        "timeUtc": "2022-01-02T19:48:28.000+00:00",
+        "checkType": "CHECK_IN"
+    },
+    {
+        "memberId": 32,
+        "timeUtc": "2022-01-02T19:48:28.000+00:00",
+        "checkType": "CHECK_OUT"
+    },
+    {
+        "memberId": 32,
+        "timeUtc": "2022-01-02T14:48:28.000+00:00",
+        "checkType": "CHECK_IN"
+    },
+    {
+        "memberId": 32,
+        "timeUtc": "2022-01-02T15:48:28.000+00:00",
+        "checkType": "CHECK_OUT"
+    }
+]
+
+```
+
+It should return an HTTP status code of 404 if a member is not found.
 
 
 # BONUS: 405 Method Not Allowed

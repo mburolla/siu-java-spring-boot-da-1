@@ -11,7 +11,7 @@ public class WorkoutTime {
     //
 
     private int memberId;
-    private Date time;
+    private Date timeUtc;
     private CheckType checkType;
 
     //
@@ -23,7 +23,7 @@ public class WorkoutTime {
 
     public WorkoutTime(int memberId, Date time, CheckType checkType) {
         this.memberId = memberId;
-        this.time = time;
+        this.timeUtc = time;
         this.checkType = checkType;
     }
 
@@ -39,12 +39,12 @@ public class WorkoutTime {
         this.memberId = memberId;
     }
 
-    public Date getTime() {
-        return time;
+    public Date getTimeUtc() {
+        return timeUtc;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setTimeUtc(Date time) {
+        this.timeUtc = time;
     }
 
     public CheckType getCheckType() {
