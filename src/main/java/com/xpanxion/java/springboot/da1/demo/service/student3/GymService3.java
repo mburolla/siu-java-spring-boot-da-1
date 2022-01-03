@@ -44,7 +44,12 @@ public class GymService3 {
     //Post
     //
 
-    public Member3 addMember(Member3 member) {return memberRepository.save(member);}
+    public Member3 addMember(Member3 member, int gymId) {
+        Gym3 gym3 = gymRepository.findById(gymId).get();
+        member.setGym(gym3);
+        return memberRepository.save(member);
+    }
+
 
     public CheckInOut3 addCheckIn(int memberId, String time, CheckType3 checkType3){
         try {

@@ -22,7 +22,7 @@ public class CheckInOut3 {
             strategy = GenerationType.SEQUENCE,
             generator = "clock_sequence"
     )
-    private long checkInId;
+    private int checkInId;
     @OneToOne(cascade = CascadeType.ALL, targetEntity = Member3.class)
     @JoinColumn(name = "member_id", referencedColumnName = "memberId")
     private Member3 member;
@@ -48,11 +48,11 @@ public class CheckInOut3 {
     //Accessors
     //
 
-    public long getCheckInId() {
+    public int getCheckInId() {
         return checkInId;
     }
 
-    public void setCheckInId(long checkInId) {
+    public void setCheckInId(int checkInId) {
         this.checkInId = checkInId;
     }
 
