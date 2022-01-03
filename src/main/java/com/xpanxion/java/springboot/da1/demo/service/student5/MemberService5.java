@@ -21,8 +21,9 @@ public class MemberService5 {
     }
 
     public Member5 getMember(Long memberId){
-        var member = memberRepository.findMemberByMemberId(memberId);
-        if (member == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member id not found");
+
+        var member = memberRepository.findById(Math.toIntExact(memberId)).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found."));
         return member;
     }
 }
