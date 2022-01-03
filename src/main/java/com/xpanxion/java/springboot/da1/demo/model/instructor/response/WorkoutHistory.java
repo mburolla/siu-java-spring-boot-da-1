@@ -1,10 +1,12 @@
 package com.xpanxion.java.springboot.da1.demo.model.instructor.response;
 
 import com.xpanxion.java.springboot.da1.demo.model.instructor.CheckType;
+import com.xpanxion.java.springboot.da1.demo.model.instructor.WorkoutHistory0;
 
 import java.util.Date;
+import java.util.Objects;
 
-public class WorkoutHistory {
+public class WorkoutHistory implements Comparable<WorkoutHistory> {
 
     //
     // Data Members
@@ -53,5 +55,27 @@ public class WorkoutHistory {
 
     public void setCheckType(CheckType checkType) {
         this.checkType = checkType;
+    }
+
+    //
+    // Overrides
+    //
+
+    @Override
+    public int compareTo(WorkoutHistory o) {
+        return timeUtc.compareTo(o.getTimeUtc());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof WorkoutHistory)) return false;
+        WorkoutHistory that = (WorkoutHistory) o;
+        return getMemberId() == that.getMemberId() && getTimeUtc().equals(that.getTimeUtc()) && getCheckType() == that.getCheckType();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTimeUtc(), getMemberId(), getCheckType());
     }
 }

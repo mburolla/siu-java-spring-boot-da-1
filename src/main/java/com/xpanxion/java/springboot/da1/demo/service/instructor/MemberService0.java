@@ -52,9 +52,8 @@ public class MemberService0 {
 
     public List<WorkoutTime> getWorkoutHistory(int memberId) {
         var member = getMemberOrThrow(memberId);
-        var workoutHistory = workoutHistoryRepository0.getSortedWorkoutHistory(memberId);
-        var retval = workoutHistory.stream().map(w -> new WorkoutTime(member.getMemberId(),w.getTime(),w.getCheckType())).toList();
-        return retval;
+        var workoutHistory = workoutHistoryRepository0.findByMember0(member).stream().sorted().toList();
+        return workoutHistory.stream().map(w -> new WorkoutTime(member.getMemberId(),w.getTime(),w.getCheckType())).toList();
     }
 
     public WorkoutLength getWorkout(int memberId, String type) { // TODO: Enumerate type.

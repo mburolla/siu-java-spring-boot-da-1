@@ -1,11 +1,13 @@
 package com.xpanxion.java.springboot.da1.demo.model.instructor;
 
+import com.xpanxion.java.springboot.da1.demo.model.instructor.response.WorkoutHistory;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name="WorkoutHistory0")
-public class WorkoutHistory0 {
+public class WorkoutHistory0 implements Comparable<WorkoutHistory0> {
 
     //
     // Data members
@@ -68,5 +70,14 @@ public class WorkoutHistory0 {
 
     public void setCheckType(CheckType checkType) {
         this.checkType = checkType;
+    }
+
+    //
+    // Overrides
+    //
+
+    @Override
+    public int compareTo(WorkoutHistory0 o) {
+        return time.compareTo(o.getTime());
     }
 }
