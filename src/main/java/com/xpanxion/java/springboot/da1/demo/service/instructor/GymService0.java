@@ -14,9 +14,4 @@ public class GymService0 {
     public int addGym(Gym0 gym) {
         return gymRepository0.save(gym).getGymId();
     }
-
-//    public GymRepository0 addMember(int gymId, GymMember10 member){
-//        member.setGym(gymRepository.findById(gymId));
-//        return memberRepository.save(member);
-//    }
 }
