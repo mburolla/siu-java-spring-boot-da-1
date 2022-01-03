@@ -39,9 +39,13 @@ public class GymService1 {
 
     public List<WorkoutHistory1> getWorkoutHistory(Integer memberId) {
 
-        var memberWorkoutHistory = workoutHistoryRepository1.findByMemberId(memberId);
+        var workoutHistory = workoutHistoryRepository1.findByMemberId(memberId);
 
-        return memberWorkoutHistory;
+        if (workoutHistory.size() == 0 ) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
+        return workoutHistory;
 
     }
 
