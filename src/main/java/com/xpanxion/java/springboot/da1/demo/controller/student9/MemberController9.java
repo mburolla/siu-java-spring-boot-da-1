@@ -23,19 +23,13 @@ public class MemberController9 {
 
     @PostMapping("student9/api/v1/member/{memberId}/checkin")
     public MemberHistory9 addMemberCheckInHistory(@PathVariable int memberId, @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd H:m:s") LocalDateTime time ){
-        var member9 = memberService9.getFindById(memberId);
 
-        var memberHistory = new MemberHistory9(member9);
-        memberHistory.setCheckIn(time);
-        return memberHistoryService9.addMemberHistory(memberHistory);
+        return memberHistoryService9.addMemberCheckInHistory(memberId, time);
     }
 
     @PostMapping("student9/api/v1/member/{memberId}/checkout")
     public MemberHistory9 addMemberCheckOutHistory(@PathVariable int memberId, @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd H:m:s") LocalDateTime time) {
-        var member9 = memberService9.getFindById(memberId);
 
-        var memberHistory = new MemberHistory9(member9);
-        memberHistory.setCheckOut(time);
-        return memberHistoryService9.addMemberHistory(memberHistory);
+        return memberHistoryService9.addMemberCheckOutHistory(memberId, time);
     }
 }
