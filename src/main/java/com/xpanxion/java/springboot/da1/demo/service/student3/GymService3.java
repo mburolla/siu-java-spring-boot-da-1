@@ -38,7 +38,7 @@ public class GymService3 {
 
     public List<CheckInOut3> getWorkoutHistory(int memberId){
         Member3 member3 = memberRepository.findById(memberId).get();
-        checkInOutRepository.findByMember3(member3);
+        return checkInOutRepository.findByMember3(member3);
     }
 
 
