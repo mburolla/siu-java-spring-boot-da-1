@@ -51,7 +51,6 @@ public class GymService1 {
         List<WorkoutHistory1> workoutHistory1;
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
 
-
         workoutHistory1 = jdbcTemplate.query(SELECT_MEMBER_WORKOUT_HISTORY, (row, rowNum) -> {
             var id = Integer.parseInt(row.getString("member_id"));
             Date timeUtc = null;
