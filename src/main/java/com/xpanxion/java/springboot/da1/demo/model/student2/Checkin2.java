@@ -17,7 +17,7 @@ public class Checkin2 {
     private Timestamp checkin;
 
     @ManyToOne(targetEntity = Member2.class)
-    @JoinColumn(name = "memberId", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "memberId", referencedColumnName = "id")
     private Member2 member2;
 
     //
