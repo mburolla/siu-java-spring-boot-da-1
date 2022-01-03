@@ -11,9 +11,8 @@ import java.util.List;
 @Repository
 public interface MemberHistoryRepository9  extends JpaRepository<MemberHistory9, Integer> {
 
-    //JPQl
     @Query(
-            value = "SELECT m.history_id, m.member_id, m.check_in, m.check_out FROM member_history9 m WHERE m.member_id = ?",
+            value = "SELECT m.history_id,m.member_id, m.check_in, m.check_out FROM member_history9 m WHERE m.member_id = ?",
             nativeQuery = true
     )
     List<MemberHistory9> getMemberWorkoutHistory (int memberId);

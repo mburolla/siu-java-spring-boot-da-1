@@ -32,7 +32,7 @@ public class MemberController9 {
     }
 
     @GetMapping("student9/api/v1/member/{memberId}/workout-history")
-    public List<MemberHistory9> getMemberHistory(@PathVariable int memberId){
+    public StringBuilder getMemberHistory(@PathVariable int memberId){
         return memberHistoryService9.getMemberWorkOutHistory(memberId);
     }
 }
