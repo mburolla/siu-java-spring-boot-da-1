@@ -9,6 +9,4 @@ import java.util.List;
 @Repository
 public interface WorkoutHistoryRepository1 extends JpaRepository<WorkoutHistory1, Integer> {
 
-//    public List<WorkoutHistory1> findById(int memberId);
-
 }
