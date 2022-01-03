@@ -12,9 +12,6 @@ import java.util.List;
 public class GymServiceStudent4 {
     //Data members
 
-    @PersistenceContext
-    public EntityManager entityManager;
-
     @Autowired
     private GymRepositoryStudent4 gymRepositoryStudent4;
 
