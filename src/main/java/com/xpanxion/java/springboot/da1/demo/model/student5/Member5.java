@@ -17,7 +17,7 @@ public class Member5 {
             strategy = GenerationType.SEQUENCE,
             generator = "member_sequence"
     )
-    private Long memberId;
+    private long memberId;
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
@@ -38,7 +38,7 @@ public class Member5 {
         this.gym = gym;
     }
 
-    public Member5(Long memberId, String firstName, String lastName, Date dateOfBirth, Date subscriptionStart, Date subscriptionEnd, Gym5 gym) {
+    public Member5(long memberId, String firstName, String lastName, Date dateOfBirth, Date subscriptionStart, Date subscriptionEnd, Gym5 gym) {
         this.memberId = memberId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -48,24 +48,11 @@ public class Member5 {
         this.gym = gym;
     }
 
-    @Override
-    public String toString() {
-        return "Member5{" +
-                "memberId=" + memberId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", subscriptionStart=" + subscriptionStart +
-                ", subscriptionEnd=" + subscriptionEnd +
-                ", gym=" + gym +
-                '}';
-    }
-
-    public Long getMemberId() {
+    public long getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(Long memberId) {
+    public void setMemberId(long memberId) {
         this.memberId = memberId;
     }
 

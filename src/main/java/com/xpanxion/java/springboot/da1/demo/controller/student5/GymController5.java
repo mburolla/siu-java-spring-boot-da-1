@@ -2,6 +2,7 @@ package com.xpanxion.java.springboot.da1.demo.controller.student5;
 
 import com.xpanxion.java.springboot.da1.demo.model.student5.Gym5;
 import com.xpanxion.java.springboot.da1.demo.service.student5.GymService5;
+import com.xpanxion.java.springboot.da1.demo.view.student5.FindGymsView5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class GymController5 {
 
     //GET
     @GetMapping("student5/api/v1/gym")
-    public List<Gym5> findAllByNameContaining(@RequestParam("name") String name) {
+    public List<FindGymsView5> findAllByNameContaining(@RequestParam("name") String name) {
         return gymService.findAllByNameContaining(name);
     }
     //POST
