@@ -41,7 +41,7 @@ public class GymService1 {
         var workoutHistory = workoutHistoryRepository1.findByMemberId(memberId);
 
         if (workoutHistory.size() == 0 ) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
         }
 
         return workoutHistory;
