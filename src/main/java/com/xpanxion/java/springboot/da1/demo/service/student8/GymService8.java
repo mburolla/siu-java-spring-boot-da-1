@@ -50,7 +50,11 @@ public class GymService8 {
     }
 
     public Member8 addMember(Member8 member, Integer gymId) {
-        member.setGymId(gymId);
+        Gym8 gym = gymRepository8.getFindById(gymId);
+        if (gym == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Gym not found");
+        }
+        member.setGym(gym);
         return memberRepository8.save(member);
     }
 

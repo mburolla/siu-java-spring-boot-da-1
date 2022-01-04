@@ -14,4 +14,5 @@ public interface GymRepository8 extends JpaRepository<Gym8, Integer> {
 
     Optional<Gym8> findById(Integer gymId);
 
+    Gym8 getFindById(Integer gymId);
 }

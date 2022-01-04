@@ -9,7 +9,15 @@ public class Gym8 {
     // DATA
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(
+            name="gym_sequence",
+            sequenceName = "gym_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "gym_sequence"
+    )
     private int id;
     private String name;
     private String street1;

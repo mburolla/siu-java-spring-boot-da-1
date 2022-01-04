@@ -24,8 +24,8 @@ public class MemberController8 {
 //    }
 
     @PostMapping("student8/api/v1/gym/{gymId}/member")
-    public void addMember(@RequestBody Member8 member, @PathVariable("gymId") Integer gymId) {
-        gymService8.addMember(member, gymId);
+    public Member8 addMember(@RequestBody Member8 member, @PathVariable("gymId") Integer gymId) {
+        return gymService8.addMember(member, gymId);
     }
 
     @PostMapping("student8/api/v1/member/{memberId}/checkin") //?time=2021-12-20 13:48:28
