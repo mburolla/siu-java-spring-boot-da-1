@@ -9,5 +9,8 @@ import java.util.Optional;
 
 @Repository
 public interface WorkoutRepository10 extends JpaRepository<Workout10, Integer> {
+
     Workout10 findTopByMemberIdOrderByWorkoutIdDesc(int memberId);
+
+    List<Workout10> findAllByMemberId(int memberId);
 }

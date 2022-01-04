@@ -10,6 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 @Service
 public class GymMemberService10 {
 
@@ -25,9 +30,11 @@ public class GymMemberService10 {
         return memberRepository.save(member);
     }
 
-    public Workout10 checkIn(int memberId, String timeIn) {
+    public Workout10 checkIn(int memberId, String timeStamp) throws ParseException {
         if(memberRepository.findById(memberId)!=null) {
-            Workout10 workout = new Workout10(memberId, timeIn);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date time = formatter.parse(timeStamp);
+            Workout10 workout = new Workout10(memberId, time, "CHECK_IN");
             return workoutRepository.save(workout);
         }
         else {
@@ -35,18 +42,26 @@ public class GymMemberService10 {
         }
     }
 
-    public Workout10 checkOut(int memberId, String timeOut) {
+    public Workout10 checkOut(int memberId, String timeStamp) throws ParseException {
         if(memberRepository.findById(memberId)!=null){
-            var memberWorkout = workoutRepository.findTopByMemberIdOrderByWorkoutIdDesc(memberId);
-            if (memberWorkout.getTimeOut() == null) {
-                memberWorkout.setTimeOut(timeOut);
-            }
-            workoutRepository.save(memberWorkout);
-            return memberWorkout;
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date time = formatter.parse(timeStamp);
+            Workout10 workout = new Workout10(memberId, time, "CHECK_OUT");
+            return workoutRepository.save(workout);
         }
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member ID not found");
         }
 
+    }
+
+    public List<Workout10> getWorkoutHistory(int memberId) {
+        if(memberRepository.findById(memberId)!=null) {
+            var workoutList = workoutRepository.findAllByMemberId(memberId);
+            return workoutList;
+        }
+        else{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member ID not found");
+        }
     }
 }
