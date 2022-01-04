@@ -1,0 +1,9 @@
+package com.xpanxion.java.springboot.da1.demo.repository.student6;
+
+import com.xpanxion.java.springboot.da1.demo.model.student6.Member6;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface MemberRepository6 extends JpaRepository<Member6, Integer> {
+}
