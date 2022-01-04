@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -36,13 +37,26 @@ public class GymService3 {
     public List<WorkoutHistoryPresentation> getWorkoutHistory(int memberId){
         try {
             Member3 member3 = memberRepository.findById(memberId).get();
-            var checkInOutList = checkInOutRepository.findByMember3(member3);
+            var checkInOutList = checkInOutRepository.findByMember3OrderByTime(member3);
             return checkInOutList.stream()
                     .map(c -> new WorkoutHistoryPresentation(c.getMember3().getMemberId(), c.getTime(), c.getCheckType())).toList();
         }catch (NoSuchElementException noSuchElementException){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member Id Not Found!");
         }
 
+    }
+
+    public List<WorkoutTime> getWorkoutTime(int memberId){
+        var l=  getWorkoutHistory(memberId); // sorted
+
+
+        for(WorkoutHistoryPresentation w : l){
+            // do stuff here
+        }
+//        Member3 member3 = memberRepository.findById(memberId).get();
+//        var checkInOutList = checkInOutRepository.findByMember3(member3);
+//        checkInOutList.stream().map(c -> new WorkoutTime(c.getMember3().getMemberId(), c.getTime()));
+        return null;
     }
 
 
