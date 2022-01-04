@@ -2,6 +2,7 @@ package com.xpanxion.java.springboot.da1.demo.service.student2;
 
 import com.xpanxion.java.springboot.da1.demo.model.student2.Checkin2;
 import com.xpanxion.java.springboot.da1.demo.model.student2.Checkout2;
+import com.xpanxion.java.springboot.da1.demo.model.student2.WorkoutHistory2;
 import com.xpanxion.java.springboot.da1.demo.repository.student2.CheckinRepository2;
 import com.xpanxion.java.springboot.da1.demo.repository.student2.CheckoutRepository2;
 import com.xpanxion.java.springboot.da1.demo.repository.student2.MemberRepository2;
@@ -11,9 +12,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class HistoryService2 {
+
+    List<WorkoutHistory2> workoutHistory = new ArrayList<WorkoutHistory2>();
 
     Checkin2 checkin = new Checkin2();
     Checkout2 checkout = new Checkout2();
@@ -27,6 +32,26 @@ public class HistoryService2 {
     @Autowired
     private CheckoutRepository2 checkoutRepository2;
 
+    public List<WorkoutHistory2> getHistory(int memberId) {
+
+        List<WorkoutHistory2> workoutHistory = new ArrayList<WorkoutHistory2>();
+        List<Checkin2> checkinHistory = checkinRepository2.findBymember2Id(memberId);
+        List<Checkout2> checkoutHistory = checkoutRepository2.findBymember2Id(memberId);
+
+        if(!memberRepository2.existsById(memberId)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "member id not found");
+        }
+
+        for (Checkin2 n : checkinHistory) {
+            workoutHistory.add(new WorkoutHistory2(memberId, n.getCheckin(), "CHECK_IN"));
+        }
+        for (Checkout2 n : checkoutHistory) {
+            workoutHistory.add(new WorkoutHistory2(memberId, n.getCheckout(), "CHECK_OUT"));
+        }
+
+        return workoutHistory;
+    }
+
     public Checkin2 addHistoryIn(int memberId, Timestamp time) {
         checkin.setCheckin(time);
         checkin.setMember2(memberRepository2.findById(memberId));
@@ -37,6 +62,7 @@ public class HistoryService2 {
     }
 
     public Checkout2 addHistoryOut(int memberId, Timestamp time) {
+
         checkout.setCheckout(time);
         checkout.setMember2(memberRepository2.findById(memberId));
         if (checkout.getMember2() == null) {
