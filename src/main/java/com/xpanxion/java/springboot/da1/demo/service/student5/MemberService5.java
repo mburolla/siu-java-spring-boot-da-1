@@ -25,4 +25,10 @@ public class MemberService5 {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found."));
         return member;
     }
+
+    //Helper Methods
+    public void validateMember(Long memberId) {
+        var member = memberRepository.findById(memberId).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found."));
+    };
 }
