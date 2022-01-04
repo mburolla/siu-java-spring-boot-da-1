@@ -9,8 +9,6 @@ import java.util.List;
 
 @Repository
 public interface GymRepository6 extends JpaRepository<Gym6, Integer> {
+    
 
-
-   @Query("select g from Gym6 where g.name = ?")
-   Gym6 findByName(String name);
 }
