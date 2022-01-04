@@ -17,11 +17,10 @@ public class WorkoutHistory5 {
             strategy = GenerationType.SEQUENCE,
             generator = "workout_id_sequence"
     )
-    private long workoutId;
+    private Long workoutId;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date checkIn;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date checkOut;
+    private Date timeUtc;
+    private CheckType checkType;
 
     @OneToOne
     @JoinColumn(
@@ -33,40 +32,51 @@ public class WorkoutHistory5 {
     public WorkoutHistory5() {
     }
 
-    public WorkoutHistory5(Member5 member, Date checkIn) {
-        this.checkIn = checkIn;
+    public WorkoutHistory5(Date timeUtc, CheckType checkType, Member5 member) {
+        this.timeUtc = timeUtc;
+        this.checkType = checkType;
         this.member = member;
     }
 
-    public WorkoutHistory5(long workoutId, Date checkIn, Date checkOut, Member5 member) {
+    public WorkoutHistory5(Long workoutId, Date timeUtc, CheckType checkType, Member5 member) {
         this.workoutId = workoutId;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
+        this.timeUtc = timeUtc;
+        this.checkType = checkType;
         this.member = member;
     }
 
-    public long getWorkoutId() {
+    @Override
+    public String toString() {
+        return "WorkoutHistory5{" +
+                "workoutId=" + workoutId +
+                ", timeUtc=" + timeUtc +
+                ", checkType=" + checkType +
+                ", member=" + member +
+                '}';
+    }
+
+    public Long getWorkoutId() {
         return workoutId;
     }
 
-    public void setWorkoutId(long workoutId) {
+    public void setWorkoutId(Long workoutId) {
         this.workoutId = workoutId;
     }
 
-    public Date getCheckIn() {
-        return checkIn;
+    public Date getTimeUtc() {
+        return timeUtc;
     }
 
-    public void setCheckIn(Date checkIn) {
-        this.checkIn = checkIn;
+    public void setTimeUtc(Date timeUtc) {
+        this.timeUtc = timeUtc;
     }
 
-    public Date getCheckOut() {
-        return checkOut;
+    public CheckType getCheckType() {
+        return checkType;
     }
 
-    public void setCheckOut(Date checkOut) {
-        this.checkOut = checkOut;
+    public void setCheckType(CheckType checkType) {
+        this.checkType = checkType;
     }
 
     public Member5 getMember() {
@@ -77,13 +87,8 @@ public class WorkoutHistory5 {
         this.member = member;
     }
 
-    @Override
-    public String toString() {
-        return "WorkoutHistory5{" +
-                "workoutId=" + workoutId +
-                ", checkIn=" + checkIn +
-                ", checkOut=" + checkOut +
-                ", member=" + member +
-                '}';
+    public enum CheckType {
+        CHECK_IN,
+        CHECK_OUT
     }
 }

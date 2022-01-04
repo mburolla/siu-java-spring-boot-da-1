@@ -1,13 +1,13 @@
 package com.xpanxion.java.springboot.da1.demo.service.student5;
 
+import com.xpanxion.java.springboot.da1.demo.model.student5.HistoryResult5;
 import com.xpanxion.java.springboot.da1.demo.model.student5.WorkoutHistory5;
 import com.xpanxion.java.springboot.da1.demo.repository.student5.WorkoutHistoryRepository5;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class WorkoutHistoryService5 {
@@ -19,17 +19,17 @@ public class WorkoutHistoryService5 {
 
     public WorkoutHistory5 workoutCheckIn(Long memberId, Date time) {
         var member = memberService.getMember(memberId);
-        return workoutHistoryRepository.save(new WorkoutHistory5(member, time));
+        return workoutHistoryRepository.save(new WorkoutHistory5(time, WorkoutHistory5.CheckType.CHECK_IN, member));
     }
 
     public WorkoutHistory5 workoutCheckOut(Long memberId, Date time) {
-        var workoutList = workoutHistoryRepository.findAllByMemberMemberIdOrderByWorkoutIdDesc(memberId);
-        if (workoutList.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member id not found");
-        else if (workoutList.get(0).getCheckOut()!=null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "not currently checked in");
-        var workout = workoutList.get(0);
-        workout.setCheckOut(time);
-        workoutHistoryRepository.save(workout);
+        var member = memberService.getMember(memberId);
+        return workoutHistoryRepository.save(new WorkoutHistory5(time, WorkoutHistory5.CheckType.CHECK_OUT, member));
+    }
 
-        return workout;
+    public List<HistoryResult5> findAllByMemberMemberId(Long memberId) {
+        var member = memberService.getMember(memberId);
+        return workoutHistoryRepository.findAllByMemberMemberId(member.getMemberId()).stream()
+                .map(c -> new HistoryResult5(c.getMember().getMemberId(), c.getTimeUtc(), c.getCheckType())).toList();
     }
 }

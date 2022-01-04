@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface WorkoutHistoryRepository5 extends JpaRepository<WorkoutHistory5, Long> {
-    List<WorkoutHistory5> findAllByMemberMemberIdOrderByWorkoutIdDesc(Long memberId);
+    List<WorkoutHistory5> findAllByMemberMemberId(Long memberId);
 }
