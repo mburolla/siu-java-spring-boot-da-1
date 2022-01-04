@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 @RequestMapping("student1/api/v1/gym1")
 @RestController
@@ -31,7 +30,7 @@ public class GymController1 {
     }
 
     @PostMapping(path = "{gymId}/member")
-    public AtomicReference<String> addMember(@PathVariable("gymId") int gymId, @RequestBody GymMember1 gymMember) {
+    public String addMember(@PathVariable("gymId") int gymId, @RequestBody GymMember1 gymMember) {
 
         return gymService1.addGymMember(gymId, gymMember);
 
