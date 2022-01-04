@@ -9,13 +9,13 @@ public class GymMember1 {
 
     @Id
     @SequenceGenerator(
-            name = "student1_sequence",
-            sequenceName = "student1_sequence",
+            name = "student1_memberSequence",
+            sequenceName = "student1_memberSequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "student1_sequence"
+            generator = "student1_memberSequence"
     )
     private int id;
     private int gymId;

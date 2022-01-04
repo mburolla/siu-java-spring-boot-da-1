@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface GymRepository5 extends JpaRepository<Gym5, Integer> {
     List<Gym5> findAllByNameContaining(String name);
+    Gym5 findGymByGymId(Long gymId);
 }

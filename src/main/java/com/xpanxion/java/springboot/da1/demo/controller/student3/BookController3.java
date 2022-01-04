@@ -14,13 +14,26 @@ public class BookController3 {
     private DataService3 dataService3;
 
 
+    //
+    //GetMap
+    //
+
     @GetMapping("student3/api/v1/book")
     public List<Book> getBook() {
         return dataService3.getBook();
     }
 
+    //
+    //PostMap
+    //
+
     @PostMapping("student3/api/v1/bookstores/{bookstoreId}/books")
     public Book addBook (@RequestBody Book book, @PathVariable Integer bookstoreId, @RequestParam int quantity){
         return dataService3.addBook(book, bookstoreId, quantity);
     }
+
+    //
+    //PutMap
+    //
+
 }

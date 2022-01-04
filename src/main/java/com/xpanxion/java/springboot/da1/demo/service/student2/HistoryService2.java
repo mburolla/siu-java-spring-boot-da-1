@@ -37,7 +37,6 @@ public class HistoryService2 {
     public List<WorkoutHistory2> getHistory(int memberId) {
 
         List<WorkoutHistory2> workoutHistory = new ArrayList<WorkoutHistory2>();
-
         List<Checkin2> checkinHistory = checkinRepository2.findBymember2Id(memberId);
         List<Checkout2> checkoutHistory = checkoutRepository2.findBymember2Id(memberId);
 
@@ -53,6 +52,7 @@ public class HistoryService2 {
         }
 
         return workoutHistory;
+
     }
 
     public WorkoutLength2 getWorkoutLength(int memberId, String type) {
