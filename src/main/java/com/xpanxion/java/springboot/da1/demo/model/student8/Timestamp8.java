@@ -1,7 +1,7 @@
 package com.xpanxion.java.springboot.da1.demo.model.student8;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name="timestamp8")
@@ -13,20 +13,20 @@ public class Timestamp8 {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int timestampId;
     private int memberId;
-    private String checkInTime;
-    private String checkOutTime;
+    private Timestamp checkInTime;
+    private Timestamp checkOutTime;
 
     // CONSTRUCTORS
 
     public Timestamp8() {}
 
-    public Timestamp8(int memberId, String checkInTime) {
+    public Timestamp8(int memberId, Timestamp checkInTime) {
         this.memberId = memberId;
         this.checkInTime = checkInTime;
         this.checkOutTime = null;
     }
 
-    public Timestamp8(int timestampId, int memberId, String checkInTime, String checkOutTime) {
+    public Timestamp8(int timestampId, int memberId, Timestamp checkInTime, Timestamp checkOutTime) {
         this.timestampId = timestampId;
         this.memberId = memberId;
         this.checkInTime = checkInTime;
@@ -51,19 +51,19 @@ public class Timestamp8 {
         this.memberId = memberId;
     }
 
-    public String getCheckInTime() {
+    public Timestamp getCheckInTime() {
         return checkInTime;
     }
 
-    public void setCheckInTime(String checkInTime) {
+    public void setCheckInTime(Timestamp checkInTime) {
         this.checkInTime = checkInTime;
     }
 
-    public String getCheckOutTime() {
+    public Timestamp getCheckOutTime() {
         return checkOutTime;
     }
 
-    public void setCheckOutTime(String checkOutTime) {
+    public void setCheckOutTime(Timestamp checkOutTime) {
         this.checkOutTime = checkOutTime;
     }
 }

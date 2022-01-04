@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,7 +54,7 @@ public class GymService8 {
         return memberRepository8.save(member);
     }
 
-    public Timestamp8 memberCheckIn(Integer memberId, String checkInTime) {
+    public Timestamp8 memberCheckIn(Integer memberId, Timestamp checkInTime) {
         if (memberRepository8.findById(memberId).isPresent()) {
             var timestamp = new Timestamp8(memberId, checkInTime);
             return timestampRepository8.save(timestamp);
@@ -62,7 +64,7 @@ public class GymService8 {
         }
     }
 
-    public Timestamp8 memberCheckOut(Integer memberId, String checkOutTime) {
+    public Timestamp8 memberCheckOut(Integer memberId, Timestamp checkOutTime) {
         if(memberRepository8.findById(memberId).isPresent()){
             Timestamp8 timestamp = timestampRepository8.findTopByMemberIdOrderByTimestampIdDesc(memberId);
             if (timestamp.getCheckOutTime() == null) {
