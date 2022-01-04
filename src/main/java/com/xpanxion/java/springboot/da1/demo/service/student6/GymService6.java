@@ -10,7 +10,6 @@ import java.util.List;
 @Service
 public class GymService6 {
 
-
     @Autowired
     private GymRepository6 gymRepository6;
 
@@ -23,7 +22,6 @@ public class GymService6 {
     }
 
     public Gym6 findByName(String name) {
-        //return gymRepository6.findByFirstname(name);
-        return null;
+        return gymRepository6.findByName(name);
     }
 }

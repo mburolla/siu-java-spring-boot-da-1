@@ -12,14 +12,14 @@ public class GymController6 {
     @Autowired
     GymService6 gymService6;
 
-    @GetMapping("student6/api/v1/gym?name={name}")
+    @GetMapping("student6/api/v1/gym6?name={name}")
     public ResponseEntity<Gym6> getGymByName(@PathVariable String name){
         Gym6 gym6 = gymService6.findByName(name);
         return ResponseEntity.ok(gym6);
     }
 
 
-    @PostMapping("student6/api/v1/gym")
+    @PostMapping("student6/api/v1/gym6")
     public Gym6 update(@RequestBody Gym6 gym6) {
         return gymService6.post(gym6);
     }
