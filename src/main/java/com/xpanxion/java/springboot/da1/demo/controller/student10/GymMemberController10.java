@@ -2,6 +2,7 @@ package com.xpanxion.java.springboot.da1.demo.controller.student10;
 
 import com.xpanxion.java.springboot.da1.demo.model.student10.GymMember10;
 import com.xpanxion.java.springboot.da1.demo.model.student10.Workout10;
+import com.xpanxion.java.springboot.da1.demo.model.student10.WorkoutTimes10;
 import com.xpanxion.java.springboot.da1.demo.service.student10.GymMemberService10;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,12 +36,10 @@ public class GymMemberController10 {
         List<Workout10> workouts = memberService.getWorkoutHistory(memberId);
         return workouts;
     }
-    /*
+
     @GetMapping("student10/api/v1/member/{memberId}/workout")
-    public List<WorkoutTimes10> getMinMaxWorkout(@PathVariable int memberId, @RequestParam String type){
-        List<WorkoutTimes10> times = memberService.getTimes(memberId);
+    public WorkoutTimes10 getMinMaxWorkout(@PathVariable int memberId, @RequestParam String type){
+        WorkoutTimes10 times = memberService.getWorkoutTimes(memberId, type);
         return times;
     }
-
-     */
 }
