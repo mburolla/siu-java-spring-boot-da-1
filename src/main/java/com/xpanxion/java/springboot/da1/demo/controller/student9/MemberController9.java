@@ -28,11 +28,16 @@ public class MemberController9 {
     @PostMapping("student9/api/v1/member/{memberId}/checkout")
     public MemberHistory9 addMemberCheckOutHistory(@PathVariable int memberId, @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd H:m:s") LocalDateTime time) {
 
-        return memberHistoryService9.addMemberCheckOutHistory(memberId, time);
+         return memberHistoryService9.addMemberCheckOutHistory(memberId, time);
     }
 
     @GetMapping("student9/api/v1/member/{memberId}/workout-history")
     public StringBuilder getMemberHistory(@PathVariable int memberId){
         return memberHistoryService9.getMemberWorkOutHistory(memberId);
+    }
+
+    @GetMapping("student9/api/v1/member/{memberId}/workout")
+    public StringBuilder getWorkoutLength(@PathVariable int memberId, @RequestParam String type){
+        return memberHistoryService9.getMemberWorkOutLength(memberId,type);
     }
 }
