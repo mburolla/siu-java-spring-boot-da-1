@@ -3,27 +3,31 @@ package com.xpanxion.java.springboot.da1.demo.model.student4;
 import javax.persistence.*;
 
 @Entity
-@Table(name="workout_history")
+@Table(name="workout4")
 public class Workout4 {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int workoutId;
-    private int memberId;
+
+    @OneToOne( cascade=CascadeType.ALL, targetEntity = Member4.class)
+    @JoinColumn(name = "member_id", referencedColumnName = "memberId")
+    private Member4 member;
+
     private String timeIn;
     private String timeOut;
 
     public Workout4() {
     }
 
-    public Workout4(int memberId, String timeIn){
-        this.memberId = memberId;
+    public Workout4(Member4 member, String timeIn){
+        this.member= member;
         this.timeIn = timeIn;
         this.timeOut = null;
     }
 
-    public Workout4(int workoutId, int memberId, String timeIn, String timeOut){
+    public Workout4(int workoutId, Member4 member, String timeIn, String timeOut){
         this.workoutId = workoutId;
-        this.memberId = memberId;
+        this.member = member;
         this.timeIn = timeIn;
         this.timeOut = timeOut;
     }
@@ -34,8 +38,8 @@ public class Workout4 {
         return workoutId;
     }
 
-    public int getMemberId() {
-        return memberId;
+    public Member4 getMember() {
+        return member;
     }
 
     public String getTimeIn() {
@@ -52,8 +56,8 @@ public class Workout4 {
         this.workoutId = workoutId;
     }
 
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
+    public void setMember(Member4 member) {
+        this.member = member;
     }
 
     public void setTimeIn(String timeIn) {
@@ -62,6 +66,16 @@ public class Workout4 {
 
     public void setTimeOut(String timeOut) {
         this.timeOut = timeOut;
+    }
+
+    @Override
+    public String toString() {
+        return "Workout4{" +
+                "workoutId=" + workoutId +
+                ", member=" + member +
+                ", timeIn='" + timeIn + '\'' +
+                ", timeOut='" + timeOut + '\'' +
+                '}';
     }
 }
 

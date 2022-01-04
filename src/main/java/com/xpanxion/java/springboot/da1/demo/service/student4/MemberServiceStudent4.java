@@ -22,28 +22,28 @@ public class MemberServiceStudent4 {
         return memberRepositoryStudent4.save(member);
     }
 
-    public Workout4 checkIn(int memberId, String timeIn) {
-
-        if (memberRepositoryStudent4.findById(memberId) != null) {
-            Workout4 workout = new Workout4(memberId, timeIn);
+    public Workout4 checkIn(long memberId, String timeIn) {
+        var member = memberRepositoryStudent4.findByMemberId(memberId);
+        if (member != null) {
+            Workout4 workout = new Workout4(member, timeIn);
             return workoutRepository4.save(workout);
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member ID not found");
         }
-
     }
 
-    public Workout4 checkOut(int memberId, String timeOut) {
-        if (memberRepositoryStudent4.findById(memberId) != null) {
-            var memberWorkout = workoutRepository4.findTopByMemberId(memberId);
-            if (memberWorkout.getTimeOut() == null) {
-                memberWorkout.setTimeOut(timeOut);
-            }
-            workoutRepository4.save(memberWorkout);
-            return memberWorkout;
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member ID not found");
-        }
+    public Workout4 checkOut(long memberId, String timeOut) {
+//        if (memberRepositoryStudent4.findByMemberId(memberId) != null) {
+//            var memberWorkout = workoutRepository4.findTopByMemberId(memberId);
+//            if (memberWorkout.getTimeOut() == null) {
+//                memberWorkout.setTimeOut(timeOut);
+//            }
+//            workoutRepository4.save(memberWorkout);
+//            return memberWorkout;
+//        } else {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member ID not found");
+//        }
+        return null;
 
     }
 
