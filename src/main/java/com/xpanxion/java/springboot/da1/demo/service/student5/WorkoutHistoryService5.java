@@ -56,7 +56,7 @@ public class WorkoutHistoryService5 {
                 Collections.sort(workoutLengths);
                 return workoutLengths.get(0);
             }
-            default -> throw new ResponseStatusException(HttpStatus.NOT_FOUND, "type is invalid");
+            default -> throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "type is invalid");
         }
     }
 
