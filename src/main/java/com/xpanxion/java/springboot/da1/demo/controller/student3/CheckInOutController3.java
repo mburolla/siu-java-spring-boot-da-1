@@ -30,8 +30,8 @@ public class CheckInOutController3 {
     }
 
     @GetMapping("student3/api/v1/member/{memberId}/workout")
-    public List<WorkoutTime> getWorkoutTime(@PathVariable int memberId, @RequestParam String type){
-        return gymService3.getWorkoutTime(memberId);
+    public WorkoutTime getWorkoutTime(@PathVariable int memberId, @RequestParam String type){
+        return gymService3.getWorkoutTime(memberId, type);
     }
 
     //

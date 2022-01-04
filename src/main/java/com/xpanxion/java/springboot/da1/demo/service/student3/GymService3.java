@@ -11,10 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Service
 public class GymService3 {
@@ -49,8 +46,8 @@ public class GymService3 {
 
     }
 
-    public List<WorkoutTime> getWorkoutTime(int memberId){
-        List<WorkoutTime> retVal = new ArrayList<WorkoutTime>();
+    public WorkoutTime getWorkoutTime(int memberId, String type){
+        List<WorkoutTime> workoutTimeList = new ArrayList<WorkoutTime>();
 
         String pattern = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
@@ -62,7 +59,6 @@ public class GymService3 {
         String workoutDate;
         ParsePosition pp1 = new ParsePosition(0);
 
-
         for(WorkoutHistoryPresentation w : l){
             if (w.getCheckType3().equals(CheckType3.CHECKIN)){
                 checkinTime = w.getTime();
@@ -70,16 +66,24 @@ public class GymService3 {
                 checkoutTime = w.getTime();
                 var deltaMs = checkoutTime.getTime() - checkinTime.getTime();
                 var deltaMinutes = deltaMs / 60000;
-                var strDate = simpleDateFormat.format(w.getTime());
                 workoutDate = simpleDateFormat.format(w.getTime());
-                retVal.add(new WorkoutTime(deltaMinutes, memberId, workoutDate));
+                workoutTimeList.add(new WorkoutTime(deltaMinutes, memberId, workoutDate));
             }
         }
 
-        // Sort retval by workout length
-        // min is the first item, max is the last item.
+        switch (type){
+            case "min" -> {
+                return workoutTimeList.get(0);
+            }
+            case "max" -> {
+                Collections.sort(workoutTimeList);
+                return workoutTimeList.get(0);
+            }
+            default -> throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Enter valid Type");
+        }
 
-        return retVal;
+        // Sort workoutTimeList by workout length
+        // min is the first item, max is the last item to return
     }
 
 

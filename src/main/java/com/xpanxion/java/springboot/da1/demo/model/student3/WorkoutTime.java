@@ -2,7 +2,7 @@ package com.xpanxion.java.springboot.da1.demo.model.student3;
 
 import java.util.Date;
 
-public class WorkoutTime {
+public class WorkoutTime implements Comparable<WorkoutTime> {
 
     private  int memberId;
     private  String date;
@@ -40,5 +40,15 @@ public class WorkoutTime {
 
     public void setLengthInMinutes(long lengthInMinutes) {
         this.lengthInMinutes = lengthInMinutes;
+    }
+
+    @Override
+    public int compareTo(WorkoutTime o) {
+        if (o.getLengthInMinutes() > this.getLengthInMinutes()){
+            return 1;
+        }else if (o.getLengthInMinutes() < this.getLengthInMinutes()){
+            return -1;
+        }
+        return 0;
     }
 }
