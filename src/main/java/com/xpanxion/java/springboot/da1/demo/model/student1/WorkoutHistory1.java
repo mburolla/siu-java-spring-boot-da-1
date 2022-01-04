@@ -31,6 +31,7 @@ public class WorkoutHistory1 {
         this.checkType = checkType;
     }
 
+
     public int getId() {
         return id;
     }

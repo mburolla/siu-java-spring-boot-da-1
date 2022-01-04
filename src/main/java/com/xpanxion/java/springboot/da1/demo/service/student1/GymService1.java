@@ -1,9 +1,6 @@
 package com.xpanxion.java.springboot.da1.demo.service.student1;
 
-import com.xpanxion.java.springboot.da1.demo.model.student1.Gym1;
-import com.xpanxion.java.springboot.da1.demo.model.student1.GymMember1;
-import com.xpanxion.java.springboot.da1.demo.model.student1.Timestamps1;
-import com.xpanxion.java.springboot.da1.demo.model.student1.WorkoutHistory1;
+import com.xpanxion.java.springboot.da1.demo.model.student1.*;
 import com.xpanxion.java.springboot.da1.demo.repository.student1.GymMemberRepository1;
 import com.xpanxion.java.springboot.da1.demo.repository.student1.GymRepository1;
 import com.xpanxion.java.springboot.da1.demo.repository.student1.TimestampsRepository1;
@@ -36,6 +33,8 @@ public class GymService1 {
 
     @Autowired
     private TimestampsRepository1 timestampsRepository1;
+
+    WorkoutHistory1 workoutHistory1;
 
     public List<WorkoutHistory1> getWorkoutHistory(Integer memberId) {
 
@@ -77,12 +76,12 @@ public class GymService1 {
 
     public String checkIn(int memberId, String checkIn) throws ParseException {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Date checkInGym = (Date) sdf.parse(checkIn);
         Optional<GymMember1> gymMember = gymMemberRepository1.findById(memberId);
         gymMember.ifPresentOrElse(
                 gymMember1 -> {
-                    workoutHistoryRepository1.save(new WorkoutHistory1(0, memberId, checkInGym, "CHECK_IN"));
+                    workoutHistoryRepository1.save(new WorkoutHistory1(0, memberId, checkInGym, CheckType.CHECK_IN.name()));
                     timestampsRepository1.save(new Timestamps1(0, memberId, checkInGym, null));
                 },
                 () -> {
@@ -102,7 +101,7 @@ public class GymService1 {
         Optional<Timestamps1> memberTimestamp;
         timestamps.ifPresentOrElse(
                 timestamps1 -> {
-                    workoutHistoryRepository1.save(new WorkoutHistory1(0, memberId, checkOutGym, "CHECK_OUT"));
+                    workoutHistoryRepository1.save(new WorkoutHistory1(0, memberId, checkOutGym, CheckType.CHECK_OUT.name()));
                     for (Timestamps1 value : timestamps1) {
                         if (value.getCheckOut() == null) {
                             value.setCheckOut(checkOutGym);
