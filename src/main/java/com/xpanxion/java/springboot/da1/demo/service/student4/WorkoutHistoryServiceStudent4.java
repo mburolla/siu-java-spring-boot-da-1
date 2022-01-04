@@ -29,11 +29,10 @@ public class WorkoutHistoryServiceStudent4 {
         public List<WorkoutHistory4> findAllByMemberMemberId(Long memberId) {
             var member = memberService.getMember(memberId);
             return workoutHistoryRepository.findAllByMemberMemberId(member.getMemberId()).stream()
-                    .map(c -> {             //new WorkoutHistory4(c.getTimeUtc(), c.getCheckType(), c.getMember().getId())
+                    .map(c -> {
                        var t = c.getTimeUtc();
                        var ct = c.getCheckType();
                        var mid = c.getMember().getMemberId();
-                      // return new WorkoutPresentation4(mid, t, ct);
                        return c;
                    }).toList();
 
