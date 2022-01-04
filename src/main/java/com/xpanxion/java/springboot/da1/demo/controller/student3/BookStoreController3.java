@@ -16,10 +16,22 @@ public class BookStoreController3 {
     @Autowired
     private DataService3 dataService3;
 
+    //
+    //GetMap
+    //
+
    @GetMapping("student3/api/v1/bookstores/{bookstoreId}/books")
    public List<BookStore> getInventory(@PathVariable int bookstoreId){
        return dataService3.getInventory(bookstoreId);
    }
+
+    //
+    //PostMap
+    //
+
+    //
+    //PutMap
+    //
 
 }
 
