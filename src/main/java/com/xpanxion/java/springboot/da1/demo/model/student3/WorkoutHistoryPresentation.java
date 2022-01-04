@@ -1,16 +1,18 @@
 package com.xpanxion.java.springboot.da1.demo.model.student3;
 
+import java.util.Date;
+
 public class WorkoutHistoryPresentation {
 
     private int memberId;
-    private String time;
+    private Date time;
     private CheckType3 checkType3;
 
     public WorkoutHistoryPresentation(){
 
     }
 
-    public WorkoutHistoryPresentation(int memberId, String time, CheckType3 checkType3) {
+    public WorkoutHistoryPresentation(int memberId, Date time, CheckType3 checkType3) {
         this.memberId = memberId;
         this.time = time;
         this.checkType3 = checkType3;
@@ -24,11 +26,11 @@ public class WorkoutHistoryPresentation {
         this.memberId = memberId;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
@@ -39,4 +41,15 @@ public class WorkoutHistoryPresentation {
     public void setCheckType3(CheckType3 checkType3) {
         this.checkType3 = checkType3;
     }
+
+    @Override
+    public String toString() {
+        return "WorkoutHistoryPresentation{" +
+                "memberId=" + memberId +
+                ", time=" + time +
+                ", checkType3=" + checkType3 +
+                '}';
+    }
 }
+
+

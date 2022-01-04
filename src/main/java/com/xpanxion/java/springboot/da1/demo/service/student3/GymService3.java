@@ -9,7 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Comparator;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -47,16 +50,36 @@ public class GymService3 {
     }
 
     public List<WorkoutTime> getWorkoutTime(int memberId){
+        List<WorkoutTime> retVal = new ArrayList<WorkoutTime>();
+
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
         var l=  getWorkoutHistory(memberId); // sorted
+
+        Date checkinTime = null;
+        Date checkoutTime;
+        String workoutDate;
+        ParsePosition pp1 = new ParsePosition(0);
 
 
         for(WorkoutHistoryPresentation w : l){
-            // do stuff here
+            if (w.getCheckType3().equals(CheckType3.CHECKIN)){
+                checkinTime = w.getTime();
+            }else if (w.getCheckType3().equals(CheckType3.CHECKOUT)){
+                checkoutTime = w.getTime();
+                var deltaMs = checkoutTime.getTime() - checkinTime.getTime();
+                var deltaMinutes = deltaMs / 60000;
+                var strDate = simpleDateFormat.format(w.getTime());
+                workoutDate = simpleDateFormat.format(w.getTime());
+                retVal.add(new WorkoutTime(deltaMinutes, memberId, workoutDate));
+            }
         }
-//        Member3 member3 = memberRepository.findById(memberId).get();
-//        var checkInOutList = checkInOutRepository.findByMember3(member3);
-//        checkInOutList.stream().map(c -> new WorkoutTime(c.getMember3().getMemberId(), c.getTime()));
-        return null;
+
+        // Sort retval by workout length
+        // min is the first item, max is the last item.
+
+        return retVal;
     }
 
 
@@ -75,7 +98,7 @@ public class GymService3 {
     }
 
 
-    public CheckInOut3 addCheckIn(int memberId, String time, CheckType3 checkType3){
+    public CheckInOut3 addCheckIn(int memberId, Date time, CheckType3 checkType3){
         try {
             Member3 member = memberRepository.findById(memberId).get();
             CheckInOut3 checkInOut3 = new CheckInOut3(member, checkType3, time);
@@ -85,7 +108,7 @@ public class GymService3 {
         }
     }
 
-    public CheckInOut3 addCheckOut(int memberId, String time, CheckType3 checkType3){
+    public CheckInOut3 addCheckOut(int memberId, Date time, CheckType3 checkType3){
         try{
             Member3 member = memberRepository.findById(memberId).get();
             CheckInOut3 checkInOut3 = new CheckInOut3(member, checkType3, time);

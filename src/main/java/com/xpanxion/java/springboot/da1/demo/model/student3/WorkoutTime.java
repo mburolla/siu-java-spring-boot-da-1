@@ -1,18 +1,21 @@
 package com.xpanxion.java.springboot.da1.demo.model.student3;
 
+import java.util.Date;
+
 public class WorkoutTime {
 
     private  int memberId;
-    private String time;
-    private String date;
+    private  String date;
+    private long lengthInMinutes;
 
     public WorkoutTime(){
 
     }
 
-    public WorkoutTime(int memberId, String time) {
+    public WorkoutTime(long lengthInMinutes, int memberId, String date) {
+        this.lengthInMinutes = lengthInMinutes;
         this.memberId = memberId;
-        this.time = time;
+        this.date = date;
     }
 
     public int getMemberId() {
@@ -23,11 +26,19 @@ public class WorkoutTime {
         this.memberId = memberId;
     }
 
-    public String getTime() {
-        return time;
+    public String getDate() {
+        return date;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public long getLengthInMinutes() {
+        return lengthInMinutes;
+    }
+
+    public void setLengthInMinutes(long lengthInMinutes) {
+        this.lengthInMinutes = lengthInMinutes;
     }
 }
