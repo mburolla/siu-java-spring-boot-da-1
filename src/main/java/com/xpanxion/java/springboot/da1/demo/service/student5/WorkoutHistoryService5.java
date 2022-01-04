@@ -48,12 +48,16 @@ public class WorkoutHistoryService5 {
             var lengthInMinutes = getDateDiff(workoutHistory.get(i).getTimeUtc(), workoutHistory.get(i+1).getTimeUtc());
             workoutLengths.add(new WorkoutLengthView(lengthInMinutes, memberId, date));
         }
-        if (type.equalsIgnoreCase("min")) {
-            return workoutLengths.get(0);
-        } else if  (type.equalsIgnoreCase("max")) {
-            Collections.sort(workoutLengths);
-            return workoutLengths.get(0);
-        } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "type is invalid");
+        switch (type) {
+            case "min" -> {
+                return workoutLengths.get(0);
+            }
+            case "max" -> {
+                Collections.sort(workoutLengths);
+                return workoutLengths.get(0);
+            }
+            default -> throw new ResponseStatusException(HttpStatus.NOT_FOUND, "type is invalid");
+        }
     }
 
     //Helper Methods
