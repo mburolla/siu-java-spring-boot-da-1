@@ -1,7 +1,6 @@
 package com.xpanxion.java.springboot.da1.demo.model.student8;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 @Entity
 @Table(name="gym8")

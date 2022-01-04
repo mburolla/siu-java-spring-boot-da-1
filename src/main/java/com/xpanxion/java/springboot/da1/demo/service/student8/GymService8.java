@@ -48,12 +48,9 @@ public class GymService8 {
         return gyms;
     }
 
-    public Member8 addMember(Member8 member) {
+    public Member8 addMember(Member8 member, Integer gymId) {
+        member.setGymId(gymId);
         return memberRepository8.save(member);
-    }
-
-    public Member8 findMemberById(Integer memberId){
-        return memberRepository8.getById(memberId);
     }
 
     public Timestamp8 memberCheckIn(Integer memberId, String checkInTime) {
@@ -68,7 +65,7 @@ public class GymService8 {
 
     public Timestamp8 memberCheckOut(Integer memberId, String checkOutTime) {
         if(memberRepository8.findById(memberId).isPresent()){
-            Timestamp8 timestamp = timestampRepository8.findTopByMemberId(memberId);
+            Timestamp8 timestamp = timestampRepository8.findTopByMemberIdOrderByTimestampIdDesc(memberId);
             if (timestamp.getCheckOutTime() == null) {
                 timestamp.setCheckOutTime(checkOutTime);
             }

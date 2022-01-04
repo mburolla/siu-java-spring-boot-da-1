@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TimestampRepository8 extends JpaRepository<Timestamp8, Integer> {
-    Timestamp8 findTopByMemberId(int memberId);
+    Timestamp8 findTopByMemberIdOrderByTimestampIdDesc(int memberId);
 }

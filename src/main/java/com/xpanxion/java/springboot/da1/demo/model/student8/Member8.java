@@ -39,7 +39,6 @@ public class Member8 {
         return memberId;
     }
 
-
     public int getGymId() {
         return gymId;
     }
