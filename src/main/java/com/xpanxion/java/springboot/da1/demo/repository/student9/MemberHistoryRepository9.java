@@ -16,4 +16,17 @@ public interface MemberHistoryRepository9  extends JpaRepository<MemberHistory9,
             nativeQuery = true
     )
     List<MemberHistory9> getMemberWorkoutHistory (int memberId);
+
+    @Query(
+            value = "SELECT MIN(timestampdiff(minute,check_in, check_out))as lengthInMin,history_id, member_id,check_in,check_out FROM member_history9 WHERE member_Id = ?",
+            nativeQuery = true
+    )
+    List<MemberHistory9> getWorkoutLengthMin(int memberId);
+
+
+    @Query(
+            value = "SELECT MAX(timestampdiff(minute,check_in, check_out))as lengthInMin,history_id, member_id,check_in,check_out FROM member_history9 WHERE member_Id = ?",
+            nativeQuery = true
+    )
+    List<MemberHistory9> getWorkoutLengthMax(int memberId);
 }
