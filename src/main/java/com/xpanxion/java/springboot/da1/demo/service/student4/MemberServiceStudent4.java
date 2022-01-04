@@ -9,9 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 @Service
 public class MemberServiceStudent4 {
 
@@ -30,25 +27,28 @@ public class MemberServiceStudent4 {
         if (memberRepositoryStudent4.findById(memberId) != null) {
             Workout4 workout = new Workout4(memberId, timeIn);
             return workoutRepository4.save(workout);
-        }
-        else {
+        } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member ID not found");
         }
 
     }
 
     public Workout4 checkOut(int memberId, String timeOut) {
-        if(memberRepositoryStudent4.findById(memberId)!=null){
+        if (memberRepositoryStudent4.findById(memberId) != null) {
             var memberWorkout = workoutRepository4.findTopByMemberId(memberId);
             if (memberWorkout.getTimeOut() == null) {
                 memberWorkout.setTimeOut(timeOut);
             }
             workoutRepository4.save(memberWorkout);
             return memberWorkout;
-        }
-        else {
+        } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member ID not found");
         }
 
+    }
+
+    public Member4 getMember(Long memberId) {
+        var member = memberRepositoryStudent4.findByMemberId(memberId);
+        return member;
     }
 }

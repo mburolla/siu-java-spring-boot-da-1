@@ -2,9 +2,13 @@ package com.xpanxion.java.springboot.da1.demo.controller.student4;
 
 import com.xpanxion.java.springboot.da1.demo.model.student4.Member4;
 import com.xpanxion.java.springboot.da1.demo.model.student4.Workout4;
+import com.xpanxion.java.springboot.da1.demo.model.student4.WorkoutHistory4;
 import com.xpanxion.java.springboot.da1.demo.service.student4.MemberServiceStudent4;
+import com.xpanxion.java.springboot.da1.demo.service.student4.WorkoutHistoryServiceStudent4;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class MemberController4 {
@@ -26,5 +30,13 @@ public class MemberController4 {
     @PostMapping("student4/api/v1/member/{memberId}/checkout")
     public Workout4 checkOut(@PathVariable int memberId, @RequestParam String time) {
         return memberService.checkOut(memberId, time);
+    }
+
+    @Autowired
+    private WorkoutHistoryServiceStudent4 workoutHistoryServiceStudent4;
+
+    @GetMapping("student4/api/v1/member/{memberId}/workout-history")
+    public List<WorkoutHistory4> workoutHistory(@PathVariable("memberId") Long memberId) {
+        return workoutHistoryServiceStudent4.findAllByMemberMemberId(memberId);
     }
 }

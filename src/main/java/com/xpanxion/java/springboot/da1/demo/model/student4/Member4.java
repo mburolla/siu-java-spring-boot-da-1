@@ -18,8 +18,8 @@ public class Member4 {
             generator = "member_sequence"
     )
 
-    private long id;
-    private long gymId;
+    private Long memberId;
+    private Long gymId;
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
@@ -27,7 +27,7 @@ public class Member4 {
     private Date subscriptionEnd;
 
     public Member4() {
-        this.id = -1L;
+        this.memberId = -1L;
         this.gymId = -1L;
         this.firstName = "";
         this.lastName = "";
@@ -36,13 +36,13 @@ public class Member4 {
         this.subscriptionEnd = new Date();
     }
 
-    public Member4(long id,
+    public Member4(long memberId,
                    String firstName,
                    String lastName,
                    Date dateOfBirth,
                    Date subscriptionStart,
                    Date subscriptionEnd) {
-        this.id = id;
+        this.memberId = memberId;
         this.gymId = -1L;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -54,7 +54,7 @@ public class Member4 {
     @Override
     public String toString() {
         return "Member5{" +
-                "id=" + id +
+                "MemberId=" + memberId +
                 ", gymId=" + gymId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -64,12 +64,12 @@ public class Member4 {
                 '}';
     }
 
-    public long getId() {
-        return id;
+    public long getMemberId() {
+        return memberId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setMemberId(long memberId) {
+        this.memberId = memberId;
     }
 
     public long getGymId() {
