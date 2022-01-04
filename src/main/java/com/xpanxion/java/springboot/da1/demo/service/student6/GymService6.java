@@ -22,6 +22,7 @@ public class GymService6 {
     }
 
     public Gym6 findByName(String name) {
-        return gymRepository6.findByName(name);
+        //return gymRepository6.findByName(name);
+        return null;
     }
 }

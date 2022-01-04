@@ -14,8 +14,9 @@ public class GymController6 {
 
     @GetMapping("student6/api/v1/gym6?name={name}")
     public ResponseEntity<Gym6> getGymByName(@PathVariable String name){
-        Gym6 gym6 = gymService6.findByName(name);
-        return ResponseEntity.ok(gym6);
+        //Gym6 gym6 = gymService6.findByName(name);
+        //return ResponseEntity.ok(gym6);
+        return null;
     }
 
 
