@@ -11,8 +11,21 @@ public class MessageController3 {
     @Autowired
     private DataService3 dataService3;
 
+    //
+    //GetMap
+    //
+
     @GetMapping("student3/api/v1/message")
     public String getMessage() {
         return dataService3.getMessage();
     }
+
+    //
+    //PostMap
+    //
+
+    //
+    //PutMap
+    //
+
 }

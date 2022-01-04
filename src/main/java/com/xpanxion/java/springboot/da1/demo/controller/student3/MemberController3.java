@@ -15,10 +15,21 @@ public class MemberController3 {
     @Autowired
     private GymService3 gymService3;
 
+    //
+    //GetMap
+    //
+
+    //
+    //PostMap
+    //
+
     @PostMapping("student3/api/v1/gym/{gymId}/member")
     public Member3 addMember(@RequestBody Member3 member3, @PathVariable("gymId") int gymId){
         return gymService3.addMember(member3, gymId);
     }
 
+    //
+    //PutMap
+    //
 
 }

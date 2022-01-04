@@ -13,15 +13,27 @@ public class ManagerController3 {
     @Autowired
     DataService3 dataService3;
 
+    //
+    //GetMap
+    //
+
     @GetMapping("student3/api/v1/managers")
     public List<Manager> getManager(){
         return dataService3.getManager();
     }
 
+    //
+    //PostMap
+    //
+
     @PostMapping("student3/api/v1/managers")
     public Manager addManager(@RequestBody Manager manager){
         return dataService3.addManager(manager);
     }
+
+    //
+    //PutMap
+    //
 
     @PutMapping("student3/api/v1/managers")
     public Manager updateManagerName(@RequestBody Manager manager){

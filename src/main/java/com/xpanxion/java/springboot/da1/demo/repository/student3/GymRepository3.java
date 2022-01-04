@@ -10,5 +10,4 @@ public interface GymRepository3 extends JpaRepository<Gym3, Integer>{
 
     List<Gym3> findByNameContaining(String name);
 
-
 }
