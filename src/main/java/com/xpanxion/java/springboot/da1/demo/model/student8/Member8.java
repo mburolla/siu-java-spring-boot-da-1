@@ -1,5 +1,6 @@
 package com.xpanxion.java.springboot.da1.demo.model.student8;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -9,13 +10,14 @@ public class Member8 {
     // DATA
 
     @Id
-    int memberId;
-    int gymId;
-    String firstName;
-    String lastName;
-    String dateOfBirth;
-    String subscriptionStartDate;
-    String subscriptionEndDate;
+    @GeneratedValue
+    private int memberId;
+    private int gymId;
+    private String firstName;
+    private String lastName;
+    private String dateOfBirth;
+    private String subscriptionStartDate;
+    private String subscriptionEndDate;
 
     // CONSTRUCTORS
 
@@ -36,6 +38,7 @@ public class Member8 {
     public int getMemberId() {
         return memberId;
     }
+
 
     public int getGymId() {
         return gymId;
