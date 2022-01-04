@@ -1,8 +1,6 @@
 package com.xpanxion.java.springboot.da1.demo.model.student8;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="gym8")
@@ -11,6 +9,7 @@ public class Gym8 {
     // DATA
 
     @Id
+    @GeneratedValue
     private int id;
     private String name;
     private String street1;
