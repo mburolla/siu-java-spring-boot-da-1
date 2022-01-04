@@ -53,7 +53,6 @@ public class HistoryService2 {
     }
 
     public Checkin2 addHistoryIn(int memberId, Timestamp time) {
-
         checkin.setCheckin(time);
         checkin.setMember2(memberRepository2.findById(memberId));
         if (checkin.getMember2() == null) {

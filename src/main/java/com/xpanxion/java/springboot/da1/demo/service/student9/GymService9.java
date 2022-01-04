@@ -29,4 +29,8 @@ public class GymService9 {
         return gymRepository9.findByNameContaining(name);
     }
 
+    public Gym9 getFindById(int id){
+        return gymRepository9.findById(id);
+    }
+
 }
