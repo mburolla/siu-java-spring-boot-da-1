@@ -75,7 +75,7 @@ public class HistoryService2 {
         }
 
         if(workoutLength.size() == 0) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "require more checkin/checkout data");
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "require more checkin/checkout data");
         }
 
         Collections.sort(workoutLength, new SortByLength());
