@@ -61,7 +61,7 @@ public class WorkoutHistoryService5 {
     }
 
     //Helper Methods
-    public static long getDateDiff(Date date1, Date date2) {
+    private static long getDateDiff(Date date1, Date date2) {
         long diffInMillies = date2.getTime() - date1.getTime();
         return TimeUnit.MINUTES.convert(diffInMillies,TimeUnit.MILLISECONDS);
     }
