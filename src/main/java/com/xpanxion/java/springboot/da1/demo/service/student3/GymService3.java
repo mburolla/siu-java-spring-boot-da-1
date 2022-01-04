@@ -25,6 +25,8 @@ public class GymService3 {
     @Autowired
     private CheckInOutRepository3 checkInOutRepository;
 
+    final int MINUTES_SECONDS = 60 * 1000;
+
     //
     //Get
     //
@@ -65,7 +67,7 @@ public class GymService3 {
             }else if (w.getCheckType3().equals(CheckType3.CHECKOUT)){
                 checkoutTime = w.getTime();
                 var deltaMs = checkoutTime.getTime() - checkinTime.getTime();
-                var deltaMinutes = deltaMs / 60000;
+                var deltaMinutes = deltaMs / MINUTES_SECONDS;
                 workoutDate = simpleDateFormat.format(w.getTime());
                 workoutTimeList.add(new WorkoutTime(deltaMinutes, memberId, workoutDate));
             }
