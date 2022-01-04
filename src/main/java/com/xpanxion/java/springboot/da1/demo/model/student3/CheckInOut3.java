@@ -3,6 +3,7 @@ package com.xpanxion.java.springboot.da1.demo.model.student3;
 import org.hibernate.annotations.Check;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "CHECK_IN_OUT3")
@@ -26,7 +27,7 @@ public class CheckInOut3 {
     @OneToOne(cascade = CascadeType.ALL, targetEntity = Member3.class)
     @JoinColumn(name = "member_id", referencedColumnName = "memberId")
     private Member3 member3;
-    private String time;
+    private Date time;
     private CheckType3 checkType;
 
 
@@ -38,7 +39,7 @@ public class CheckInOut3 {
 
     }
 
-    public CheckInOut3(Member3 member3, CheckType3 checkType, String time) {
+    public CheckInOut3(Member3 member3, CheckType3 checkType, Date time) {
         this.member3 = member3;
         this.checkType = checkType;
         this.time = time;
@@ -72,11 +73,11 @@ public class CheckInOut3 {
         this.checkType = checkType;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 }

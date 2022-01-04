@@ -11,4 +11,6 @@ public interface CheckInOutRepository3 extends JpaRepository<CheckInOut3, Intege
 
     List<CheckInOut3> findByMember3(Member3 member3);
 
+    List<CheckInOut3> findByMember3OrderByTime(Member3 member3);
+
 }

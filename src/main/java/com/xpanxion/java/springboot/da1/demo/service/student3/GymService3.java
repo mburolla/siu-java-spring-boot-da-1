@@ -9,8 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class GymService3 {
@@ -24,6 +25,8 @@ public class GymService3 {
     @Autowired
     private CheckInOutRepository3 checkInOutRepository;
 
+    final int MINUTES_SECONDS = 60 * 1000;
+
     //
     //Get
     //
@@ -36,13 +39,53 @@ public class GymService3 {
     public List<WorkoutHistoryPresentation> getWorkoutHistory(int memberId){
         try {
             Member3 member3 = memberRepository.findById(memberId).get();
-            var checkInOutList = checkInOutRepository.findByMember3(member3);
+            var checkInOutList = checkInOutRepository.findByMember3OrderByTime(member3);
             return checkInOutList.stream()
                     .map(c -> new WorkoutHistoryPresentation(c.getMember3().getMemberId(), c.getTime(), c.getCheckType())).toList();
         }catch (NoSuchElementException noSuchElementException){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Member Id Not Found!");
         }
 
+    }
+
+    public WorkoutTime getWorkoutTime(int memberId, String type){
+        List<WorkoutTime> workoutTimeList = new ArrayList<WorkoutTime>();
+
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+        var l=  getWorkoutHistory(memberId); // sorted
+
+        Date checkinTime = null;
+        Date checkoutTime;
+        String workoutDate;
+        ParsePosition pp1 = new ParsePosition(0);
+
+        for(WorkoutHistoryPresentation w : l){
+            if (w.getCheckType3().equals(CheckType3.CHECKIN)){
+                checkinTime = w.getTime();
+            }else if (w.getCheckType3().equals(CheckType3.CHECKOUT)){
+                checkoutTime = w.getTime();
+                var deltaMs = checkoutTime.getTime() - checkinTime.getTime();
+                var deltaMinutes = deltaMs / MINUTES_SECONDS;
+                workoutDate = simpleDateFormat.format(w.getTime());
+                workoutTimeList.add(new WorkoutTime(deltaMinutes, memberId, workoutDate));
+            }
+        }
+
+        switch (type){
+            case "min" -> {
+                return workoutTimeList.get(0);
+            }
+            case "max" -> {
+                Collections.sort(workoutTimeList);
+                return workoutTimeList.get(0);
+            }
+            default -> throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Enter valid Type");
+        }
+
+        // Sort workoutTimeList by workout length
+        // min is the first item, max is the last item to return
     }
 
 
@@ -61,7 +104,7 @@ public class GymService3 {
     }
 
 
-    public CheckInOut3 addCheckIn(int memberId, String time, CheckType3 checkType3){
+    public CheckInOut3 addCheckIn(int memberId, Date time, CheckType3 checkType3){
         try {
             Member3 member = memberRepository.findById(memberId).get();
             CheckInOut3 checkInOut3 = new CheckInOut3(member, checkType3, time);
@@ -71,7 +114,7 @@ public class GymService3 {
         }
     }
 
-    public CheckInOut3 addCheckOut(int memberId, String time, CheckType3 checkType3){
+    public CheckInOut3 addCheckOut(int memberId, Date time, CheckType3 checkType3){
         try{
             Member3 member = memberRepository.findById(memberId).get();
             CheckInOut3 checkInOut3 = new CheckInOut3(member, checkType3, time);
