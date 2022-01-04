@@ -11,4 +11,5 @@ import javax.transaction.Transactional;
 public interface MemberRepository2 extends JpaRepository<Member2, Integer> {
 
     Member2 findById(int id);
+
 }
