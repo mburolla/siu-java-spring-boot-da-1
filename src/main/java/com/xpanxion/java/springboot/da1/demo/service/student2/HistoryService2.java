@@ -34,20 +34,19 @@ public class HistoryService2 {
 
     public List<WorkoutHistory2> getHistory(int memberId) {
 
-        workoutHistory.clear();
-
+        List<WorkoutHistory2> workoutHistory = new ArrayList<WorkoutHistory2>();
         List<Checkin2> checkinHistory = checkinRepository2.findBymember2Id(memberId);
         List<Checkout2> checkoutHistory = checkoutRepository2.findBymember2Id(memberId);
+
+        if(!memberRepository2.existsById(memberId)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "member id not found");
+        }
 
         for (Checkin2 n : checkinHistory) {
             workoutHistory.add(new WorkoutHistory2(memberId, n.getCheckin(), "CHECK_IN"));
         }
         for (Checkout2 n : checkoutHistory) {
             workoutHistory.add(new WorkoutHistory2(memberId, n.getCheckout(), "CHECK_OUT"));
-        }
-
-        if (workoutHistory.isEmpty()) { // Feels wasteful to put it after for loops but an easy temporary solution
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "member id not found");
         }
 
         return workoutHistory;
