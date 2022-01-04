@@ -35,7 +35,6 @@ public class Timestamp8 {
 
     // ACCESSORS
 
-
     public int getTimestampId() {
         return timestampId;
     }
