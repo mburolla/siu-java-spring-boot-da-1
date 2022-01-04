@@ -1,23 +1,16 @@
 package com.xpanxion.java.springboot.da1.demo.service.student1;
 
 import com.xpanxion.java.springboot.da1.demo.model.student1.*;
-import com.xpanxion.java.springboot.da1.demo.repository.student1.GymMemberRepository1;
-import com.xpanxion.java.springboot.da1.demo.repository.student1.GymRepository1;
-import com.xpanxion.java.springboot.da1.demo.repository.student1.TimestampsRepository1;
-import com.xpanxion.java.springboot.da1.demo.repository.student1.WorkoutHistoryRepository1;
+import com.xpanxion.java.springboot.da1.demo.repository.student1.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.text.DateFormat;
+import java.util.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class GymService1 {
@@ -115,6 +108,61 @@ public class GymService1 {
         );
 
         return "Member checked out!";
+
+    }
+
+    public WorkoutLength1 getWorkoutLength(int memberId, String minOrMax) {
+
+        List<WorkoutLength1> workoutLenths = new ArrayList<>();
+        minOrMax = minOrMax.toLowerCase();
+
+        timestampsRepository1.findByMemberId(memberId)
+                .ifPresentOrElse( members -> {
+                    for (var i = 0; i < members.size(); i++) {
+                        try {
+                            int minutes = getTimeDifferenceInMinutes(members.get(i).getCheckIn(), members.get(i).getCheckOut());
+                            String date = formatDate(members.get(i).getCheckIn());
+                            workoutLenths.add(new WorkoutLength1(minutes, memberId, date));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, () -> {
+                    throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+                });
+
+        switch(minOrMax) {
+            case "min":
+                return workoutLenths.get(0);
+            case "max":
+                Collections.sort(workoutLenths);
+                return workoutLenths.get(0);
+            default:
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+    private int getTimeDifferenceInMinutes(Date checkIn, Date checkOut) throws ParseException {
+
+        long milliseconds = checkOut.getTime() - checkIn.getTime();
+        int seconds = (int) milliseconds / 1000;
+        int minutes = Math.abs(seconds / 60 / 60);
+
+        return minutes;
+
+    }
+
+    public String formatDate(Date dayOfWorkout) throws ParseException {
+
+        String[] getDate = dayOfWorkout.toString().split(" ");
+        DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat targetFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date date = originalFormat.parse(getDate[0]);
+        String formattedDate = targetFormat.format(date);
+
+
+        return formattedDate;
 
     }
 
