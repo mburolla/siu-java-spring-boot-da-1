@@ -15,7 +15,8 @@ public class GymController0 {
 
     @PostMapping("instructor/api/v1/gym")
     public Gym0 addGym(@RequestBody Gym0 gym) {
-        gym.setId(gymService0.addGym(gym));
+        //gym.setId(gymService0.addGym(gym));
+        gymService0.addGym(gym);
         return gym;
     }
 }

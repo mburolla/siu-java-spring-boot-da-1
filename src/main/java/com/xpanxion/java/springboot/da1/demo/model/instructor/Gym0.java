@@ -100,4 +100,21 @@ public class Gym0 {
     public void setZip(int zip) {
         this.zip = zip;
     }
+
+    //
+    // Overrides
+    //
+
+    @Override
+    public String toString() {
+        return "Gym0{" +
+                "gymId=" + gymId +
+                ", name='" + name + '\'' +
+                ", street1='" + street1 + '\'' +
+                ", street2='" + street2 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip=" + zip +
+                '}';
+    }
 }
