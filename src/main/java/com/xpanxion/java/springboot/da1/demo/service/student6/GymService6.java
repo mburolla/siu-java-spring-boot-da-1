@@ -3,6 +3,7 @@ package com.xpanxion.java.springboot.da1.demo.service.student6;
 import com.xpanxion.java.springboot.da1.demo.model.student6.Gym6;
 import com.xpanxion.java.springboot.da1.demo.repository.student6.GymRepository6;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +22,7 @@ public class GymService6 {
         return gymRepository6.saveAndFlush(gym6);
     }
 
-    public Gym6 findByName(String name) {
-        //return gymRepository6.findByName(name);
-        return null;
+    public List<Gym6> findByName(String name) {
+        return gymRepository6.findAll(Sort.by(Sort.Direction.ASC, "name"));
     }
 }
