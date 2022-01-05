@@ -1,5 +1,7 @@
 package com.xpanxion.java.springboot.da1.demo.model.student4;
 
+import com.xpanxion.java.springboot.da1.demo.model.student1.CheckType;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,9 +21,8 @@ public class Workout4 {
     )
     private long workoutId;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date checkIn;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date checkOut;
+    private Date timeUtc;
+    private CheckType checkType;
     @OneToOne( cascade=CascadeType.ALL, targetEntity = Member4.class)
     @JoinColumn(name = "member_id", referencedColumnName = "memberId")
     private Member4 member;
@@ -29,62 +30,64 @@ public class Workout4 {
     public Workout4() {
     }
 
-    public Workout4(Member4 member, Date checkIn){
-        this.member= member;
-        this.checkIn = checkIn;
-    }
-
-    public Workout4(long workoutId, Member4 member, Date checkIn, Date checkOut){
-        this.workoutId = workoutId;
+    public Workout4(Date timeUtc, CheckType checkType, Member4 member){
+        this.timeUtc = timeUtc;
+        this.checkType = checkType;
         this.member = member;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
     }
 
-    //Getters
+    public Workout4(Long workoutId, Date timeUtc, CheckType checkType, Member4 member){
+        this.workoutId = workoutId;
+        this.timeUtc = timeUtc;
+        this.checkType = checkType;
+        this.member = member;
+    }
 
-    public long getWorkoutId() {
+    //Getters and Setters
+
+    @Override
+    public String toString() {
+        return "WorkoutHistory5{" +
+                "workoutId=" + workoutId +
+                ", timeUtc=" + timeUtc +
+                ", checkType=" + checkType +
+                ", member=" + member +
+                '}';
+    }
+
+    public Long getWorkoutId() {
         return workoutId;
+    }
+
+    public void setWorkoutId(Long workoutId) {
+        this.workoutId = workoutId;
+    }
+
+    public Date getTimeUtc() {
+        return timeUtc;
+    }
+
+    public void setTimeUtc(Date timeUtc) {
+        this.timeUtc = timeUtc;
+    }
+
+    public CheckType getCheckType() {
+        return checkType;
+    }
+
+    public void setCheckType(CheckType checkType) {
+        this.checkType = checkType;
     }
 
     public Member4 getMember() {
         return member;
     }
-
-    public Date getCheckIn() {
-        return checkIn;
-    }
-
-    public Date getCheckOut() {
-        return checkOut;
-    }
-
-    //Setters
-
-    public void setWorkoutId(long workoutId) {
-        this.workoutId = workoutId;
-    }
-
     public void setMember(Member4 member) {
         this.member = member;
     }
 
-    public void setCheckIn(Date timeIn) {
-        this.checkIn = timeIn;
-    }
-
-    public void setCheckOut(Date timeOut) {
-        this.checkOut = timeOut;
-    }
-
-    @Override
-    public String toString() {
-        return "Workout4{" +
-                "workoutId=" + workoutId +
-                ", member=" + member +
-                ", timeIn='" + checkIn + '\'' +
-                ", timeOut='" + checkOut + '\'' +
-                '}';
+    public enum CheckType {
+        CHECK_IN,
+        CHECK_OUT
     }
 }
-
