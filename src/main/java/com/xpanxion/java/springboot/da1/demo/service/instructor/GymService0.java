@@ -11,14 +11,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Service
-@Transactional
+@Transactional // <============ Hibernate
 public class GymService0 {
 
     @Autowired
     private GymRepository0 gymRepository0;
 
-    @PersistenceContext
-    public EntityManager entityManager;
+    @PersistenceContext // <============ Hibernate
+    public EntityManager entityManager; // <============ Hibernate
 
     public Gym0 addGym(Gym0 gym) {
 
