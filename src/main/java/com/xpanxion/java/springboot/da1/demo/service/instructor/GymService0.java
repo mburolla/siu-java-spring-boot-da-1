@@ -23,7 +23,7 @@ public class GymService0 {
     public Gym0 addGym(Gym0 gym) {
 
         ////////////////////////////////////////////////
-        // JPA
+        // Spring Data JPA
         ///////////////////////////////////////////////
         return gymRepository0.save(gym);
 
