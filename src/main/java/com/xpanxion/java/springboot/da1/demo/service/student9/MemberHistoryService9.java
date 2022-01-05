@@ -86,6 +86,9 @@ public class MemberHistoryService9 {
     }
 
     public WorkoutLength9 getMemberWorkOutLength(int id, String type){
+
+        WorkoutLength9 retrieval = null;
+
         if(type.equalsIgnoreCase("min")){
             var tempList = memberHistoryRepository9.getWorkoutLengthMin(id);
             var l = tempList.stream().map(m -> {
@@ -95,7 +98,8 @@ public class MemberHistoryService9 {
                 return new WorkoutLength9(duration.toMinutes(), memberId, date);
             }).toList();
 
-            return l.get(0);
+            retrieval =  l.get(0);
+
         } else if(type.equalsIgnoreCase("max")){
             var tempList = memberHistoryRepository9.getWorkoutLengthMax(id);
             var l = tempList.stream().map(m -> {
@@ -104,8 +108,9 @@ public class MemberHistoryService9 {
                 var date = m.getCheckIn().toLocalDate();
                 return new WorkoutLength9(duration.toMinutes(), memberId, date);
             }).toList();
-            return l.get(0);
+
+            retrieval =  l.get(0);
         } // else doNothing()
-        return null;
+        return retrieval;
     }
 }
