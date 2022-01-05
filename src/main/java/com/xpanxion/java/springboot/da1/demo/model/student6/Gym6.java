@@ -9,8 +9,6 @@ import javax.persistence.Table;
 @Table(name="GYM6")
 public class Gym6 {
 
-//    @OneToOne(mappedBy = "gym6")
-//    private Member6 member6;
 
     //MEM VARS
     @Id

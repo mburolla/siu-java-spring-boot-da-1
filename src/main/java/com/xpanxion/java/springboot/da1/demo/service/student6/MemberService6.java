@@ -14,4 +14,5 @@ public class MemberService6 {
     public Member6 save(Member6 member6) {
         return memberRepository6.saveAndFlush(member6);
     }
+
 }
