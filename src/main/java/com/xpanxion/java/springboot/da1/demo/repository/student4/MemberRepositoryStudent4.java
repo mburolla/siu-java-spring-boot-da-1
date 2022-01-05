@@ -5,6 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MemberRepositoryStudent4 extends JpaRepository<Member4, Integer> {
-    Member4 findByMemberId(Long memberId);
+public interface MemberRepositoryStudent4 extends JpaRepository<Member4, Long> {
 }

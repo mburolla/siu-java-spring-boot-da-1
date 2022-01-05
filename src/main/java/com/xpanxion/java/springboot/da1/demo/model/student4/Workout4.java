@@ -1,40 +1,49 @@
 package com.xpanxion.java.springboot.da1.demo.model.student4;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="workout4")
 public class Workout4 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int workoutId;
 
+    @Id
+    @SequenceGenerator(
+            name = "workout_id_sequence",
+            sequenceName = "workout_id_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "workout_id_sequence"
+    )
+    private long workoutId;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date checkIn;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date checkOut;
     @OneToOne( cascade=CascadeType.ALL, targetEntity = Member4.class)
     @JoinColumn(name = "member_id", referencedColumnName = "memberId")
     private Member4 member;
 
-    private String timeIn;
-    private String timeOut;
-
     public Workout4() {
     }
 
-    public Workout4(Member4 member, String timeIn){
+    public Workout4(Member4 member, Date checkIn){
         this.member= member;
-        this.timeIn = timeIn;
-        this.timeOut = null;
+        this.checkIn = checkIn;
     }
 
-    public Workout4(int workoutId, Member4 member, String timeIn, String timeOut){
+    public Workout4(long workoutId, Member4 member, Date checkIn, Date checkOut){
         this.workoutId = workoutId;
         this.member = member;
-        this.timeIn = timeIn;
-        this.timeOut = timeOut;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
     }
 
     //Getters
 
-    public int getWorkoutId() {
+    public long getWorkoutId() {
         return workoutId;
     }
 
@@ -42,17 +51,17 @@ public class Workout4 {
         return member;
     }
 
-    public String getTimeIn() {
-        return timeIn;
+    public Date getCheckIn() {
+        return checkIn;
     }
 
-    public String getTimeOut() {
-        return timeOut;
+    public Date getCheckOut() {
+        return checkOut;
     }
 
     //Setters
 
-    public void setWorkoutId(int workoutId) {
+    public void setWorkoutId(long workoutId) {
         this.workoutId = workoutId;
     }
 
@@ -60,12 +69,12 @@ public class Workout4 {
         this.member = member;
     }
 
-    public void setTimeIn(String timeIn) {
-        this.timeIn = timeIn;
+    public void setCheckIn(Date timeIn) {
+        this.checkIn = timeIn;
     }
 
-    public void setTimeOut(String timeOut) {
-        this.timeOut = timeOut;
+    public void setCheckOut(Date timeOut) {
+        this.checkOut = timeOut;
     }
 
     @Override
@@ -73,8 +82,8 @@ public class Workout4 {
         return "Workout4{" +
                 "workoutId=" + workoutId +
                 ", member=" + member +
-                ", timeIn='" + timeIn + '\'' +
-                ", timeOut='" + timeOut + '\'' +
+                ", timeIn='" + checkIn + '\'' +
+                ", timeOut='" + checkOut + '\'' +
                 '}';
     }
 }
