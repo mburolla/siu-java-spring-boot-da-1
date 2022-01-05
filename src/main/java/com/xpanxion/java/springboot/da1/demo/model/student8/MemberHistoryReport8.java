@@ -1,7 +1,5 @@
 package com.xpanxion.java.springboot.da1.demo.model.student8;
 
-import com.xpanxion.java.springboot.da1.demo.repository.student8.MemberHistoryRepository8;
-
 import java.util.Date;
 
 public class MemberHistoryReport8 {

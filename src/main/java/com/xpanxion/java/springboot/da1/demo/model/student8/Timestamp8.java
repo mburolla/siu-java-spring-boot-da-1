@@ -52,7 +52,11 @@ public class Timestamp8 {
         this.timestampId = timestampId;
     }
 
-    public void setmember(Member8 member) {
+    public Member8 getMember() {
+        return member;
+    }
+
+    public void setMember(Member8 member) {
         this.member = member;
     }
 

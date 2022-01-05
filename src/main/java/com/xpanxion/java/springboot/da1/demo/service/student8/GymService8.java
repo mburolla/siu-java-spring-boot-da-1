@@ -35,7 +35,7 @@ public class GymService8 {
 
     public void GymService8() {}
 
-    // METHODS
+    // PUBLIC METHODS
 
     public Gym8 createGym(Gym8 gym) {
         return gymRepository8.save(gym);
@@ -59,47 +59,38 @@ public class GymService8 {
         return memberRepository8.save(member);
     }
 
-    public Member8 findMember(int memberId) {
-        return memberRepository8.getById(memberId);
-    }
-
     public Timestamp8 memberCheckIn(int memberId, Timestamp checkInTime, CheckInOutType8 checkType) {
-        if (memberRepository8.findById(memberId).isPresent()) {
-            Member8 member = findMember(memberId);
-            MemberHistory8 memberRecord = new MemberHistory8(member, checkInTime, checkType);
-            memberHistoryRepository8.save(memberRecord);
-            Timestamp8 timestamp = new Timestamp8(member, checkInTime);
-            return timestampRepository8.save(timestamp);
-        }
-        else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+        Member8 member = getMemberOrThrow(memberId);
+        MemberHistory8 memberRecord = new MemberHistory8(member, checkInTime, checkType);
+        memberHistoryRepository8.save(memberRecord);
+        Timestamp8 timestamp = new Timestamp8(member, checkInTime);
+        return timestampRepository8.save(timestamp);
     }
 
     public Timestamp8 memberCheckOut(int memberId, Timestamp checkOutTime, CheckInOutType8 checkType) {
-        if (memberRepository8.findById(memberId).isPresent()) {
-            Member8 member = findMember(memberId);
-            Timestamp8 timestamp = timestampRepository8.findTopByMemberOrderByTimestampIdDesc(member);
-            if (timestamp.getCheckOutTime() == null) {
-                timestamp.setCheckOutTime(checkOutTime);
-            }
-            MemberHistory8 memberRecord = new MemberHistory8(member, checkOutTime, checkType);
-            memberHistoryRepository8.save(memberRecord);
-            timestampRepository8.save(timestamp);
-            return timestamp;
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        Member8 member = getMemberOrThrow(memberId);
+        Timestamp8 timestamp = timestampRepository8.findTopByMemberOrderByTimestampIdDesc(member);
+        if (timestamp.getCheckOutTime() == null) {
+            timestamp.setCheckOutTime(checkOutTime);
         }
+        MemberHistory8 memberRecord = new MemberHistory8(member, checkOutTime, checkType);
+        memberHistoryRepository8.save(memberRecord);
+        timestampRepository8.save(timestamp);
+        return timestamp;
     }
 
     public List<MemberHistoryReport8> getMemberHistory(int memberId) {
-        if (memberRepository8.findById(memberId).isPresent()) {
-            Member8 member = findMember(memberId);
-            var memberHistory = memberHistoryRepository8.getFindByMember(member);
-            return memberHistory.stream().map(mh -> new MemberHistoryReport8(mh.getMember().getMemberId(), mh.getTimeUtc(), mh.getCheckType())).toList();
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "member not found");
-        }
+        Member8 member = getMemberOrThrow(memberId);
+        var memberHistory = memberHistoryRepository8.getFindByMember(member);
+        return memberHistory.stream().map(mh -> new MemberHistoryReport8(mh.getMember().getMemberId(), mh.getTimeUtc(), mh.getCheckType())).toList();
+    }
+
+    // PRIVATE METHODS
+
+    private Member8 getMemberOrThrow(int memberId) {
+        var retval= memberRepository8.findById(memberId).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found."));
+        return retval;
     }
 }
 
