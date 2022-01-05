@@ -1,6 +1,7 @@
 package com.xpanxion.java.springboot.da1.demo.controller.student9;
 
 import com.xpanxion.java.springboot.da1.demo.model.student9.MemberHistory9;
+import com.xpanxion.java.springboot.da1.demo.model.student9.WorkoutLength9;
 import com.xpanxion.java.springboot.da1.demo.service.student9.MemberHistoryService9;
 import com.xpanxion.java.springboot.da1.demo.service.student9.MemberService9;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class MemberController9 {
     }
 
     @GetMapping("student9/api/v1/member/{memberId}/workout")
-    public StringBuilder getWorkoutLength(@PathVariable int memberId, @RequestParam String type){
+    public WorkoutLength9 getWorkoutLength(@PathVariable int memberId, @RequestParam String type){
         return memberHistoryService9.getMemberWorkOutLength(memberId,type);
     }
 }
