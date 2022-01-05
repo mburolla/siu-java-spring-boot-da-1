@@ -86,7 +86,6 @@ public class MemberHistoryService9 {
     }
 
     public WorkoutLength9 getMemberWorkOutLength(int id, String type){
-        var stringBuilder = new StringBuilder();
         if(type.equalsIgnoreCase("min")){
             var tempList = memberHistoryRepository9.getWorkoutLengthMin(id);
             var l = tempList.stream().map(m -> {
