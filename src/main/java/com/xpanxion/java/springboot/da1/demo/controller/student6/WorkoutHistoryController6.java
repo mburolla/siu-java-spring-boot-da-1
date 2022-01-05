@@ -3,10 +3,13 @@ package com.xpanxion.java.springboot.da1.demo.controller.student6;
 import com.xpanxion.java.springboot.da1.demo.model.student6.WorkoutHistory6;
 import com.xpanxion.java.springboot.da1.demo.service.student6.WorkoutHistoryService6;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -15,19 +18,19 @@ public class WorkoutHistoryController6 {
     @Autowired
     private WorkoutHistoryService6 workoutHistoryService6;
 
-    List<WorkoutHistory6> whIn;
-    List<WorkoutHistory6> whOut;
+    List<String> whIn;
+    List<String> whOut;
 
-    @PostMapping("student6/api/v1/member/{memberId}/checkin?time=2021-12-30 13:48:28")
-    public WorkoutHistory6 createCheckIn(@RequestBody WorkoutHistory6 workoutHistory6) {
-        whIn.add(workoutHistory6);
-        return workoutHistoryService6.save(workoutHistory6);
+    @PostMapping("student6/api/v1/member/{memberId}/local-date-time")
+    public WorkoutHistory6 createCheckIn(@RequestParam("localDateTime")@DateTimeFormat(pattern="yyyy-MM-dd H:m:s") Date time) {
+        whIn.add(time.toString());
+        return (WorkoutHistory6) whIn;
 
     }
 
-    @PostMapping("student6/api/member/{memberId}/checkout?time=2021-12-30 13:48:28")
-    public WorkoutHistory6 createCheckOut(@RequestBody WorkoutHistory6 workoutHistory6) {
-        whOut.add(workoutHistory6);
-        return workoutHistoryService6.save(workoutHistory6);
+    @PostMapping("student6/api/member/{memberId}/local-date-time")
+    public WorkoutHistory6 createCheckOut(@RequestParam("localDateTime")@DateTimeFormat(pattern="yyyy-MM-dd H:m:s") Date time) {
+        whOut.add(time.toString());
+        return (WorkoutHistory6) whOut;
     }
 }
