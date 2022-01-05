@@ -10,8 +10,6 @@ import java.util.Date;
 @Table(name = "Member6")
 public class Member6 {
 
-    @OneToOne
-    private Gym6 gym6;
 
     //MEM VARS
     @Id
@@ -24,8 +22,7 @@ public class Member6 {
     private Date subEndDate;
 
     //CONSTRUCTOR
-    public Member6(Gym6 gym6, int id, int gymId, String firstname, String lastname, Date dob, Date subStartDate, Date subEndDate) {
-        this.gym6 = gym6;
+    public Member6(int id, int gymId, String firstname, String lastname, Date dob, Date subStartDate, Date subEndDate) {
         this.id = id;
         this.gymId = gymId;
         this.firstname = firstname;
@@ -36,14 +33,6 @@ public class Member6 {
     }
 
     //GETTERS AND SETTERS
-    public Gym6 getGym6() {
-        return gym6;
-    }
-
-    public void setGym6(Gym6 gym6) {
-        this.gym6 = gym6;
-    }
-
     public int getId() {
         return id;
     }
@@ -99,4 +88,6 @@ public class Member6 {
     public void setSubEndDate(Date subEndDate) {
         this.subEndDate = subEndDate;
     }
+
+
 }
