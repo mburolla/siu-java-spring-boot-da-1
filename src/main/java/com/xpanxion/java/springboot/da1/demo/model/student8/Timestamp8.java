@@ -12,7 +12,16 @@ public class Timestamp8 {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int timestampId;
-    private int memberId;
+
+    @OneToOne(
+            targetEntity = Member8.class,
+            cascade= CascadeType.ALL
+    )
+    @JoinColumn(
+            name ="member_id",
+            referencedColumnName = "memberId"
+    )
+    private Member8 member;
     private Timestamp checkInTime;
     private Timestamp checkOutTime;
 
@@ -20,15 +29,15 @@ public class Timestamp8 {
 
     public Timestamp8() {}
 
-    public Timestamp8(int memberId, Timestamp checkInTime) {
-        this.memberId = memberId;
+    public Timestamp8(Member8 member, Timestamp checkInTime) {
+        this.member = member;
         this.checkInTime = checkInTime;
         this.checkOutTime = null;
     }
 
-    public Timestamp8(int timestampId, int memberId, Timestamp checkInTime, Timestamp checkOutTime) {
+    public Timestamp8(int timestampId, Member8 member, Timestamp checkInTime, Timestamp checkOutTime) {
         this.timestampId = timestampId;
-        this.memberId = memberId;
+        this.member = member;
         this.checkInTime = checkInTime;
         this.checkOutTime = checkOutTime;
     }
@@ -43,12 +52,8 @@ public class Timestamp8 {
         this.timestampId = timestampId;
     }
 
-    public int getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
+    public void setmember(Member8 member) {
+        this.member = member;
     }
 
     public Timestamp getCheckInTime() {

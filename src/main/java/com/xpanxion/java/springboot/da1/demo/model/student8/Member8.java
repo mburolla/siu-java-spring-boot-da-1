@@ -18,10 +18,9 @@ public class Member8 {
             generator = "member_sequence"
     )
     private int memberId;
-    @OneToOne(
+    @ManyToOne(
             targetEntity = Gym8.class,
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            cascade = CascadeType.ALL
     )
     @JoinColumn(
             name = "gym_id",
@@ -54,31 +53,55 @@ public class Member8 {
         return memberId;
     }
 
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
+    }
+
     public Gym8 getGym() {
         return gym;
     }
 
-    public void setGym(Gym8 gymId) {
-        this.gym = gymId;
+    public void setGym(Gym8 gym) {
+        this.gym = gym;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public String getLastName() {
         return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getDateOfBirth() {
         return dateOfBirth;
     }
 
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public String getSubscriptionStartDate() {
         return subscriptionStartDate;
     }
 
+    public void setSubscriptionStartDate(String subscriptionStartDate) {
+        this.subscriptionStartDate = subscriptionStartDate;
+    }
+
     public String getSubscriptionEndDate() {
         return subscriptionEndDate;
+    }
+
+    public void setSubscriptionEndDate(String subscriptionEndDate) {
+        this.subscriptionEndDate = subscriptionEndDate;
     }
 }

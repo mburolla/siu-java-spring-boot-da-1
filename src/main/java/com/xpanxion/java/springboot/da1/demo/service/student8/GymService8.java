@@ -1,9 +1,8 @@
 package com.xpanxion.java.springboot.da1.demo.service.student8;
 
-import com.xpanxion.java.springboot.da1.demo.model.student8.Gym8;
-import com.xpanxion.java.springboot.da1.demo.model.student8.Member8;
-import com.xpanxion.java.springboot.da1.demo.model.student8.Timestamp8;
+import com.xpanxion.java.springboot.da1.demo.model.student8.*;
 import com.xpanxion.java.springboot.da1.demo.repository.student8.GymRepository8;
+import com.xpanxion.java.springboot.da1.demo.repository.student8.MemberHistoryRepository8;
 import com.xpanxion.java.springboot.da1.demo.repository.student8.MemberRepository8;
 import com.xpanxion.java.springboot.da1.demo.repository.student8.TimestampRepository8;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +27,9 @@ public class GymService8 {
 
     @Autowired
     private TimestampRepository8 timestampRepository8;
+
+    @Autowired
+    private MemberHistoryRepository8 memberHistoryRepository8;
 
     // CONSTRUCTOR
 
@@ -58,9 +59,16 @@ public class GymService8 {
         return memberRepository8.save(member);
     }
 
-    public Timestamp8 memberCheckIn(Integer memberId, Timestamp checkInTime) {
+    public Member8 findMember(int memberId) {
+        return memberRepository8.getById(memberId);
+    }
+
+    public Timestamp8 memberCheckIn(int memberId, Timestamp checkInTime, CheckInOutType8 checkType) {
         if (memberRepository8.findById(memberId).isPresent()) {
-            var timestamp = new Timestamp8(memberId, checkInTime);
+            Member8 member = findMember(memberId);
+            MemberHistory8 memberRecord = new MemberHistory8(member, checkInTime, checkType);
+            memberHistoryRepository8.save(memberRecord);
+            Timestamp8 timestamp = new Timestamp8(member, checkInTime);
             return timestampRepository8.save(timestamp);
         }
         else {
@@ -68,18 +76,31 @@ public class GymService8 {
         }
     }
 
-    public Timestamp8 memberCheckOut(Integer memberId, Timestamp checkOutTime) {
-        if(memberRepository8.findById(memberId).isPresent()){
-            Timestamp8 timestamp = timestampRepository8.findTopByMemberIdOrderByTimestampIdDesc(memberId);
+    public Timestamp8 memberCheckOut(int memberId, Timestamp checkOutTime, CheckInOutType8 checkType) {
+        if (memberRepository8.findById(memberId).isPresent()) {
+            Member8 member = findMember(memberId);
+            Timestamp8 timestamp = timestampRepository8.findTopByMemberOrderByTimestampIdDesc(member);
             if (timestamp.getCheckOutTime() == null) {
                 timestamp.setCheckOutTime(checkOutTime);
             }
+            MemberHistory8 memberRecord = new MemberHistory8(member, checkOutTime, checkType);
+            memberHistoryRepository8.save(memberRecord);
             timestampRepository8.save(timestamp);
             return timestamp;
-        }
-        else {
+        } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
 
+    public List<MemberHistoryReport8> getMemberHistory(int memberId) {
+        if (memberRepository8.findById(memberId).isPresent()) {
+            Member8 member = findMember(memberId);
+            var memberHistory = memberHistoryRepository8.getFindByMember(member);
+            return memberHistory.stream().map(mh -> new MemberHistoryReport8(mh.getMember().getMemberId(), mh.getTimeUtc(), mh.getCheckType())).toList();
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "member not found");
+        }
+    }
 }
+
+
