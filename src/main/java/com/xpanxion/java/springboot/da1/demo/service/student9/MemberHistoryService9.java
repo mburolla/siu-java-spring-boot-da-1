@@ -2,16 +2,17 @@ package com.xpanxion.java.springboot.da1.demo.service.student9;
 
 import com.xpanxion.java.springboot.da1.demo.model.student9.Member9;
 import com.xpanxion.java.springboot.da1.demo.model.student9.MemberHistory9;
+import com.xpanxion.java.springboot.da1.demo.model.student9.WorkoutLength9;
 import com.xpanxion.java.springboot.da1.demo.repository.student9.MemberHistoryRepository9;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class MemberHistoryService9 {
@@ -27,7 +28,13 @@ public class MemberHistoryService9 {
     //Methods
     public MemberHistory9 addMemberCheckInHistory(int memberId, LocalDateTime time){
 
-        var member9 = memberService9.getFindById(memberId);
+        var member9 = new Member9();
+        try {
+            member9 = memberService9.getFindById(memberId);
+        } catch (ResponseStatusException e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
         var historyList = memberHistoryRepository9.getMemberWorkoutHistory(memberId);
         var lastHistory = historyList.get(historyList.size()-1);
 
@@ -42,8 +49,13 @@ public class MemberHistoryService9 {
     }
 
     public MemberHistory9 addMemberCheckOutHistory(int memberId, LocalDateTime time){
+        var member9 = new Member9();
 
-        var member9 = memberService9.getFindById(memberId);
+        try {
+            member9 = memberService9.getFindById(memberId);
+        } catch (ResponseStatusException e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
         var historyList = memberHistoryRepository9.getMemberWorkoutHistory(memberId);
         var lastHistory = historyList.get(historyList.size()-1);
 
@@ -73,35 +85,28 @@ public class MemberHistoryService9 {
        return newList;
     }
 
-    public StringBuilder getMemberWorkOutLength(int id, String type){
+    public WorkoutLength9 getMemberWorkOutLength(int id, String type){
         var stringBuilder = new StringBuilder();
         if(type.equalsIgnoreCase("min")){
             var tempList = memberHistoryRepository9.getWorkoutLengthMin(id);
-            for(var temp : tempList){
-                var duration = Duration.between(temp.getCheckIn(), temp.getCheckOut());
-                stringBuilder.append("{");
-                stringBuilder.append("\n");
-                stringBuilder.append("LengthInMinutes: ").append(duration.toMinutes());
-                stringBuilder.append("\n");
-                stringBuilder.append("Member Id: ").append(temp.getMemberId().getMemberId());
-                stringBuilder.append("\n");
-                stringBuilder.append("date: ").append(temp.getCheckIn().toLocalDate());
-            }
+            var l = tempList.stream().map(m -> {
+                var duration = Duration.between(m.getCheckIn(), m.getCheckOut());
+                var memberId=  m.getMemberId().getMemberId();
+                var date = m.getCheckIn().toLocalDate();
+                return new WorkoutLength9(duration.toMinutes(), memberId, date);
+            }).toList();
+
+            return l.get(0);
         } else if(type.equalsIgnoreCase("max")){
             var tempList = memberHistoryRepository9.getWorkoutLengthMax(id);
-            for(var temp : tempList){
-                var duration =  Duration.between(temp.getCheckIn(), temp.getCheckOut());
-                stringBuilder.append("{");
-                stringBuilder.append("\n");
-                stringBuilder.append("LengthInMinutes: ").append(duration.toMinutes());
-                stringBuilder.append("\n");
-                stringBuilder.append("Member Id: ").append(temp.getMemberId().getMemberId());
-                stringBuilder.append("\n");
-                stringBuilder.append("date: ").append(temp.getCheckIn().toLocalDate());
-                stringBuilder.append("\n").append("}");
-                stringBuilder.append("\n");
-            }
+            var l = tempList.stream().map(m -> {
+                var duration = Duration.between(m.getCheckIn(), m.getCheckOut());
+                var memberId=  m.getMemberId().getMemberId();
+                var date = m.getCheckIn().toLocalDate();
+                return new WorkoutLength9(duration.toMinutes(), memberId, date);
+            }).toList();
+            return l.get(0);
         } // else doNothing()
-        return stringBuilder;
+        return null;
     }
 }
