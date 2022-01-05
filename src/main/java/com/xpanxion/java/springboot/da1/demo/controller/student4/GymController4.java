@@ -31,10 +31,4 @@ public class GymController4 {
         private List<Gym4> getFindByNameContaining(@RequestParam String name){
                 return gymServiceStudent4.getFindByNameContaining(name);
         }
-
-        @PostMapping("student4/api/v1/gym/{id}/member")
-        public Member4 addMember(@RequestBody Member4 member4, @PathVariable Integer id){
-                gymServiceStudent4.getFindById(id);
-                return memberServiceStudent4.addMember(member4);
-        }
 }
